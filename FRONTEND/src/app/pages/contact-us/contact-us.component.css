@@ -1,0 +1,130 @@
+/* MAIN */
+
+/* MAIN */
+main{
+    /* border: 2px solid red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+}
+
+.contenedorInfo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--tipografiaTexto);
+}
+#textoMain {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 0px;
+    
+
+}
+
+.textoMain {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 20px;
+    width: 50%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.imgMain {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+
+.canalAtencion {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.canalAtencion h1{
+    font-family: var(--tipografiaTitulos);
+    color: var(--colorContraste);
+}
+
+.enlacesRedes{
+    background-color: var(--colorContraste2);
+    height: 40px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.enlacesRedes a{
+    text-decoration: none;
+    color: white;
+}
+
+.canales {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin: 20px 0px;
+}
+
+.icon {
+    width: 50px;
+    height: auto;
+}
+
+.contenedorPreguntas {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 20px 0px;
+}
+
+.preguntasFrecuentes{
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 40px;
+}
+
+.preguntasFrecuentes h2{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-family: var(--tipografiaTitulos);
+    color: var(--colorContraste);
+}
+.preguntas {
+    width: 70%;
+    height: auto;
+}
+
+.textoPreguntas {
+    font-size: 16px;
+    font-family: var(--tipografiaTexto);
+}
+
+.brocoli {
+    width: 30%;
+    height: auto;
+}
+
+.brocoli img {
+    width: 100%;
+    height: auto;
+}

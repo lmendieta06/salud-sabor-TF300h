@@ -1,11 +1,23 @@
 <header>
-    <div>
-        <a href="">
-            <img src="assets/home/logoSinFondo.png" alt="logoSaludSabor">
-        </a>
+    <div class="barraLogo">
+        <div class="logo">
+            <a routerLink="/">
+                <img src="assets/logoSinFondo.png" alt="logoSaludSabor">
+            </a>
+        </div>
+        <div class="inicioSesionOpcion">
+            <p>
+                ¿Ya tienes cuenta?<a routerLink="/login"> Inicia sesión</a>
+            </p>
+            <div class="inicioSesionUser">
+                <a routerLink="/login">
+                    <i class="bi bi-person-fill inicioSesionUser"></i>
+                </a>
+            </div>
+        </div>
     </div>
-    <nav>
-        <ul>
+    <nav class="menuNav">
+        <ul class="listaMenu">
             <li>
               <a routerLink="/">Inicio</a>
             </li>
@@ -20,11 +32,6 @@
             </li>
             <li>
                 <a routerLink="/contactanos">Contactanos</a>
-            </li>
-            <li>
-                <a routerLink="/login">
-                    <button >INICIAR SESION</button>
-                </a>
             </li>
           </ul>
     </nav>

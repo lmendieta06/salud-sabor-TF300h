@@ -1,6 +1,59 @@
 <app-navegation></app-navegation>
 <main>
-    <a routerLink="/restaurantes">
-        <button>REALIZAR RESERVA</button>
-    </a>
+    <!-- BIENVENIDA - PRESENTACION -->
+    <section class="presentacion" id="presentacion">
+        <div class="descripcionPresentacion">
+            <h1>Lleva tu estilo de vida a cualquier lugar</h1>
+            <h2>¡Comer sano nunca fue tan facil!</h2>
+            <p>
+                Te ofrecemos una variedad de menús saludables para que mantengas tu estilo de vida fácilmente en cualquier lugar de Colombia donde te encuentres 
+                <span>¡Siempre estamos contigo!</span>
+            </p>
+            <a routerLink="/restaurantes">
+                <button>REALIZA TU PEDIDO</button>
+            </a>
+        </div>
+        <div class="imgInicio">
+            <img src="assets/home/imageInicio.png" alt="Almuerzo con vegetales">
+        </div>
+    </section>
+
+        <!-- EXPLICACION DEL FUNCIONAMIENTO -->
+    <section class="funcionamiento" id="funcionamiento">
+        <h2>¿Como funciona?</h2>
+            
+        <!-- EL ORDEN DE CLASES PARA LAS PANTALLAS
+          1. pantallas pequeñas
+          2. pantallas medianas
+          3. pantallas grandes -->
+        <div class="row pasosFuncionamiento">
+            <article class=" col-12 col-md-6 col-lg-3 pasos">
+                <div class="ilustracionPasos">
+                    <img src="assets/home/ilustracion1.svg" alt="escoger">
+                </div>
+                <h3>1. Dar click en el boton “realiza tu pedido”.</h3>
+            </article>
+            <article class=" col-12 col-md-6 col-lg-3 pasos">
+                <div class="ilustracionPasos">
+                    <img src="assets/home/ilustracion2.svg" alt="colombia">
+                            
+                </div>
+                <h3>2. Escoger una ciudad y una categoria de comida</h3>
+            </article>
+            <article class=" col-12 col-md-6 col-lg-3 pasos">
+                <div class="ilustracionPasos">
+                    <img src="assets/home/ilustracion3.svg" alt="menú">
+                </div>
+                <h3>3. Ver el menu del restaurante que llamo tu atencion.</h3>
+            </article>
+            <article class=" col-12 col-md-6 col-lg-3 pasos">
+                <div class="ilustracionPasos">
+                    <img src="assets/home/ilustracion4.svg" alt="bolsaCompras">
+                </div>
+                <h3>4. Realiza tu pedido</h3>
+            </article>
+        </div>
+    </section>
+    <app-chat-bot></app-chat-bot>
+    <app-footer></app-footer>
 </main>

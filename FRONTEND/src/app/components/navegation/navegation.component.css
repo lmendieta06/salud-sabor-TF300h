@@ -1,3 +1,126 @@
-img{
-    width: 200px;
+/* HEADER */
+header{
+    width: 100%;
+    height: 130px;
+    margin-bottom: 0;
+
+}
+
+/* Dar estilos a logo y a inicio de sesion */
+.barraLogo{
+    background-color: var(--colorFondo);
+    width: 100%;
+    height: 100px;
+    /* Hacer que siempre se fije */
+    position: fixed;
+    z-index:100;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--tipografiaTitulos);
+}
+
+.logo{
+    width: 80%;
+}
+.barraLogo img{
+    margin-left: 30px;
+    width: 120px;
+
+
+}
+
+/* Opcion de inicio de sesion */
+.inicioSesionOpcion{
+    display: flex;
+    gap: 10px;
+    margin-right: 20px;
+    width: 20%;
+}
+
+.inicioSesionOpcion p{
+    gap: 10px;
+}
+.inicioSesionOpcion a{
+    text-decoration: none;
+    color:black;
+    font-weight:bolder;
+}
+
+.inicioSesionUser{
+    /* Sombra de la caja */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--colorContraste);
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Navegador */
+.menuNav{
+    background-color: var(--colorNav);
+    width: 110%;
+    height: 30px;
+    position: fixed;
+    z-index:100;
+    top: 100px;
+    left:0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.listaMenu{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 5%;
+    list-style: none;
+}
+
+.listaMenu a{
+    width: 20%;
+    color: var(--colorFondo);
+    text-decoration: none;
+    font-family: var(--tipografiaTitulos);
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width:830px){
+    .menuNav{
+        background-color: var(--colorNav);
+        width: 100%;
+        height: 45px;
+        position: fixed;
+        z-index:100;
+        top: 100px;
+        left:0;
+    }
+
+    .logo{
+        width: 60%;
+    }
+
+    .inicioSesionOpcion{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:650px){
+    .listaMenu a{
+        width: 20%;
+        color: var(--colorFondo);
+        text-decoration: none;
+        font-family: var(--tipografiaTitulos);
+        font-size: 12px;
+    }
 }

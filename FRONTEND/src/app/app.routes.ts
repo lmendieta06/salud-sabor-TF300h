@@ -4,7 +4,6 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ClientComponent } from './pages/client/client.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
 import { MenuRestaurantComponent } from './pages/menu-restaurant/menu-restaurant.component';
 import { NoEncontradoComponent } from './pages/no-encontrado/no-encontrado.component';
 import { RecipesTipsComponent } from './pages/recipes-tips/recipes-tips.component';
@@ -17,7 +16,6 @@ export const routes: Routes = [
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador"},
     {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
-    {path:"login", component:LoginComponent, title:"Inicio de Sesion"},
     {path:"menu", component:MenuRestaurantComponent, title: "Menú"},
     {path:"tips", component:RecipesTipsComponent, title:"Recetas"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
