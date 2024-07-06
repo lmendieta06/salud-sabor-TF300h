@@ -1,6 +1,11 @@
 import express from "express";
+
+
 import dotenv from "dotenv";
 //variables de entorno con DOTENV
+
+
+import productsRouter from "./routes/product.routes.js";
 
 import { connexionMongo } from "./config/db.js";
 
@@ -17,6 +22,8 @@ const port = process.env.PORT; //mi puerto en variable de entorno
 connexionMongo();
 
 
+//usamos rutas
+app.use("/", productsRouter);
 
 
 
