@@ -1,8 +1,68 @@
 <app-navegation></app-navegation>
 <main>
-    <p>restaurants works!</p>
-    <a routerLink="/menu">
-        <button>VER MENU</button>
-    </a>
+    <!-- BUSCADOR DE RESTAURANTE -->
+    <section class="barraBuscar">
+        <div class="container-fluid">
+            <form class="d-flex" role="search" id="searchForm">
+              <input class="form-control me-2 barraTexto" type="search" placeholder="¿En que ciudad te encuentras?" aria-label="Search" id="searchInput">
+              <button class="btn btn-outline-success botonBuscar" type="submit">
+                <i class="bi bi-search-heart"></i>
+              </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CATEGORIAS DE COMIDAS -->
+    <section class="categoriasSection" id="categorias">
+        <h2>¿Algún antojo en especial?</h2>
+        
+    <!-- EL ORDEN DE CLASES PARA LAS PANTALLAS
+      1. pantallas pequeñas
+      2. pantallas medianas
+      3. pantallas grandes -->
+        <div class="row categorias">
+            <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
+                <a href="#" data-category="almuerzo" class="categoria">
+                    <div class="imgCategorias">
+                        <img src="assets/home/ilustracion5.svg" alt="iconoAlmuerzo">
+                    </div>
+                    <h3>Almuerzo</h3>
+                    <h3>Cena</h3>
+                </a>
+            </article>
+            <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
+                <a href="#" data-category="ensalada" class="categoria">
+                    <div class="imgCategorias">
+                        <img src="assets/home/ilustracion6.svg" alt="iconoEnsalada">      
+                    </div>
+                    <h3>Ensalada</h3>
+                </a>
+            </article>
+            <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
+                <a href="#" data-category="postres" class="categoria">
+                    <div class="imgCategorias">
+                        <img src="assets/home/ilustracion7.svg" alt="iconoPostre">
+                    </div>
+                    <h3>Postres</h3>
+                    <h3>Dulces</h3>
+                </a>
+            </article>
+            <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
+                <a href="#" data-category="bebidas" class="categoria">
+                    <div class="imgCategorias">
+                        <img src="assets/home/ilustracion8.svg" alt="iconoBebida">
+                    </div>
+                    <h3>Bebidas</h3>
+                </a>
+            </article>
+        </div>
+    </section>  
+
+    <!-- VISUALIZACION DE RESTAURANTES -->
+    <section class="restaurantes">
+
+    </section>
+    <app-chat-bot></app-chat-bot>
 </main>
+<app-footer></app-footer>
 

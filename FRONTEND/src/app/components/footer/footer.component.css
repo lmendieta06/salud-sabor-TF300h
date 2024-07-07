@@ -1,5 +1,5 @@
 /* FOOTER */
-footer{
+footer {
     background-color: var(--colorContraste);
     width: 100vw;
     height: auto;
@@ -8,85 +8,82 @@ footer{
     display: flex;
     flex-direction: column;
     gap: 30px;
+    /* No es necesario overflow-y: hidden aquí */
 }
 
-footer h2{
+footer h2 {
     font-size: 20px;
     font-weight: 700;
+    overflow-y: hidden;
 }
 
-.contenidoFooter{
+.contenidoFooter {
     width: 100%;
     height: auto;
     padding-left: 5%;
     padding-right: 5%;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
 }
 
-/* Contiene todas las clases enlace */
-.enlacesFooter{
+.enlacesFooter {
     height: auto;
     padding-left: 5%;
     padding-right: 5%;
     display: flex;
     justify-content: space-between;
-    /* border: 2px solid blue; */
     width: 80%;
 }
 
-.enlaces{
+.enlaces {
     width: 26%;
-    height: 40px;
+    /* Cambiar overflow-y: hidden a auto si se necesita desplazamiento */
+    overflow-y: auto;
     margin-top: 30px;
     text-align: left;
 }
 
-.redes{
+.redes {
     display: flex;
     margin-top: 5%;
     gap: 5%;
+    /* Cambiar overflow-y: hidden a auto si se necesita desplazamiento */
+    overflow-y: auto;
 }
 
-.redes a, .redes p{
+.redes a, .redes p {
     text-decoration: none;
-    color:white;
+    color: white;
     font-size: 20px;
     font-family: var(--tipografiaTexto);
 }
 
-/* Padre directo de las a */
-.infoFooter{
+.infoFooter {
     margin-top: 5%;
     display: flex;
     flex-direction: column;
     gap: 5%;
-
 }
 
-.infoFooter a{
+.infoFooter a {
     color: white;
     text-decoration: none;
     font-size: 20px;
     font-family: var(--tipografiaTexto);
 }
 
-/* Logo */
-.imgFooter{
+.imgFooter {
     width: 200px;
     height: 200px;
 }
 
-.imgFooter img{
+.imgFooter img {
     width: 100%;
     height: 100%;
 }
 
-/* Copyright */
-
-.copyRight{
-    margin:20px;
+.copyRight {
+    margin: 20px;
     font-family: var(--tipografiaTitulos);
     bottom: 0;
     width: 100%;
@@ -96,54 +93,47 @@ footer h2{
 
 /* RESPONSIVE */
 
-@media screen and (max-width:1100px){
-    footer{
+@media screen and (max-width: 1100px) {
+    footer {
         height: 500px;
         padding-top: 10%;
     }
 }
 
-@media screen and (max-width:830px){
-    .redes a, .redes p{
-        text-decoration: none;
-        color:white;
+@media screen and (max-width: 830px) {
+    .redes a, .redes p {
         font-size: 15px;
-        font-family: var(--tipografiaTexto);
     }
 
-    .infoFooter a{
-        color: white;
-        text-decoration: none;
+    .infoFooter a {
         font-size: 15px;
-        font-family: var(--tipografiaTexto);
     }
 }
 
-@media screen and (max-width:650px){
-    footer{
+@media screen and (max-width: 650px) {
+    footer {
         height: auto;
     }
-    .enlacesFooter{
+    .enlacesFooter {
         display: flex;
         flex-direction: column;
         align-items: left;
         justify-content: space-around;
-        padding-top:0 ;
+        padding-top: 0;
         height: 70%;
     }
 
-    .contenidoFooter{
+    .contenidoFooter {
         height: 500px;
     }
 
-    .enlaces{
+    .enlaces {
         height: 33%;
         width: 100%;
         margin: 30px;
     }
 
-    .copyRight{
+    .copyRight {
         width: 100%;
     }
-
 }
