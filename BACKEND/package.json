@@ -5,16 +5,18 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "dev" : "nodemon app.js"
-
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "author": "Salud y Sabor",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongoose": "^8.4.4",
+    "mongoose": "^8.4.4"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.4"
   }
 }
