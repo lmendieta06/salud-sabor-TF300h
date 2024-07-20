@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { userModel } from "./user.models.js";
+
 
 export const adminSchema = mongoose.Schema({
 
@@ -8,10 +8,27 @@ categoriaAdmin:{
     required : true,
     default : true
 
-}
+},
+nombreAdmin:{
+    type: String,
+    required : true,
+
+},
+
+correoAdmin : {
+    type: String,
+    required : true,
+    unique : true
+},
+
+contraseña: {
+    type:String,
+    required : true,
+
+ }
 
 });
 
 
-export const adminModel = userModel.discriminator("admin", adminSchema);
+export const adminModel = mongoose.model("admin", adminSchema);
 
