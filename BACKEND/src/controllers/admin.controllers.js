@@ -35,14 +35,6 @@ export const postAdmin = async (request, response) => {
 }
 
 
-
-
-
-
-
-
-
-
 // Mostrar todos los administradores
 export const getAdmin = async (request, response) => {
     try{
