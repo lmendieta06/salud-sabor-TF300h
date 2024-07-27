@@ -1,26 +1,25 @@
 import mongoose from 'mongoose';
+import { dishesModel } from './dishes.model';
+
 const Schema = mongoose.Schema;
 
 const menuSchema = new Schema({
-    categoriaMenu: {
-        type: String,
-        enum: ['entradas', 'ensaladas', 'bebidas', 'platos fuertes', 'postres'],
-        required: true
+    imagenRestaurant:{
+        type:String,
+        required:true
     },
-    nombrePlato: {
-        type: String,
-        required: true
+    nameRestaurant:{
+        type:String,
+        required:true
     },
-    descripcionPlato: {
-        type: String
-    },
-    imagenPlato: {
-        type: String
-    },
-    precioPlato: {
-        type: Number,
-        required: true
-    }
+    category:[{
+        type:String,
+        required:true
+    }],
+    dishes:[{
+        type:Schema.Type.ObjectId, 
+        ref:"Dish"
+    }]
 });
 
 export const menuModel = mongoose.model('Menu', menuSchema);

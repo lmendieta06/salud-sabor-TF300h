@@ -2,13 +2,14 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const dishesSchema = new Schema({
+
+    nombrePlato: {
+        type: String,
+        required: true
+    },
     categoriaMenu: {
         type: String,
         enum: ['entradas', 'ensaladas', 'bebidas', 'platos fuertes', 'postres'],
-        required: true
-    },
-    nombrePlato: {
-        type: String,
         required: true
     },
     descripcionPlato: {
@@ -23,5 +24,5 @@ const dishesSchema = new Schema({
     }
 });
 
-export const Model = mongoose.model('Menu', menuSchema);
+export const dishesModel = mongoose.model('Dish', dishesSchema);
 
