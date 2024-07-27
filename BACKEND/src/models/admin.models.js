@@ -21,7 +21,7 @@ correoAdmin : {
     unique : true
 },
 
-contraseña: {
+contrasenaAdmin: {
     type:String,
     required : true,
 
