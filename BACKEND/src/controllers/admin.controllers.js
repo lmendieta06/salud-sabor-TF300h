@@ -81,6 +81,33 @@ export const getAdmin = async (request, response) => {
 
 // Actualizar administradores
 export const putAdminById = async (request, response) => {
+  
+    try {
+        let idForPut = request.params.id
+        const dataForUpdate = request.body
+        const adminUpdated = await userModel.findByIdAndUpdate(idForPut, dataForUpdate);
 
 
+
+        if(!adminUpdated){
+
+            return response.status(200).json({
+                estado: "200",
+                mensaje: "No se encontro ese usuario"})
+
+            };
+     
+        return response.status(200).json({
+            estado: '200',
+            mensaje:'Se actualizó correctamente el admin',
+            datos: adminUpdated
+        });
+        
+    } catch (error) {
+        return response.status(400).json({
+            estado: '400',
+            mensaje: 'Ocurrió un problema al actualizar usuario',
+            datos: error,
+        });
+    };
 }
