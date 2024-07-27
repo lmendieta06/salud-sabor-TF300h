@@ -28,12 +28,12 @@ const restaurantSchema = new schema({
         require:true
     },
       // Aquí se establece la referencia al modelo Menu
-  menu: [{
+  menu: {
     type: Schema.Types.ObjectId,
     ref: 'Menu',
-  }],
+  },
     logo:{
-        type:Image
+        type:String
     }
 })
 
