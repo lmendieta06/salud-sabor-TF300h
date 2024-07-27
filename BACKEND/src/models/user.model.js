@@ -6,38 +6,34 @@ const schema = mongoose.Schema;
 
 export const userSchema = mongoose.Schema({
  
- 
- 
-    nombreCompleto:{
-    type: String,
-    required : true
- }, 
- 
- 
- correo:{
-    type: String,
-    required : true,
-    unique:true
- },
-
- 
- 
- contraseña:{
-    type:String,
-    required : true,
-
- },
-
- imagen: {
-
-    type: String,
- }
-
-
+   nombre:{
+      type: String,
+     require:true
+   },
+   correoElectronico:{
+      type:String,
+      require:true,
+      unique:true
+   },
+   contrasena:{
+      type:String,
+      require:true
+   },
+   telefono:{
+      type:Number,
+      require:true
+   },
+   direccion:{
+      type:String,
+      require:true
+   },
+   imagenPerfil:{
+      type: Image
+   }
 
 });
 
-export const userModel = mongoose.model("usuario", userSchema);
+export const userModel = mongoose.model("Usuario", userSchema);
 
 // exportacion de variable "userModel" es nuestro modelo creado luego usamos mongoose y model que es un atributo que nos permite usar mongoose y luego entre parentesis el nombre de la coleccion entre "..." y la plantilla que creamos userSchema
 
