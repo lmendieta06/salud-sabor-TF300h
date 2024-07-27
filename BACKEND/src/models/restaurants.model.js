@@ -1,6 +1,6 @@
 // Importaciones
 import mongoose from "mongoose";
-
+import { menuModel } from "./menu.model";
 // Crear schema
 const schema = mongoose.Schema;
 
@@ -26,6 +26,7 @@ const restaurantSchema = new schema({
         require:true
     },
     menu:{
+        type:Schema.Types.ObjectId, ref:"Menu",
     },
     logo:{
         type:Image

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const menuSchema = new Schema({
+const dishesSchema = new Schema({
     categoriaMenu: {
         type: String,
         enum: ['entradas', 'ensaladas', 'bebidas', 'platos fuertes', 'postres'],
@@ -23,10 +23,5 @@ const menuSchema = new Schema({
     }
 });
 
-export const menuModel = mongoose.model('Menu', menuSchema);
-
-
-
-
-// categoria: Un campo de tipo String que utiliza enum para limitar los valores a las categorías específicas que mencionaste.
+export const Model = mongoose.model('Menu', menuSchema);
 
