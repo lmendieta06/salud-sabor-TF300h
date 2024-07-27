@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 
-export const adminSchema = mongoose.Schema({
+export const adminSchema = new mongoose.Schema({
 
 categoriaAdmin:{ 
     type: Boolean,
