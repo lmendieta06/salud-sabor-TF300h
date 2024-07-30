@@ -5,9 +5,11 @@ import dotenv from "dotenv";
 //variables de entorno con DOTENV
 import cors from "cors"
 
-import productsRouter from "./routes/product.routes.js";
+// import productsRouter from "./routes/product.routes.js";
 
 import { connexionMongo } from "../config/db.js";
+import usersRouter from "./routes/user.routes.js";
+import { restaurantRouter } from "./routes/restaurants.routes.js";
 
 
 
@@ -25,8 +27,11 @@ connexionMongo();
 
 
 //usamos rutas
-app.use("/", productsRouter);
-
+// app.use("/", productsRouter);
+// Usuarios
+app.use("/users", usersRouter);
+// Restaurantes
+app.use("/restaurants", restaurantRouter);
 
 
 

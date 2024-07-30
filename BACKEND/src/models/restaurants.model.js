@@ -1,6 +1,6 @@
 // Importaciones
 import mongoose, {Schema} from "mongoose";
-import { menuModel } from "./menu.model";
+import { menuModel } from "./menu.model.js";
 
 
 // Crear schema
