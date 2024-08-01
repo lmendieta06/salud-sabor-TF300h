@@ -16,6 +16,11 @@ const restaurantSchema = new schema({
         type:String,
         require:true
     },
+    correoElectronico:{
+        type: String,
+        required: true,
+        unique: true
+    },
     categoria:{
         type:String,
         require:true
