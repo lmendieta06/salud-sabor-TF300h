@@ -1,0 +1,29 @@
+*{
+    overflow-y: hidden;
+}
+main{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main h1{
+    font-family: var(--tipografiaTitulos);
+    font-size: 40px;
+    color: var(--colorContraste2);
+}
+
+main h2{
+    font-family: var(--tipografiaTitulos);
+    font-size: 40px;
+    color: var(--colorContraste);
+
+}
+
+main p{
+    font-family: var(--tipografiaTexto);
+    font-size: 20px;
+}
