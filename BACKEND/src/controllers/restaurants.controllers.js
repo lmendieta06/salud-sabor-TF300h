@@ -52,13 +52,13 @@ export const getRestaurantByCategory = async(req, res) =>{
 
         // Requiere el id del usuario
         // El id debe ser llamado igual a como esta escrito en la db
-        let categoryRestaurant = req.params.categoria;
+        const categoryRestaurant = req.params.categoria;
 
         // Usa la funcion find() porque es mas de una coleccion con esa categoria
         // Debe mandarla en objeto porque la funcion find() lo requiere
-        let restaurants = await restaurantModel.find({categoria : categoryRestaurant});
+        const restaurantsCategory = await restaurantModel.find({categoria : categoryRestaurant});
 
-        if(!restaurants){
+        if(!restaurantsCategory){
             return res.status(200).json({
                 estado : 200,
                 mensaje : "No se encontraron restaurantes con esa categoria"
@@ -68,7 +68,7 @@ export const getRestaurantByCategory = async(req, res) =>{
         return res.status(200).json({
             estado : 200,
             mensaje : "Se encontraron los siguientes restaurantes",
-            restaurantes : restaurants
+            restaurantes : restaurantsCategory
         })
 
     }catch(error){
@@ -83,9 +83,9 @@ export const getRestaurantByCity = async (req, res) => {
 
         const cityRestaurant = req.params.ciudad;
 
-        const restaurants = await restaurantModel.find({ ciudad: cityRestaurant });
+        const restaurantsCity = await restaurantModel.find({ ciudad: cityRestaurant });
 
-        if (restaurants.length === 0) {
+        if (restaurantsCity.length === 0) {
             return res.status(200).json({
                 estado: 200,
                 mensaje: "No se encontraron restaurantes en esa ciudad"
@@ -95,8 +95,8 @@ export const getRestaurantByCity = async (req, res) => {
         return res.status(200).json({
             estado: 200,
             mensaje: "Se encontraron los siguientes restaurantes",
-            cantidad: restaurants.length,
-            restaurantes: restaurants
+            cantidad: restaurantsCity.length,
+            restaurantes: restaurantsCity
         });
 
     } catch (error) {
@@ -148,6 +148,8 @@ export const deleteRestaurant = async(req, res) =>{
     try{
         let idDelete = req.params._id;
         let restaurantDelete = await restaurantModel.findByIdAndDelete(idDelete);
+
+        // console.log(restaurantDelete);
 
             
         if(!restaurantDelete){
