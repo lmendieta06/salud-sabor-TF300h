@@ -1,36 +1,33 @@
 // importacion mongoose nos permite la conexion directa con la base de datos.-> Schema-> plantilla de los productos
 import mongoose from "mongoose";
-// el mongoose.Schema crea nuestro esquema
-const schema = mongoose.Schema;
+
 // definimos de que manera se mostraran los productos
 
-export const userSchema = mongoose.Schema({
- 
-   nombre:{
-      type: String,
-     require:true
+const userSchema = new mongoose.Schema({
+   nombre: {
+       type: String,
+       required: true
    },
-   correoElectronico:{
-      type:String,
-      require:true,
-      unique:true
+   correoElectronico: {
+       type: String,
+       required: true,
+       unique: true
    },
-   contrasena:{
-      type:String,
-      require:true
+   contrasena: {
+       type: String,
+       required: true
    },
-   telefono:{
-      type:Number,
-      require:true
+   telefono: {
+       type: Number,
+       required: true
    },
-   direccion:{
-      type:String,
-      require:true
+   direccion: {
+       type: String,
+       required: true
    },
-   imagenPerfil:{
-      type: String
+   imagenPerfil: {
+       type: String
    }
-
 });
 
 export const userModel = mongoose.model("Usuario", userSchema);
