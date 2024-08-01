@@ -6,8 +6,9 @@ import dotenv from "dotenv";
 import cors from "cors"
 
 
-
 import { connexionMongo } from "../config/db.js";
+import usersRouter from "./routes/user.routes.js";
+import { restaurantRouter } from "./routes/restaurants.routes.js";
 
 import adminRouter from "./routes/admin.routes.js";
 import menuRouter from "./routes/menu.routes.js";
@@ -25,8 +26,12 @@ connexionMongo();
 
 
 //usamos rutas
-app.use("/", adminRouter);
-app.use("/", menuRouter);
+ app.use("/admin", adminRouter);
+ app.use("/menu", menuRouter)
+// Usuarios
+app.use("/users", usersRouter);
+// Restaurantes
+app.use("/restaurants", restaurantRouter);
 
 
 

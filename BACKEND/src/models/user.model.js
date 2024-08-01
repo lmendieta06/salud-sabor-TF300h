@@ -28,7 +28,7 @@ export const userSchema = mongoose.Schema({
       require:true
    },
    imagenPerfil:{
-      type: Image
+      type: String
    }
 
 });
