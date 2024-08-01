@@ -1,5 +1,5 @@
 import mongoose, {Schema} from "mongoose";
-import { dishesModel } from "./dishes.model";
+import { dishesModel } from "./dishes.model.js";
 
 const menuSchema = new mongoose.Schema({
     title:{
@@ -15,7 +15,7 @@ const menuSchema = new mongoose.Schema({
         required:true
     }],
     dishes:[{
-        type:Schema.Type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref:"Dish"
 
     }]
