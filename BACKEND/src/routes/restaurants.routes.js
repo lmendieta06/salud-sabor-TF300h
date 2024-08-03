@@ -6,7 +6,7 @@ export const restaurantRouter = Router();
 
 restaurantRouter.get("/", getRestaurants);
 restaurantRouter.get("/:categoria", getRestaurantByCategory);
-restaurantRouter.get("/:ciudad", getRestaurantByCity);
+restaurantRouter.get("/ciudad/:ciudad", getRestaurantByCity);
 restaurantRouter.post("/", postRestaurant);
 restaurantRouter.put("/:_id", putRestaurant);
 restaurantRouter.delete("/:_id", deleteRestaurant);
