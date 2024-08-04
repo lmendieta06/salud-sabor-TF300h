@@ -23,7 +23,7 @@ app.use(cors());
 const port = process.env.PORT; //mi puerto en variable de entorno
 
 connexionMongo();
-
+app.use(express.json());
 
 //usamos rutas
  app.use("/admin", adminRouter);

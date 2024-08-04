@@ -1,4 +1,6 @@
+import mongoose from "mongoose";
 import { menuModel } from "../models/menu.model.js";
+
 
 
 
@@ -14,7 +16,7 @@ export const getMenus = async(req, res) =>{
             estado : 200,
             mensaje: "Se encontraron todos los menus",
             cantidad: menus.length,
-            restaurants
+            menus: menus
         })
     }catch(error){
         return res.status(404).json({
@@ -40,9 +42,9 @@ export const getMenuByCategory = async(req, res) =>{
 
         // Usa la funcion find() porque es mas de una coleccion con esa categoria
         // Debe mandarla en objeto porque la funcion find() lo requiere
-        const menusCategory = await menuModel.find({categoria : menuCategory});
+        const menusCategory = await menuModel.find({ category: { $in: [menuCategory] } });
 
-        if(!menusCategory){
+        if(!menusCategory.length === 0){
             return res.status(200).json({
                 estado : 200,
                 mensaje : "No se encontraron restaurantes con esa categoria"
@@ -51,8 +53,8 @@ export const getMenuByCategory = async(req, res) =>{
 
         return res.status(200).json({
             estado : 200,
-            mensaje : "Se encontraron los siguientes restaurantes",
-            restaurantes : restaurantsCategory
+            mensaje : "Se encontraron los siguientes menus",
+            restaurantes : menusCategory
         })
 
     }catch(error){
@@ -65,12 +67,37 @@ export const getMenuByCategory = async(req, res) =>{
 
 
 
+//----------------------------------------------GET MENU BY ID -------------------------------------------------
 
 
+export const getMenuById = async (req, res) => {
+    let idForGet = req.params._id; // Obtener el id 
 
+    try {
+        // Buscar el menú por id
+        const menu = await menuModel.findById(idForGet).populate('dishes'); //populate para la referencia dishes
 
+        if (!menu) {
+            return res.status(404).json({
+                estado: "404",
+                mensaje: "Menú no encontrado"
+            });
+        }
 
-
+       
+        return res.status(200).json({
+            estado: "200",
+            mensaje: "Menú encontrado",
+            datos: menu
+        });
+    } catch (error) {
+       
+        return res.status(500).json({
+            estado: "500",
+            mensaje: "No se logró obtener el menú: " + error.message
+        });
+    }
+};
 
 
 
@@ -134,62 +161,41 @@ export const updateMenuById = async (req, res) => {
 };
 //----------------------------------------------DELETE MENU BY ID -------------------------------------------------
 
+
 export const deleteMenuById = async (req, res) => {
-    let idForDelete = req.params_id; // Obtener id
-
     try {
-        // Buscar y eliminar el menú
-        const deletedMenu = await menuModel.findByIdAndDelete(idForDelete);
+        // Obtener el id 
+        const idForDelete = req.params._id;
 
-        if (!deletedMenu) {
+        // Que sea un ObjectId válido
+        if (!mongoose.Types.ObjectId.isValid(idForDelete)) {
+            return res.status(400).json({
+                estado: 400,
+                mensaje: "ID no válido"
+            });
+        }
+
+        // Eliminar el menú por id
+        const idValido = await menuModel.findByIdAndDelete(idForDelete);
+
+        if (!idValido) {
             return res.status(404).json({
-                estado: "404",
+                estado: 404,
                 mensaje: "Menú no encontrado"
             });
         }
 
-        // Enviar respuesta exitosa
         return res.status(200).json({
-            estado: "200",
-            mensaje: "Menú eliminado correctamente"
+            estado: 200,
+            mensaje: "Menú eliminado exitosamente"
         });
     } catch (error) {
-        // Manejar errores
+        console.error('Error al eliminar el menú:', error); // Agregar consola de error para depuración
         return res.status(500).json({
-            estado: "500",
+            estado: 500,
             mensaje: "No se logró eliminar el menú: " + error.message
         });
     }
 };
 
-//----------------------------------------------GET MENU BY ID -------------------------------------------------
 
-
-export const getMenuById = async (req, res) => {
-    let idForGet = req.params_id; // Obtener el id 
-
-    try {
-        // Buscar el menú por id
-        const menu = await menuModel.findById(idForGet).populate('dishes'); //populate para la referencia dishes
-
-        if (!menu) {
-            return res.status(404).json({
-                estado: "404",
-                mensaje: "Menú no encontrado"
-            });
-        }
-
-       
-        return res.status(200).json({
-            estado: "200",
-            mensaje: "Menú encontrado",
-            datos: menu
-        });
-    } catch (error) {
-       
-        return res.status(500).json({
-            estado: "500",
-            mensaje: "No se logró obtener el menú: " + error.message
-        });
-    }
-};

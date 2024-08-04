@@ -6,22 +6,22 @@ import { getMenus, postMenu, updateMenuById, deleteMenuById, getMenuById, getMen
 const menuRouter = express.Router();
 
 // Ruta para obtener todos los menus
-menuRouter.get('/menus', getMenus);
+menuRouter.get('/', getMenus);
 
 // Ruta para obtener un menu específico por ID
-menuRouter.get('/menus/:_id', getMenuById);
+menuRouter.get('/:_id', getMenuById);
 
 // Ruta para obter menu por categoria
-menuRouter.get('/menus/:categoria', getMenuByCategory);
+menuRouter.get('/categoria/:categoria', getMenuByCategory);
 
 // Ruta para crear un nuevo menu
-menuRouter.post('/menus', postMenu);
+menuRouter.post('/', postMenu);
 
 // Ruta para actualizar un menu por ID
-menuRouter.put('/menus/:_id', updateMenuById);
+menuRouter.put('/:_id', updateMenuById);
 
 // Ruta para eliminar un menu por ID
-menuRouter.delete('/menus/:_id', deleteMenuById);
+menuRouter.delete('/:_id', deleteMenuById);
 
 
 export default menuRouter;

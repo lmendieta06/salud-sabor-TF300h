@@ -8,7 +8,7 @@ const menuSchema = new mongoose.Schema({
     },
     imgLogo:{
         type:String,
-        required:true
+        
     },
     category:[{
         type:String,
