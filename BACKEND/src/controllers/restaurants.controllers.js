@@ -58,7 +58,7 @@ export const getRestaurantByCategory = async(req, res) =>{
         // Debe mandarla en objeto porque la funcion find() lo requiere
         const restaurantsCategory = await restaurantModel.find({categoria : categoryRestaurant});
 
-        if(!restaurantsCategory){
+        if(restaurantsCategory.length === 0){
             return res.status(200).json({
                 estado : 200,
                 mensaje : "No se encontraron restaurantes con esa categoria"
@@ -85,6 +85,7 @@ export const getRestaurantByCity = async (req, res) => {
         console.log(cityRestaurant);
         const restaurantsCity = await restaurantModel.find({ ciudad: cityRestaurant });
         console.log(restaurantsCity);
+
         if (restaurantsCity.length === 0) {
             return res.status(200).json({
                 estado: 200,

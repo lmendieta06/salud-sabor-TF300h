@@ -9,7 +9,7 @@ import cors from "cors"
 import { connexionMongo } from "../config/db.js";
 import usersRouter from "./routes/user.routes.js";
 import { restaurantRouter } from "./routes/restaurants.routes.js";
-
+import { dishRouter } from "./routes/dish.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import menuRouter from "./routes/menu.routes.js";
 
@@ -26,12 +26,16 @@ connexionMongo();
 
 app.use(express.json());
 //usamos rutas
- app.use("/admin", adminRouter);
- app.use("/menu", menuRouter)
+// Administradores
+app.use("/admin", adminRouter);
+// Menu
+app.use("/menu", menuRouter)
 // Usuarios
 app.use("/users", usersRouter);
 // Restaurantes
 app.use("/restaurants", restaurantRouter);
+// Dishes
+app.use("/dish", dishRouter);
 
 
 
