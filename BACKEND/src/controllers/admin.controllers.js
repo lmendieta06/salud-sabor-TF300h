@@ -13,6 +13,14 @@ export const postAdmin = async (request, response) => {
 
         const {nombreAdmin, correoAdmin, contrasenaAdmin} = request.body;
 
+        if (!nombreAdmin || !correoAdmin || !contrasenaAdmin) {
+            return response.status(400).json({
+                estado: '400',
+                mensaje: 'Faltan datos necesarios para crear UN administrador'
+            });
+        }
+
+
         const newAdmin = await adminModel.create({
             nombreAdmin,
             correoAdmin,
@@ -29,7 +37,7 @@ export const postAdmin = async (request, response) => {
         return response.status(400).json({
             estado: '400',
             mensaje: 'Ocurrió un problema al crear un administrador',
-            datos: error
+            datos: error.message
         })
     }
 }
@@ -77,7 +85,7 @@ export const putAdminById = async (request, response) => {
     try {
         let idForPut = request.params.id
         const dataForUpdate = request.body
-        const adminUpdated = await userModel.findByIdAndUpdate(idForPut, dataForUpdate);
+        const adminUpdated = await adminModel.findByIdAndUpdate(idForPut, dataForUpdate);
 
 
 
@@ -99,7 +107,7 @@ export const putAdminById = async (request, response) => {
         return response.status(400).json({
             estado: '400',
             mensaje: 'Ocurrió un problema al actualizar usuario',
-            datos: error,
+            datos: error.message
         });
     };
 }
