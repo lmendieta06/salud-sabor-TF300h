@@ -1,5 +1,5 @@
 import { adminModel } from "../models/admin.models.js";
-
+import bcrypt from 'bcryptjs';
 
 
 
@@ -11,9 +11,10 @@ import { adminModel } from "../models/admin.models.js";
 export const postAdmin = async (request, response) => {
     try{
 
-        const {nombreAdmin, correoAdmin, contrasenaAdmin} = request.body;
-
-        if (!nombreAdmin || !correoAdmin || !contrasenaAdmin) {
+        const {nombre, correoElectronico, contrasena} = request.body;
+        const codedPassword = await bcrypt.hash(contrasena, 10);
+        
+        if (!nombre || !correoElectronico|| !contrasena) {
             return response.status(400).json({
                 estado: '400',
                 mensaje: 'Faltan datos necesarios para crear UN administrador'
@@ -22,9 +23,9 @@ export const postAdmin = async (request, response) => {
 
 
         const newAdmin = await adminModel.create({
-            nombreAdmin,
-            correoAdmin,
-            contrasenaAdmin,
+            nombre,
+            correoElectronico,
+            contrasena: codedPassword,
             categoriaAdmin: true
         })
 
@@ -33,6 +34,8 @@ export const postAdmin = async (request, response) => {
             mensaje: 'Administrador creado correctamente',
             datos: newAdmin
         })
+
+        
     } catch(error){
         return response.status(400).json({
             estado: '400',
