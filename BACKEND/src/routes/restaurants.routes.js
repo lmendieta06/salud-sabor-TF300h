@@ -1,12 +1,12 @@
 import {Router} from "express";
 
 import { getRestaurantByCategory, getRestaurantByCity, getRestaurants, postRestaurant, putRestaurant, deleteRestaurant } from "../controllers/restaurants.controllers.js";
-
+import auth from "../middlewares/auth.js";
 export const restaurantRouter = Router();
 
-restaurantRouter.get("/", getRestaurants);
-restaurantRouter.get("/:categoria", getRestaurantByCategory);
-restaurantRouter.get("/:ciudad", getRestaurantByCity);
-restaurantRouter.post("/", postRestaurant);
-restaurantRouter.put("/:_id", putRestaurant);
-restaurantRouter.delete("/:id", deleteRestaurant);
+restaurantRouter.get("/",auth("admin"), getRestaurants);
+restaurantRouter.get("/:categoria",auth("admin"), getRestaurantByCategory);
+restaurantRouter.get("/:ciudad",auth("admin"), getRestaurantByCity);
+restaurantRouter.post("/",auth("admin"), postRestaurant);
+restaurantRouter.put("/:_id",auth("admin"), putRestaurant);
+restaurantRouter.delete("/:id",auth("admin"), deleteRestaurant);
