@@ -1,6 +1,5 @@
 import express from "express";
 
-
 import dotenv from "dotenv";
 //variables de entorno con DOTENV
 import cors from "cors"
@@ -9,10 +8,10 @@ import cors from "cors"
 import { connexionMongo } from "../config/db.js";
 import usersRouter from "./routes/user.routes.js";
 import { restaurantRouter } from "./routes/restaurants.routes.js";
-import { dishRouter } from "./routes/dish.routes.js";
+
 import adminRouter from "./routes/admin.routes.js";
 import menuRouter from "./routes/menu.routes.js";
-
+import loginRouter from "./routes/login.routes.js"
 const app = express();
 
 
@@ -32,9 +31,8 @@ app.use(express.json());
 app.use("/users", usersRouter);
 // Restaurantes
 app.use("/restaurants", restaurantRouter);
-// Dishes
-app.use("/dish", dishRouter)
-
+// login
+app.use("/login", loginRouter)
 
 
 app.listen(port, ()=>{

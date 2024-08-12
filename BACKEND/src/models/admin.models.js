@@ -9,19 +9,19 @@ categoriaAdmin:{
     default : true
 
 },
-nombreAdmin:{
+nombre:{
     type: String,
     required : true,
 
 },
 
-correoAdmin : {
+correoElectronico : {
     type: String,
     required : true,
     unique : true
 },
 
-contrasenaAdmin: {
+contrasena: {
     type:String,
     required : true,
 
