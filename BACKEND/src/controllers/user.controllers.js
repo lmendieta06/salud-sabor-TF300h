@@ -1,9 +1,24 @@
 // getUsers, postUser, putUser, deleteUser (tentativa), getUserById
 import { userModel } from "../models/user.model.js";
+import bcrytp from "bcryptjs";
 
 export const postUser = async (req, res) => {
     try {
-        let newUser = await userModel.create(req.body);
+        const {nombre, correoElectronico, contrasena, telefono, direccion, imagenPerfil} = req.body;
+        // El await es para indicar que debe esperar una respuesta
+
+        // Se debe pasar la contraseña y salt rounds que define el nivel de encriptacion -> Usualmente se usa el 10 para no comprometer el nivel de rendimiento
+        const codedPassword = await bcrytp.hash(contrasena, 10);
+
+        // Lo que hace es detenerse en esta linea de codigo, esperar la respuesta y al obtenerla sigue con el resto de lineas
+        const newUser = await userModel.create({
+            nombre,
+            correoElectronico, 
+            contrasena:codedPassword,
+            telefono,
+            direccion, 
+            imagenPerfil
+        });
 
         return res.status(201).json({
             estado: "201",
