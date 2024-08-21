@@ -1,0 +1,592 @@
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    overflow: hidden;
+}
+
+/* Variables - Pseudoclase */
+:root{
+    /* TIPOGRAFIAS */
+    --tipografiaTexto:'Montserrat', sans-serif;
+    --tipografiaTitulos: 'Ruda', sans-serif;
+    /* PALETA DE COLORES */
+    --colorFondo: white;
+    --colorNav: #FFC963;
+    --colorContraste: #18C78F;
+    --colorContraste2: #57E391;
+    --colorFiguras: #FFE1A9;
+
+}
+
+
+
+main{
+    margin-top: 0;
+    width: 100%;
+ }
+
+    .baner {
+        width: 100vw;
+        height: 80vh; /* Cambia 100vh a 80vh o cualquier valor menor que desees */
+        background: url(https://images.pexels.com/photos/5971864/pexels-photo-5971864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
+        background-attachment: fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        filter: brightness(0.9);
+    }
+
+    .baner h1, .parrafo-banner {
+        position: absolute;
+        top: 15%;
+        color: white;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.036); /* Fondo semi-transparente */
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+.parrafo-banner {
+    width: 70%;
+    height: 220px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    line-height: 50px;
+    font-family: var(--textContent);
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    z-index: 
+    1;
+
+}
+.baner h1 {
+    font-size: 4.5rem;
+}
+
+
+
+
+h2 {
+    font-size: 48px;
+    text-align: center;
+    color: var(--colorContraste);
+    font-family: var(--textTitle);
+    margin-bottom: 100px;
+    margin-top: 20px;
+}
+
+.mision,
+.vision {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+}
+
+.vision p span {
+      color: var(--colorContraste2);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+strong {
+    color: var(--colorNav); 
+    text-transform: uppercase;
+}
+
+.container-img {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.mision img, .vision img {
+    width: 180px;
+    height: 180px;
+}
+
+.mision p, .vision p {
+    max-width: 400px;
+    font-size: 1.2rem;
+}
+
+
+.equipo {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 100px;
+
+
+
+}
+
+
+
+.equipo img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: solid 6px rgba(81, 90, 85, 0.812);
+
+
+}
+
+.Our-names {
+    font-size: 1rem;
+    color: var(--colorcontraste);
+    text-decoration: overline;
+    text-align: center;
+}
+
+
+.gabriel h4,
+.laura h4,
+.leonhard h4 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+}
+
+/* ESTILOS DEL CHATBOT */
+
+.chatBot {
+    position: fixed;
+    right: 20px;
+    bottom: 40px;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background-color: var(--colorcontraste);
+    border-radius: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chatBot i {
+
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+.hdos {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 40px;
+    text-align: left;
+    text-decoration-line: underline;
+}
+
+.htres {
+    font-size: 15px;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--colorContraste);
+    width: 100vw;
+    height: auto;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+
+.contenidoFooter {
+    width: 100%;
+    height: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+/* Contiene todas las clases enlace */
+.enlacesFooter {
+    height: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid blue; */
+    width: 80%;
+}
+
+.enlaces {
+    width: 26%;
+    height: 40px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.redes {
+    display: flex;
+    margin-top: 5%;
+    gap: 5%;
+}
+
+.redes a,
+.redes p {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: var(--tipografiaTexto);
+}
+
+/* Padre directo de las a */
+.infoFooter {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+
+}
+
+.infoFooter a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: var(--tipografiaTexto);
+}
+
+/* Logo */
+.imgFooter {
+    width: 200px;
+    height: 200px;
+}
+
+.imgFooter img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Copyright */
+
+.copyRight {
+    margin: 20px;
+    font-family: var(--tipografiaTitulos);
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+}
+
+@media screen and (max-width:1024px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        /* ancho */
+        /* vw -> ancho de pantalla
+                vh -> alto de pantalla
+            */
+        width: 100vw;
+        margin: 0 auto;
+
+    }
+
+
+    main {
+        width: 100vw;
+    }
+
+    .baner {
+
+        width: 80vh;
+        height: 80vh;
+    }
+
+    h1 {
+        width: 600px;
+        font-size: 68px;
+    }
+
+    .parrafo-banner {
+        height: 150px;
+
+        margin-top: -100px;
+    }
+
+    .modal-contenedor {
+        width: 520px;
+        height: 40vh;
+    }
+
+    .Eres-Increible {
+        width: 100%;
+        height: 65px;
+        font-size: 20px;
+
+    }
+
+    .controles {
+        width: 40%;
+        padding: 4px 8px;
+    }
+
+
+
+
+
+}
+
+/* aqui emmpieza el responsive para dispositivos moviles */
+@media (max-width:650px) {
+
+
+
+
+    
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    header {
+        /* ancho */
+        /* vw -> ancho de pantalla
+                vh -> alto de pantalla
+            */
+        width: 100vw;
+        margin: 0 auto;
+
+    }
+
+    main {
+        width: 100vw;
+        height: 100vh;
+        margin: 20px auto;
+        
+    }
+
+    .InicioLogo {
+        width: 100vw;
+        margin: 0 auto;
+
+    }
+
+    .InicioLogo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .ContenedorInicio Img {
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .ContenedorInicio {
+        width: 50vw;
+
+        font-size: 15px;
+    }
+
+    .ContenedorInicio ul {
+        margin: 0px;
+        
+    }
+
+
+    nav {
+        width: 100vw;
+        padding: 15px;
+        margin: 0;
+        
+    }
+
+    h3 {
+        font-size: 10px;
+        
+    }
+
+
+    h1 {
+        width: 350px;
+        font-size: 42px;
+    }
+
+    h2 {
+        
+        margin-top: 20px;
+        font-size: 28px;
+        margin-bottom: 65px;
+    }
+
+    .parrafo-banner {
+        width: 100vw;
+        font-size: 22px;
+        padding: 20px;
+
+    }
+
+    .vision,
+    .mision {
+        
+        width: 80vw;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vision img,
+    .mision img {
+        width: 80px;
+        height: 80px;
+
+    }
+
+    .vision p,
+    .mision p {
+        
+        width: 340px;
+        font-size: 20px;
+        text-align: center;
+        margin: 0 auto;
+        padding: 10px;
+
+    }
+
+    .container-img {
+        
+        margin-top: -40px;
+        margin-bottom: 10px;
+    }
+
+    .equipo {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .equipo img {
+        width: 80px;
+        height: 80px;
+        margin-left: 20px;
+
+    }
+
+    .gabriel h4,
+    .laura h4{
+        font-size: 15px;
+        padding: 15px;
+        margin: 5px 0;
+
+        text-align: center;
+    }
+
+    .modal-contenedor {
+        width: 300px;
+        height: 400px;
+    }
+
+    .Eres-Increible {
+        width: 100%;
+        height: 60px;
+        
+        
+
+    }
+    .modal-titulo{
+        margin:0;
+        font-size: 20px;
+        padding: 0;
+    }
+    .modal-contenedor img{
+        width: 80px;
+        height: 80px;
+    }
+    .Cerrar-modal{
+       margin: 0;
+       left: 86%;
+       width: 29px;
+       height: 25px;
+       font-size: 15px;
+       text-align: center;
+    }
+    .controles {
+        width: 50%;
+        margin-top: -10px;
+       
+
+    }
+ .input-login{
+    width: 100%;
+    margin: 0;
+    font-size: 13px;
+    
+   
+
+    
+ }
+
+    footer {
+        
+        width: 100vw;
+        height: auto;
+    }
+
+    .enlacesFooter {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: space-around;
+        padding-top: 0;
+        height: 78%;
+       
+    }
+
+    .contenidoFooter {
+        height: 500px;
+    }
+
+    .contenidoFooter img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .enlaces {
+       
+        height: 30%;
+        width: 100%;
+        margin: 30px;
+    }
+
+    .copyRight {
+   padding: 10px;
+        width: 80%;
+    }
+}
