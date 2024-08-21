@@ -116,12 +116,12 @@ header{
         width: 0;
         height: 2px;
         background-color: rgb(255, 255, 255);
-        transition: width 1.3s, background-color 1.2s;
+        transition: width 1s, background-color 0.5s;
     }
     
     .listaMenu li:hover::after {
         width: 100%;
-        background-color:var(--colorContraste);
+        background-color:#57E391;
     }
     .listaMenu a {
         color: var(--colorFondo);
@@ -131,26 +131,23 @@ header{
     }
     
     .listaMenu a:hover {
-        color: var(--colorContraste) ;
+        color:white ;
         transform: scale(1.1); /* Aumenta el tamaño del enlace en hover */
+        border-radius: 0.25rem; /* Bordes redondeados */
     }
     
     .listaMenu a:active {
-        transform: scale(1); /* Normaliza el tamaño cuando se hace clic */
+        transform: scale(0.8); /* Normaliza el tamaño cuando se hace clic */
     }
 
     .nav-link {
-        color: black; /* Color de texto */
+       
         font-family: var(--tipografiaTitulos); /* Fuente del texto */
-        padding: 0.5rem 0.8rem; /* Espaciado interno */
-        transition: color 1.8s, background-color 1.8s; /* Transiciones */
+        padding: 0.3rem 0.9rem; /* Espaciado interno */
+       
     }
     
-    .nav-link:hover {
-        
-        background-color:var(--colorFiguras); /* Fondo al pasar el mouse */
-        border-radius: 0.25rem; /* Bordes redondeados */
-    }
+  
 
 
 /* RESPONSIVE */
