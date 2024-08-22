@@ -6,23 +6,31 @@
             </a>
         </div>
         <div class="inicioSesionOpcion">
-            <p>
-                ¿Ya tienes cuenta?<a routerLink="/login"> Inicia sesión</a>
-            </p>
+            <div class="tarjeta">
+                <p>¿Ya tienes cuenta?<a routerLink="/login"> Inicia sesión</a></p>
+            </div>
             <div class="inicioSesionUser">
                 <a routerLink="/login">
                     <i class="bi bi-person-fill inicioSesionUser"></i>
                 </a>
+
+               
             </div>
+            <div> <a class="cart-icon">
+                <i class="bi bi-cart-fill"></i>
+                <span class="cart-count"></span>
+            </a>
         </div>
+        </div>
+     
     </div>
     <nav class="menuNav">
         <ul class="listaMenu">
             <li>
-              <a  routerLink="/" class="nav-link " >Inicio</a>
+                <a routerLink="/" class="nav-link ">Inicio</a>
             </li>
             <li>
-              <a routerLink="/restaurantes" class="nav-link">Ver restaurantes</a>
+                <a routerLink="/restaurantes" class="nav-link">Ver restaurantes</a>
             </li>
             <li>
                 <a routerLink="/sobreNosotros" class="nav-link">Quienes Somos</a>
@@ -33,6 +41,7 @@
             <li>
                 <a routerLink="/contactanos" class="nav-link">Contactanos</a>
             </li>
-          </ul>
+
+        </ul>
     </nav>
 </header>

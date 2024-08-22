@@ -1,6 +1,7 @@
 /* Importaciones */
 @import url('https://fonts.cdnfonts.com/css/montserrat');
 /*font-family: 'Montserrat', sans-serif;*/
+@import 'aos/dist/aos.css';
 @import url('https://fonts.cdnfonts.com/css/ruda');
 /* font-family: 'Ruda', sans-serif; */
 
@@ -26,3 +27,4 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
+

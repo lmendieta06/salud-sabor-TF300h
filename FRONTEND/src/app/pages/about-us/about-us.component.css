@@ -35,7 +35,7 @@ main{
 
     .baner {
         width: 100vw;
-        height: 80vh; /* Cambia 100vh a 80vh o cualquier valor menor que desees */
+        height: 85vh; /* Cambia 100vh a 80vh o cualquier valor menor que desees */
         background: url(https://images.pexels.com/photos/5971864/pexels-photo-5971864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
         background-attachment: fixed;
         background-size: cover;
