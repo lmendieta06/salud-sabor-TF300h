@@ -1,83 +1,237 @@
-*{
-    overflow-y: hidden;
-}
 /* HEADER */
-header{
+header {
     width: 100%;
-    height: 130px;
+    height: 150px;
     margin-bottom: 0;
-    overflow-y:hidden ;
-
 }
 
-/* Dar estilos a logo y a inicio de sesion */
-.barraLogo{
+
+/* Barra de logo y opciones de usuario */
+.barraLogo {
     background-color: var(--colorFondo);
     width: 100%;
     height: 100px;
-    /* Hacer que siempre se fije */
     position: fixed;
-    z-index:100;
-    top:0;
-    left:0;
+    z-index: 100;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: var(--tipografiaTitulos);
-    overflow-y: hidden;
+    padding: 0 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+overflow: visible;
 }
 
-.logo{
-    width: 80%;
-}
-.barraLogo img{
-    margin-left: 30px;
+.logo img {
     width: 120px;
-
-
 }
 
-/* Opcion de inicio de sesion */
-.inicioSesionOpcion{
+/* Opciones de usuario */
+.userOptions {
     display: flex;
-    gap: 10px;
-    margin-right: 20px;
-   
+    align-items: center;
+    gap: 20px;
 }
 
-.inicioSesionOpcion p{
-    gap: 10px;
+.inicioSesionOpcion p {
+    margin: 0;
 }
-.inicioSesionOpcion a{
+
+.inicioSesionOpcion a {
     text-decoration: none;
-    color:black;
-    font-weight:bolder;
+    color: black;
+    font-weight: bold;
 }
 
-.inicioSesionUser{
-    /* Sombra de la caja */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+.userIcon {
+    position: relative;
     background-color: var(--colorContraste);
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
+    width: 35px; /* Aumenta el tamaño para una mejor visualización */
+    height: 35px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    cursor: pointer;
 }
+
+.userIcon i {
+    font-size: 1rem;
+}
+
+.userText {
+    font-weight: 400;
+}
+.dropdown{
+  margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Menú desplegable */
+/* Animación de entrada */
+@keyframes dropdownIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes dropdownIn {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes dropdownOut {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0; /* Ajustado para alinearse con el icono de usuario */
+    width: 180px;
+    background-color: white;
+    border: 1px solid #111010;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 101;
+    padding: 5px;
+    text-align: start;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: visibility 0s 0.5s, opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .dropdown-menu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .dropdown-menu.hide {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: visibility 0s 0.5s, opacity 0.5s ease, transform 0.5s ease;
+  }
+/* Estilo para los elementos del menú */
+.dropdown-menu .dropdown-item a {
+    padding: 7px;
+    text-decoration: none;
+    color: #050505;
+    display: inline-block; /* Asegura que cada elemento ocupe toda el área disponible */
+}
+
+.dropdown-item {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.dropdown-item a {
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Cambios en el hover */
+.dropdown-item:hover {
+    
+    background-color: #15ac5e77; /* Cambia el fondo del li al hacer hover */
+}
+
+.dropdown-item a:hover  {
+    color: white; /* Cambia el color del enlace dentro del li al hacer hover */
+    transform: scale(1.1);
+}
+.dropdown-item{
+    border-bottom: 1px solid #938c8c; }
+.dropdown-item a i {
+   
+    font-size: 20px; /* Tamaño de los iconos */
+    color: #ffffff; /* Cambia el color aquí */
+}
+
+
+.dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu {
+    display: block;
+    
+}
+
+.dropdown-item:last-child {
+    border-bottom: none; /* Sin línea para el último ítem */
+}
+
+.cart-icon {
+    width: 55px;
+    height: 70px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.cart-icon i {
+    font-size: 1.7rem;
+    color:var(--colorContraste); /* Tamaño del ícono */
+}
+
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: 4px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 1px 6px;
+    font-size: 0.60rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Navegador */
 .menuNav{
-    background-color: var(--colorNav);
-    width: 110%;
+    background-color:salmon;
+    width: 100%;
     height: 50px;
     position: fixed;
-    z-index:100;
+    z-index:99;
     top: 100px;
     left:0;
     padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Añadido para efecto de sombra */
+
 }
 
 .listaMenu{
@@ -89,45 +243,33 @@ header{
     align-items: center;
     gap: 5%;
     list-style: none;
-}
-
-.listaMenu a{
-    
     color: var(--colorFondo);
     text-decoration: none;
     font-family: var(--tipografiaTitulos);
 }
-.listaMenu {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    list-style: none;
-    
-    margin-top: 1px;
-}
+
+
 .listaMenu li {
     position: relative;
-    margin:  5px;
-    padding-bottom: 2px; /* Espacio para el separador */
+  top: 0%;
+ /* Espacio para el separador */
 }
 
 .listaMenu li::after {
     content: "";
     position: absolute;
+    top: 80%;
     left: 0;
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(205, 192, 192);
     transition: width 1s, background-color 0.5s;
 }
 
 .listaMenu li:hover::after {
     width: 100%;
-    background-color:#57E391;
+    background-color:#ffffffbd;
 }
 .listaMenu a {
     color: var(--colorFondo);
