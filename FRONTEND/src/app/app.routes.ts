@@ -10,6 +10,7 @@ import { RestaurantsComponent } from './pages/restaurants/restaurants.component'
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { CartComponent } from './components/cart/cart.component';
 import { NoEncontradoComponent } from './pages/no-encontrado/no-encontrado.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path:"registro", component: RegisterComponent, title: "Registro"},
     {path:"login", component:LoginComponent, title: "Log in"},
     {path:"recover", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
+    { path: 'cart', component: CartComponent },  // Ruta para el carrito
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador"},
     {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},

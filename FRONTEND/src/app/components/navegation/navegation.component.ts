@@ -1,21 +1,33 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
+import { CartComponent } from '../cart/cart.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navegation',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, CartComponent],
   templateUrl: './navegation.component.html',
-  styleUrls: ['./navegation.component.css'] // Corregido a styleUrls
+  styleUrls: ['./navegation.component.css']
 })
 export class NavegationComponent {
   isDropdownVisible: boolean = false;
   private hideTimeout: any;
+  isCartVisible = false;
+  itemsInCart: any[] = [];
 
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartService.itemsInCart$.subscribe(items => {
+      this.itemsInCart = items;
+    });
+  }
+
+  // Listeners para manejar el menú desplegable
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-    // Si el clic no es dentro del dropdown o el icono de usuario, oculta el dropdown
     const target = event.target as HTMLElement;
     if (!target.closest('.dropdown') && !target.closest('.userIcon')) {
       this.hideDropdown();
@@ -39,4 +51,6 @@ export class NavegationComponent {
     clearTimeout(this.hideTimeout);
     this.isDropdownVisible = false;
   }
+
+
 }
