@@ -10,11 +10,11 @@
           <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
         </div>
         <div class="dropdown">
-          <a href="#" class="userIcon" (click)="toggleMenu()"> <!-- Evento click para abrir/cerrar el menú -->
+          <a href="#" class="userIcon"> <!-- Evento click para abrir/cerrar el menú -->
             <i class="bi bi-person-fill"></i>
           </a>
-          <span class="userText">Mi cuenta</span>
-          <ul class="dropdown-menu" data-aos="slide-up">
+          <span class="userText">Mi cuenta <i class="bi bi-chevron-down"></i></span>
+          <ul class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
             <li class="dropdown-item"><a routerLink="/profile"><i class="bi bi-person"></i> Mi Perfil</a></li>
             <li class="dropdown-item"><a routerLink="/orders"><i class="bi bi-box"></i> Mis pedidos</a></li>
             <li class="dropdown-item"><a routerLink="/login"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a></li>

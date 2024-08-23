@@ -1,3 +1,22 @@
+/* Importaciones */
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+/*font-family: 'Montserrat', sans-serif;*/
+@import url('https://fonts.cdnfonts.com/css/ruda');
+/* font-family: 'Ruda', sans-serif; */
+
+:root{
+    /* TIPOGRAFIAS */
+    --tipografiaTexto:'Montserrat', sans-serif;
+    --tipografiaTitulos: 'Ruda', sans-serif;
+    /* PALETA DE COLORES */
+    --colorFondo: white;
+    --colorNav: #FFC963;
+    --colorContraste: #18C78F;
+    --colorContraste2: #57E391;
+    --colorFiguras: #FFE1A9;
+
+}
+
 /* HEADER */
 header {
     width: 100%;
@@ -48,7 +67,7 @@ overflow: visible;
 .userIcon {
     position: relative;
     background-color: var(--colorContraste);
-    width: 35px; /* Aumenta el tamaño para una mejor visualización */
+    width: 35px; 
     height: 35px;
     border-radius: 50%;
     display: flex;
@@ -76,48 +95,19 @@ overflow: visible;
 }
 
 /* Menú desplegable */
-/* Animación de entrada */
-@keyframes dropdownIn {
-    0% {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-@keyframes dropdownIn {
-    0% {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes dropdownOut {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-  }
-  
+
   .dropdown {
     position: relative;
     display: inline-block;
+    margin-top: 4px;
   }
+  
+
   
   .dropdown-menu {
     position: absolute;
     top: 100%;
-    right: 0; /* Ajustado para alinearse con el icono de usuario */
+    right: 0;
     width: 180px;
     background-color: white;
     border: 1px solid #111010;
@@ -128,29 +118,65 @@ overflow: visible;
     text-align: start;
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-20px);
-    transition: visibility 0s 0.5s, opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .dropdown-menu.show {
+    transform: translateY(-50px);
+    transition: visibility 0.3s, opacity 0.8s ease, transform 0.5s ease;
+}
+.dropdown:hover .dropdown-menu {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
-  
-  .dropdown-menu.hide {
+  /* ANIMACION PARA QUE GIRE EL ICONO USER EN HOVER */
+  .dropdown:hover .userIcon i {
+    transform: rotate(360deg);
+    transition: transform 0.6s ease-in-out;
+  }
+  .dropdown .userIcon i {
+    transform: rotate(-0deg);
+    transition: transform 0.8s ease-in-out;
+  }
+  /* ANIMACIONES DEL DROP */
+  @keyframes dropdownIn {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+
+@keyframes dropdownOut {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+}
+.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: visibility 0.3s, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.dropdown-menu.hide {
     visibility: hidden;
     opacity: 0;
     transform: translateY(-20px);
-    transition: visibility 0s 0.5s, opacity 0.5s ease, transform 0.5s ease;
-  }
+    transition: visibility 0.3s 0.5s, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
 /* Estilo para los elementos del menú */
 .dropdown-menu .dropdown-item a {
     padding: 7px;
     text-decoration: none;
     color: #050505;
-    display: inline-block; /* Asegura que cada elemento ocupe toda el área disponible */
+    display: inline-block; 
 }
 
 .dropdown-item {
@@ -174,9 +200,8 @@ overflow: visible;
 .dropdown-item{
     border-bottom: 1px solid #938c8c; }
 .dropdown-item a i {
-   
     font-size: 20px; /* Tamaño de los iconos */
-    color: #ffffff; /* Cambia el color aquí */
+    color: #ffffff; 
 }
 
 
@@ -201,8 +226,8 @@ overflow: visible;
 }
 
 .cart-icon i {
-    font-size: 1.7rem;
-    color:var(--colorContraste); /* Tamaño del ícono */
+    font-size: 1.7rem;/* Tamaño del ícono */
+    color:var(--colorContraste); 
 }
 
 .cart-count {
@@ -218,8 +243,8 @@ overflow: visible;
     justify-content: center;
     align-items: center;
 }
-
-
+/* Navegador */
+/* Navegador */
 /* Navegador */
 .menuNav{
     background-color:salmon;
@@ -245,6 +270,8 @@ overflow: visible;
     list-style: none;
     color: var(--colorFondo);
     text-decoration: none;
+    text-shadow: #ffffff;
+   
     font-family: var(--tipografiaTitulos);
 }
 
@@ -281,7 +308,7 @@ overflow: visible;
 .listaMenu a:hover {
     color:white ;
     transform: scale(1.1); /* Aumenta el tamaño del enlace en hover */
-    border-radius: 0.25rem; /* Bordes redondeados */
+    border-radius: 0.25rem; 
 }
 
 .listaMenu a:active {
@@ -290,16 +317,16 @@ overflow: visible;
 
 .nav-link {
    
-    font-family: var(--tipografiaTitulos); /* Fuente del texto */
+    font-family: var(--tipografiaTitulos);
     padding: 0.5rem 1.9rem; /* Espaciado interno */
    
 }
 
 /* RESPONSIVE */
 
+
 @media screen and (max-width:830px){
     .menuNav{
-        background-color: var(--colorNav);
         width: 100%;
         height: 45px;
         position: fixed;
@@ -315,14 +342,104 @@ overflow: visible;
     .inicioSesionOpcion{
         width: 40%;
     }
+ 
 }
 
 @media screen and (max-width:650px){
-    .listaMenu a{
-        width: 20%;
-        color: var(--colorFondo);
-        text-decoration: none;
-        font-family: var(--tipografiaTitulos);
-        font-size: 12px;
+  
+    .logo img {
+        width: 80px;
     }
+    .inicioSesionOpcion a {
+        display: flex;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 8px;
+    }
+    .inicioSesionOpcion p {
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+        height: 20px;
+        display: flex;
+        font-size:10px ;
+    }
+    .userOptions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .userIcon{
+        width: 20px; 
+        height: 20px;
+      margin-top: 3px;
+      margin-bottom: 5px;
+    }
+    .userText {
+        
+        font-size: 10px;
+        font-weight: 400;
+    }
+    .userIcon i {
+        font-size: 0.8rem;
+       
+    }
+    .dropdown{
+        width: 60px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+       
+    }
+    .cart-icon {
+        width: 45px;
+        height: 70px;
+         margin-left: -10px;
+    }
+    
+    .cart-icon i {
+        font-size: 1.3rem; /* Tamaño del ícono */
+        color:var(--colorContraste);
+    }
+    
+    .cart-count {
+        position: absolute;
+        top: -4px;
+        right: 4px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 1px 6px;
+        font-size: 0.60rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .menuNav{
+        background-color:salmon;
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        z-index:99;
+        top: 100px;
+        left:0;
+        padding: 0 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Añadido para efecto de sombra */
+    
+    }
+    .listaMenu{
+        width: 80vw;
+        height: 100%;
+        gap: 0px;
+        
+    }
+ 
+    .nav-link {
+       
+        font-size: 10px;
+        padding: 0.8rem 1rem; /* Espaciado interno */
+       
+    }
+    
 }
