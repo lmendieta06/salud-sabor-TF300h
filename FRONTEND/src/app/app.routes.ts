@@ -8,7 +8,6 @@ import { MenuRestaurantComponent } from './pages/menu-restaurant/menu-restaurant
 import { RecipesTipsComponent } from './pages/recipes-tips/recipes-tips.component';
 import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CartComponent } from './components/cart/cart.component';

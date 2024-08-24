@@ -22,7 +22,6 @@ export class RestaurantsComponent {
 
   getRestaurants(){
     this.restaurantsService.getRestaurants().subscribe((res: any) => {
-      console.log(res); // Verifica cómo es la estructura de la respuesta
       if (res) {
         this.allRestaurants = res.restaurants
       } else {
