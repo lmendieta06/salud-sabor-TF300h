@@ -9,122 +9,248 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 0;
+    margin-top: 20px;
 }
 
-.contenedorInfo{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--tipografiaTexto);
-}
-#textoMain {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    margin: 0px;
-    
-
-}
-
-.textoMain {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    margin: 20px;
-    width: 50%;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.imgMain {
-    width: 50%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-}
-
-
-.canalAtencion {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    margin: 20px 0px;
-}
-
-.canalAtencion h1{
-    font-family: var(--tipografiaTitulos);
-    color: var(--colorContraste);
-}
-
-.enlacesRedes{
-    background-color: var(--colorContraste2);
-    height: 40px;
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
-}
-
-.enlacesRedes a{
-    text-decoration: none;
-    color: white;
-}
-
-.canales {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    margin: 20px 0px;
-}
-
-.icon {
-    width: 50px;
-    height: auto;
-}
-
-.contenedorPreguntas {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    margin: 20px 0px;
-}
-
+/* SECCION PREGUNTAS DESPLEGABLES */
 .preguntasFrecuentes{
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 40px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .preguntasFrecuentes h2{
     width: 100%;
     text-align: center;
-    font-weight: bold;
     font-family: var(--tipografiaTitulos);
+    font-weight: 600;
     color: var(--colorContraste);
 }
-.preguntas {
-    width: 70%;
-    height: auto;
-}
 
-.textoPreguntas {
-    font-size: 16px;
-    font-family: var(--tipografiaTexto);
-}
-
-.brocoli {
-    width: 30%;
-    height: auto;
-}
-
-.brocoli img {
+.preguntasDesplegablesCont{
     width: 100%;
-    height: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.contenedorPreguntas{
+    width: 100%;
+}
+
+.preguntasDesplegablesCont article{
+    width: 100%;
+}
+
+.preguntasDesplegablesCont summary{
+    margin-bottom: 10px;
+    background-color: var(--colorContraste2);
+    border-radius: 5px;
+    padding: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: white;
+    font-weight: 700;
+    font-family: var(--tipografiaTextos);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.preguntasDesplegablesCont p{
+    padding: 20px;
+    padding-top: 10px;
+    font-family: var(--tipografiaTextos);
+}
+
+.contenedorPreguntas h3{
+    overflow-y: hidden;
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    font-family: var(--tipografiaTextos);
+    font-weight: 700;
+}
+
+.texto1{
+    color: var(--colorContraste);
+}
+
+.texto2{
+    color: var(--colorContraste2);
+}
+
+/* SECCION FORMULARIO DE SOLICITUDES */
+
+/* FORMULARIO */
+.formularioSolicitudes{
+    width: 80%;
+    height: 400px;
+    margin-bottom: 40px;
+    overflow-y: hidden;
+}
+
+.contenedorForms{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow-y: hidden;
+}
+
+.forms{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.formularioPQR{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formularioPQR article{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-family: var(--tipografiaTextos);
+    color: var(--colorNav);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.formularioPQR input{
+    border: 2px solid var(--colorNav);
+}
+
+.formularioPQR select{
+    border: 2px solid var(--colorNav);
+    color: var(--colorNav);
+}
+
+.formularioPQR button{
+    text-align: center;
+    border: none;
+    font-family: var(--tipografiaTextos);
+    background-color: var(--colorNav);
+    color: white;
+    font-weight: 700;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+/* CANALES DE ATENCION */
+.canalesAtencion {
+    width: 50%; /* Ajusta el ancho según sea necesario */
+    height: 500px; /* Ajusta la altura al 100% del viewport */
+    position: relative; /* Permite posicionar el contenido encima de la imagen */
+    overflow-y: hidden; /* Asegura que no haya barras de desplazamiento */
+}
+
+/* FONDO */
+.contFoto {
+    position: absolute; /* Coloca la imagen en el fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Envía la imagen al fondo */
+    overflow-y: hidden;
+}
+
+.fondoCanales {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsión */
+    overflow-y: hidden;
+}
+
+.contenidoCanales {
+    position: relative; /* Asegura que el contenido esté encima de la imagen de fondo */
+    z-index: 1; /* Coloca el contenido por encima de la imagen */
+    text-align: center; /* Opcional: centra el texto dentro del contenedor */
+    color: white; /* Color del texto para contraste con el fondo */
+    padding: 20px; /* Ajusta el espaciado interno según sea necesario */
+    padding-top: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.fondoCanales{
+    height: 100%;
+}
+
+.contenidoCanales h2{
+    overflow-y: hidden;
+    font-family: var(--tipografiaTitulos);
+    font-weight: 700;
+}
+
+.correoTelefono{
+    width: 100%;
+}
+
+.correoTelefono article{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.correoTelefono article a{
+    text-decoration: none;
+    color: white;
+}
+
+.enlacesCanales{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+/* KEYFRAME CELULAR */
+@media (max-width:610px) {
+    .formularioSolicitudes{
+        width: 85%;
+        height: 650px;
+    }
+    .preguntasFrecuentes{
+        width: 85%;
+    }
+
+    .contenedorForms{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .forms{
+        width: 100%;
+        height: 50%;
+    }
+
+    .canalesAtencion {
+        width: 100%; /* Ajusta el ancho según sea necesario */
+        height: 300px; /* Ajusta la altura al 100% del viewport */
+        position: relative; /* Permite posicionar el contenido encima de la imagen */
+        overflow-y: hidden; /* Asegura que no haya barras de desplazamiento */
+    }
 }
