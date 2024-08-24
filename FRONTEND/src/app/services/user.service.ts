@@ -1,9 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../interfaces/user';
+
+
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+ //dependencias
+private httpClient = inject(HttpClient);
+private URL_USERS = "http://localhost:2000/users"
+
+
+// peticiones get, getById, post y put
+getUsers(options?:any){
+  return this.httpClient.get(this.URL_USERS, options);
+}
+ 
+  // Obtener un usuario por ID
+  getUserById(id: string) {
+    return this.httpClient.get(`${this.URL_USERS}/${id}`);
+  }
+  // CREAR USUARIO
+  postUser(user: User){
+    return this.httpClient.post(this.URL_USERS,user);
+  }
+
+  // ACTUALIZAR USUARIO
+  putUser(userUpdate:User, id:string){
+    return this.httpClient.put(`${this.URL_USERS}/${id}`, userUpdate);
+  }
+
+
+
 }
