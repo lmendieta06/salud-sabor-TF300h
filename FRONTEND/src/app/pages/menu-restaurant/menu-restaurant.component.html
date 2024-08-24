@@ -1,3 +1,301 @@
-<app-navegation></app-navegation>
-<p>menu-restaurant works!</p>
+
+
+
+
+<header>
+    <div class="barraLogo">
+      <div class="logo">
+        <a routerLink="/">
+          <img src="assets/logoSinFondo.png" alt="logoSaludSabor">
+        </a>
+      </div>
+      <div class="userOptions">
+        <div class="inicioSesionOpcion">
+          <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+        </div>
+        <div class="dropdown">
+          <a href="#" class="userIcon"> <!-- Evento click para abrir/cerrar el menú -->
+            <i class="bi bi-person-fill"></i>
+          </a>
+          <span class="userText">Mi cuenta <i class="bi bi-chevron-down"></i></span>
+          <ul class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
+            <li class="dropdown-item"><a routerLink="/profile"><i class="bi bi-person"></i> Mi Perfil</a></li>
+            <li class="dropdown-item"><a routerLink="/orders"><i class="bi bi-box"></i> Mis pedidos</a></li>
+            <li class="dropdown-item"><a routerLink="/login"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a></li>
+            <li class="dropdown-item"><a routerLink="/registro"><i class="bi bi-person-add"></i> Regístrate</a></li>
+          </ul>
+        </div>
+        <div class="cart-icon">
+          <a routerLink="/cart">
+            <i class="bi bi-cart-check"></i>
+            <span class="cart-count">{{ itemsInCart.length }}</span>
+          </a>
+          <span class="userText">Carrito</span>
+        </div>
+      </div>
+    </div>
+    <nav class="menuNav">
+      <ul class="listaMenu">
+        <li><a routerLink="/" class="nav-link">Inicio</a></li>
+        <li><a routerLink="/restaurantes" class="nav-link">Ver restaurantes</a></li>
+        <li><a routerLink="/sobreNosotros" class="nav-link">Quienes Somos</a></li>
+        <li><a routerLink="/tips" class="nav-link">Recetas</a></li>
+        <li><a routerLink="/contactanos" class="nav-link">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </header>
+  <app-cart *ngIf="isCartVisible"></app-cart>
+<main>
+    <section class="baner">
+        
+        <h1 class="suna" >suna</h1>
+    </section>    
+
+<!-- Sección de productos -->
+<!-- 
+ORDEN DEFINITIVO (recomendación)
+1. LAYOUT -> La estructura de contenedor, filas y columnas
+2. BREAKPOINTS -> el responsive
+3. LOS COMPONENTES
+4. MODIFICAMOS LAS CLASES SEGÚN LA APARIENCIA QUE QUERAMOS DAR
+-->
+
+<!-- 1. El contenedor ENTRADAS-->
+<h2 class="titulosDeSeccion">ENTRADAS</h2>
+<section class="container miContenedor1" id="entradas">
+
+    <!-- 2. las filas -->
+    <div class="row misProductos">
+        <!--  3. las columnas con los breakpoints  -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <!-- 3. los componentes de bootstrap con la apariencia deseada -->
+            <!-- Esta es mi tarjeta! -->
+            <div class="card border bg-light mx-auto" style="width: 20rem;">
+                <div class="card-body d-flex flex-column">
+                    <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/montadito.png"
+                        class="card-img-top" alt="torta">
+                    <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">MONTADITO DE INVIERNO
+                    </h5>
+                    <P class="text-center mb-1">Lonjas de salmon ahumado, manzana de agua y aguacate sobre pan
+                        de quinua</P>
+                    <P class="text-center text-success mb-1 fw-bolder fs-4">$21.800</P>
+
+                    <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+                        carrito</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <!-- 3. los componentes de bootstrap con la apariencia deseada -->
+            <!-- Esta es mi tarjeta! -->
+            <div class="card border bg-light mx-auto" style="width: 20rem;">
+                <div class="card-body d-flex flex-column">
+                    <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/antipasto.png"
+                        class="card-img-top" alt="torta">
+                    <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">ANTIPASTO ARABE
+                    </h5>
+                    <P class="text-center mb-1">
+                        Hummus, tabouleh de quinua, berenjena, aceitunas moradas y tajadas de pan arabe</P>
+                    <P class="text-center text-success mb-1 fw-bolder fs-4">$21.200</P>
+
+                    <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+                        carrito</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <!-- 3. los componentes de bootstrap con la apariencia deseada -->
+            <!-- Esta es mi tarjeta! -->
+            <div class="card border bg-light mx-auto" style="width: 20rem;">
+                <div class="card-body d-flex flex-column">
+                    <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/3 soques.png"
+                        class="card-img-top" alt="torta">
+                    <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">CHAMPIÑONES 3 QUESOS
+                    </h5>
+                    <P class="text-center mb-1">Mezcla fundida de quesos holandés, azul y parmesano, en tostadas de pan integral con ajo y perejil</P>
+                    <P class="text-center text-success mb-1 fw-bolder fs-4">$21.400</P>
+
+                    <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+                        carrito</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>
+
+<!-- DIV de CARNES -->
+<h2 class="titulosDeSeccion">CARNES</h2>
+<section class="container miContenedor2" id="carnes">
+<div class="card mb-3 mx-auto primero" style="max-width: 530px;">
+    <div class="row g-5">
+        
+        <h5 class="card-title text-center text-success fw-bolder pt-5">PECHUGA SALVAJE</h5>
+      <div class="col-md-5">
+        <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/carnes.png" class="foto-carne" alt="Foto-carne">
+        
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          
+          <p class="card-text">Pollo criollo marinado con romero, paprika y vino blanco, sobre una cama de arroz..</p>
+          <P class=" text-success mb-1 fw-bolder fs-4">$35.900</P>
+          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+            carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- 2DO PLATO -->
+
+  <div class="card mb-3 mx-auto segundo" style="max-width: 540px;">
+    <div class="row g-5">
+        <h5 class="card-title text-center text-success fw-bolder pt-5">SUPREMA DE POLLO SUNA</h5>
+      <div class="col-md-5">
+        
+        <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/suprema.png" class="foto-carne" alt="Foto-carne">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+            
+          <p class="card-text">Pechuga de pollo criollo relleno de esparragos, tomates secos y albahaca.</p>
+          <P class=" text-success mb-1 fw-bolder fs-4">$32.800</P>
+          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+            carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!-- 3er PLATO -->
+  <div class="card mb-3 mx-auto tercero" style="max-width: 540px;">
+    <div class="row g-5">
+        <h5 class="card-title text-center text-success fw-bolder pt-5">LOMO DE RES A LA PLANCHA</h5>
+      <div class="col-md-5">
+        
+        <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/lomo.png" class="foto-carne" alt="Foto-carne">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+           
+          <p class="card-text">Lomo de res a la plancha con papas salteadas o batata dulce y ensalada.</p>
+          <P class=" text-success mb-1 fw-bolder fs-4">$36.900</P>
+          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+            carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!-- 4tO PLATO -->
+  <div class="card mb-3 mx-auto cuarto " style="max-width: 540px;">
+    <div class="row g-5">
+        <h5 class="card-title text-center text-success fw-bolder pt-5">PESCADO LATINO</h5>
+      <div class="col-md-5">
+        
+        <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/pescado.png" class="foto-carne" alt="Foto-carne">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+            
+          <p class="card-text">Pescado blanco a la plancha con alcaparras y cebolla, aguacate y tomates orgánicos.</p>
+          <P class="text-success mb-1 fw-bolder fs-4">$39.200</P>
+          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+            carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="chatBot">
+<a href="https://api.whatsapp.com/send?phone=3193408310">
+<i class="bi bi-whatsapp"></i>
+</a>
+</section>    
+<h2 class="titulosDeSeccion">PASTAS</h2>
+<section class="container miContenedor2 " id="pastas">
+<div class="card mb-3 mx-auto primero " style="max-width: 530px;">
+<div class="row g-5">
+    
+    <h5 class="card-title text-center text-success fw-bolder pt-5">TAGLIATELLE NAPOLITANA</h5>
+  <div class="col-md-5">
+    <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/tagli.png" class="foto-carne" alt="Foto-carne">
+  </div>
+  <div class="col-md-7">
+    <div class="card-body">
+      
+      <p class="card-text">Tagliatelle de quinua con pesto SUNA, salsa de tomates orgánicos y albahaca fresca.</p>
+      <P class="text-success mb-1 fw-bolder fs-4">$29.000</P>
+      <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+        carrito</a>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 2DO PLATO -->
+
+<div class="card mb-3 mx-auto segundo" style="max-width: 540px;">
+<div class="row g-5">
+    <h5 class="card-title text-center text-success fw-bolder pt-5">WOM DE LOS ANDES</h5>
+  <div class="col-md-5">
+    
+    <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/wom.png" class="foto-carne" alt="Foto-carne">
+  </div>
+  <div class="col-md-7">
+    <div class="card-body">
+        
+      <p class="card-text">Pasta de quinua con vegetales al wok, soya, jengibre y un toque de ajonjolí blanco y negro.</p>
+      <P class="text-success mb-1 fw-bolder fs-4">$23.800</P>
+      <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+        carrito</a>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- 3er PLATO -->
+  <div class="card mb-3 mx-auto tercero" style="max-width: 540px;">
+    <div class="row g-5">
+        <h5 class="card-title text-center text-success fw-bolder pt-5">ZOODLES DE LA TIERRA</h5>
+      <div class="col-md-5">
+        
+        <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/zoodles.png" class="foto-carne" alt="Foto-carne">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+           
+          <p class="card-text">Fideos de zucchini fresco con pesto casero, tomates cherry y germinados orgánicos.</p>
+          <P class="text-success mb-1 fw-bolder fs-4">$18.000</P>
+          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+            carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 4tO PLATO -->
+  <div class="card mb-3 mx-auto cuarto " style="max-width: 540px;">
+    <div class="row g-5 ">
+        <h5 class="card-title text-center text-success fw-bolder pt-5">PESCADO LATINO</h5>
+      <div class="col-md-5 ">
+        
+        <img src="../assets/IMAGENES PARA PROYECTO FINAL/MenuComidas/lasaña.png" class="foto-carne" alt="Foto-carne">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+            
+          <p class="card-text">Pasta de lentejas con mozzarella, salsa de tomates orgánicos y gratinada con parmesano.</p>
+          <P class=" text-success mb-1 fw-bolder fs-4">$27.500</P>
+          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al
+            carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+</main>
 <app-footer></app-footer>
