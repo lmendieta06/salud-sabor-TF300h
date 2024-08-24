@@ -1,0 +1,49 @@
+<header>
+  <div class="barraLogo">
+    <div class="backButton">
+      <button (click)="goBack()" class="btn btn-outline-light d-flex align-items-center">
+        <i class="bi bi-chevron-left me-2 fs-5"></i>Volver
+      </button>
+    </div>
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/cart/logo_verde-removebg-preview.png" alt="logoSaludSabor">
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+  <div class="cart-container">
+    <div class="cart-header">
+      <h2>Carrito de Compras</h2>
+
+    </div>
+    <div class="cart-items">
+      <div *ngFor="let item of itemsInCart; let i = index" class="cart-item">
+        <img [src]="item.image" alt="{{item.name}}" class="cart-item-image">
+        <div class="cart-item-details">
+          <h4>{{item.name}}Carne asada</h4>
+          <p>${{item.price}}5000</p>
+          <div class="cart-item-quantity">
+            <button (click)="removeFromCart(item.id)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="comments-section">
+      <label for="additionalComments">Comentarios o Peticiones Adicionales:</label>
+      <textarea id="additionalComments" [(ngModel)]="additionalComments" rows="4" placeholder="Escribe aquí tus comentarios..."></textarea>
+    </div>
+    <div class="cart-total">
+      <h3>Total a Pagar: ${{totalPrice}}</h3>
+    </div>
+    <div class="btn-backOrPay">
+      <button type="button" class="btn btn-success betene">Continuar comprando</button>
+      <button type="button" class="btn btn-success betene">Ir a pagar</button>
+    </div>
+
+  </div>
+</main>

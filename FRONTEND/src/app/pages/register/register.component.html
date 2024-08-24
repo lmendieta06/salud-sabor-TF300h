@@ -1,0 +1,49 @@
+<app-navegation></app-navegation>
+<main>
+    <section class="modalRegistro">
+        <div class="containerModal">
+            <div class="volver">
+                <a href="#" class="volverBoton">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </div>
+            <div class="containerEncabezado">
+                <div class="encabezado">
+                    <div class="imgEncabezado">
+                        <img src="assets/login/LOGO SALUD Y SABOR.png" alt="logo">
+                    </div>
+                    <h2>CREAR CUENTA</h2>
+                </div>
+            </div>
+            <div class="formsSingUp">
+                <form>
+                    <input class="controles" type="text" name="Multiple" value="" placeholder="Nombre" required>
+                    <select class="form-control  controles" id="categorySelect" required>
+                        <option value="" disabled selected>Seleccione tipo de documento</option>
+                        <option value="cedula">Cedula Ciudadania</option>
+                        <option value="tarjeta">Tarjeta de identidad</option>
+                        <option value="extranjero">Cedula de extranjeria</option>
+                        <option value="pasaporte">Pasaporte</option>
+                    </select>
+                    <input class="controles" type="text" name="Contraseña" value="" placeholder="Numero de documento" required>
+                    <input class="controles" type="email" name="email" value="" placeholder="Correo electronico" required>
+                    <input class="controles" type="text" name="ciudad" value="" placeholder="Ciudad actual" required>
+                    <input class="controles" type="text" name="Direccion" value="" placeholder="Direccion actual" required>
+                    <input class="botonEnviarRegistro" type="submit" name="enviar" value="CREAR CUENTA">
+                    
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="modalCreacion">
+        <div class="contenedorModalCreacion">
+            <img src="../assets/imagenes/ilustracionCreacion.svg" alt="exitoso">
+            <h2>CUENTA CREADA SATISFACTORIAMENTE</h2>
+            <a href="#" class="modalCreacionClose">OK</a>
+        </div>
+    </section>
+
+    <app-chat-bot></app-chat-bot>
+</main>
+<app-footer></app-footer>
