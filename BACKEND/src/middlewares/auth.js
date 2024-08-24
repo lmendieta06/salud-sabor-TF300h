@@ -29,7 +29,7 @@ const auth = (requiredRole) => {
         try {
             // Decodificacion del token
             const decoded = await verifyToken(token);
-            console.log('Token decodificado: ', decoded);
+            
 
             // Validar el rol
             if (requiredRole === 'admin' && !decoded.isAdmin) {
