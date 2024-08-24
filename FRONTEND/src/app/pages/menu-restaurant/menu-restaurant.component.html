@@ -88,7 +88,7 @@ ORDEN DEFINITIVO (recomendación)
           <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">{{ dish.nombrePlato }}</h5>
           <p class="text-center mb-1">{{ dish.descripcionPlato }}</p>
           <p class="text-center text-success mb-1 fw-bolder fs-4">{{ dish.precioPlato | currency }}</p>
-          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al carrito</a>
+          <a class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar" (click)="addDishToCart(dish)">Añadir al carrito</a>
         </div>
       </div>
     </div>

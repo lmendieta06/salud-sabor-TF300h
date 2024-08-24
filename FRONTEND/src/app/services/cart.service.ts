@@ -9,17 +9,18 @@ export class CartService {
   itemsInCart$ = this.itemsInCartSubject.asObservable();
 
   addToCart(dish: any) {
-    
+    console.log('Dish being added:', dish);  // Agrega esta línea para verificar
     const currentItems = this.itemsInCartSubject.value;
     // Aquí puedes incluir toda la información del platillo
     this.itemsInCartSubject.next([...currentItems, { ...dish, quantity: 1 }]);
   }
 
   removeFromCart(itemId: string) {
-    const currentItems = this.itemsInCartSubject.value.filter(item => item.id !== itemId);
+    console.log(`Removing item with id: ${itemId}`);  // Verificación
+    const currentItems = this.itemsInCartSubject.value.filter(item => item._id !== itemId);
     this.itemsInCartSubject.next(currentItems);
+    console.log('Items after removal:', this.itemsInCartSubject.value);  // Verificación
   }
-
 
 
   getTotalPrice() {
