@@ -1,63 +1,108 @@
 <app-navegation></app-navegation>
 <!-- MAIN -->
 <main>
-    <section id="textoMain" class="contenedorInfo">
-        <p class="textoMain">
-            Para nosotros es muy importante ofrecer siempre un buen servicio, por esto aqui te presentamos nuestros canales de contacto donde con gusto nuestro equipo te atendera.
-        </p>
-        <img class="imgMain" src="../assets/imagen 1.jpg" alt="Personal de atencion al cliente">
-
-    </section>
-
-    <section id="textoMain" class="contenedorInfo">
-        <img class="imgMain" src="../assets/imagen 2.png" alt="Cliente satisfecho">
-        <p class="textoMain">
-            • ¿Tienes alguna duda o inquietud sobre nuestros servicios?<br><br>
-            • Por favor dejanos tus opiniones y/o sugerencias, es importante para nosotros!
-        </p>
-    </section>
-    <section class="canalAtencion">
-        <h1>Canales de atencion</h1>
-        <div class="enlacesRedes">
-            <div>
-                <a href="https://api.whatsapp.com/send?phone=3193408310">
-                    <i class="bi bi-whatsapp"></i>
-                </a>
-            </div>
-            <div>
-                <a href="tel:+573193408310">
-                    <i class="bi bi-telephone-fill"></i>
-                </a>
-            </div>
-            <div>
-                <a href="mailto:laumendieta06@gmail.com">
-                    <i class="bi bi-envelope-at"></i>
-                </a>
-            </div>
-            <div>
-                <a href="https://www.instagram.com/">
-                    <i class="bi bi-instagram"></i>
-                </a>
-            </div>  
-        </div>
-    </section>
-
     <section class="preguntasFrecuentes">
-        <h2>PREGUNTAS FRECUENTES</h2>
         <div class="contenedorPreguntas">
-            <div class="preguntas">
-                <p class="textoPreguntas">
-                    1. Cuanto cuestan los envios a mi ubicacion?<br>
-                    2. Que pasa si mi pedido no llega?<br>
-                    3. Como puedo solicitar la devolucion de mi dinero?<br>
-                    4. Que debo hacer si no recibo lo que pedi?<br>
-                    5. Cuantos pares son tres moscas?<br>
-                </p>
+            <h2>PREGUNTAS FRECUENTES</h2>
+            <article class="preguntasDesplegablesCont">
+    
+                <details>
+                    <summary>
+                        ¿Cuánto cuestan los envíos a mi ubicación?
+                        <i class="bi bi-caret-down-fill"></i>
+                    </summary>
+                    <p>Los costos de envío dependen de tu ubicación y se calcularán en el momento de la compra.</p>
+                </details>
+    
+                <details>
+                    <summary>
+                        ¿Qué métodos de pago están disponibles?
+                        <i class="bi bi-caret-down-fill"></i>
+                    </summary>
+                    <p>Aceptamos tarjetas de crédito, débito y pagos a través de PayPal.</p>
+                </details>
+    
+                <details>
+                    <summary>
+                        ¿Cómo puedo solicitar devolución de mi dinero?
+                        <i class="bi bi-caret-down-fill"></i>
+                    </summary>
+                    <p>Puedes solicitar la devolución contactándonos a través de nuestro formulario de soporte dentro de los primeros 14 días después de recibir tu pedido.</p>
+                </details>
+    
+                <details>
+                    <summary>
+                        ¿Qué debo hacer si no recibo mi pedido?
+                        <i class="bi bi-caret-down-fill"></i>
+                    </summary>
+                    <p>Si no has recibido tu pedido, por favor verifica el estado de envío en la página de seguimiento. Si el problema persiste, contacta a nuestro equipo de soporte.</p>
+                </details>
+    
+                <details>
+                    <summary>
+                        ¿Qué pasa si mi pedido sobrepasa el tiempo esperado?
+                        <i class="bi bi-caret-down-fill"></i>
+                    </summary>
+                    <p>Dado a que buscamos darte el mejor servicio, si el tiempo de espera de tu pedido se actualiza más de tres veces, te daremos créditos o descuentos que podrás usar en tus próximas compras.</p>
+                </details>
+            </article>
+            <h3 class="texto1">¿Tienes alguna duda o inquietud sobre nuestros servicios?</h3>
+            <h3 class="texto2">INGRESA TUS DATOS Y UNO DE NUESTROS ASESORES SE PONDRA EN CONTACTO CONTIGO LO MAS RAPIDO POSIBLE</h3>
+        </div>
+    </section>
+    <section class="formularioSolicitudes">
+        <div class="contenedorForms">
+            <div class="forms">
+                <form class="formularioPQR">
+                    <article>
+                        <label>Nombre</label>
+                        <input type="text">
+                    </article>
+                    <article>
+                        <label>Correo Electronico</label>
+                        <input type="email">
+                    </article>
+                    <article>
+                        <label>¿Eres un restaurante?</label>
+                        <select id="restaurante" name="restaurante">
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </article>
+                    <article>
+                        <label>Comentarios</label>
+                        <input type="text">
+                    </article>
+                    <button type="submit" class="enviarForms">ENVIAR</button>
+                </form>
             </div>
-            <div class="brocoli">
-                    <img src="../assets/brocoli.png" alt="brocoli con inquietudes">
+            <div class="canalesAtencion">
+                <div class="contFoto">
+                    <img src="assets/contactUs/fondoForms.png" alt="restaurante" class="fondoCanales">
+                </div>
+                <div class="contenidoCanales">               
+                    <h2>CANALES DE ATENCIÓN</h2>
+                    <hr>
+                    <div class="correoTelefono">
+                        <article>
+                            <i class="bi bi-envelope-at"></i>
+                            <a href="mailto:saludsabor@gmail.com">saludsabor&#64;gmail.com</a>
+                        </article>
+                        <article>
+                            <i class="bi bi-telephone"></i>
+                            <p>601 43294730</p>
+                        </article>
+                    </div>
+                    <div class="enlacesCanales">
+                        <i class="bi bi-whatsapp"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
 </main>
 <app-footer></app-footer>
