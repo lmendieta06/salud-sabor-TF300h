@@ -60,8 +60,21 @@
 
     <!-- VISUALIZACION DE RESTAURANTES -->
     <section class="restaurantes">
-
+        <div class="opcionRestaurante" *ngFor="let restaurante of allRestaurants">
+            <div class="imgOpcion">
+                <img src="{{restaurante.logo}}" alt="{{restaurante.nombre}}">
+            </div>
+            <div class="infoOpcion">
+                <h2>{{restaurante.nombre}}</h2>
+                <h3>{{restaurante.direccion}}</h3>
+                <p>{{restaurante.descripcion}}</p>
+                <a href="/" class="enProceso">
+                    <button >VER MENU</button>
+                </a>
+            </div>
+        </div>
     </section>
+
     <app-chat-bot></app-chat-bot>
 </main>
 <app-footer></app-footer>
