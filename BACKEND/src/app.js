@@ -8,7 +8,7 @@ import cors from "cors"
 import { connexionMongo } from "../config/db.js";
 import usersRouter from "./routes/user.routes.js";
 import { restaurantRouter } from "./routes/restaurants.routes.js";
-
+import dishRouter from "./routes/dish.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import menuRouter from "./routes/menu.routes.js";
 import loginRouter from "./routes/login.routes.js"
@@ -27,6 +27,8 @@ app.use(express.json());
 //usamos rutas
  app.use("/admin", adminRouter);
  app.use("/menu", menuRouter)
+//platilloooos
+ app.use("/dishes", dishRouter)
 // Usuarios
 app.use("/users", usersRouter);
 // Restaurantes

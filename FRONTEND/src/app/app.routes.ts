@@ -27,7 +27,7 @@ export const routes: Routes = [
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador"},
     {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
-    {path:"menu", component:MenuRestaurantComponent, title: "Menú"},
+    {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
     {path:"tips", component:RecipesTipsComponent, title:"Recetas"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
     {path:"sobreNosotros", component:AboutUsComponent, title:"Sobre Nosotros"},

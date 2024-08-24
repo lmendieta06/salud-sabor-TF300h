@@ -2,7 +2,7 @@ import {Router} from "express";
 
 import { getDishById, getDishes, deleteDish, putDish, postDish, getDishByCategory } from "../controllers/dishes.controllers.js";
 
-export const dishRouter = Router();
+const dishRouter = Router();
 
 dishRouter.get("/", getDishes);
 
@@ -10,8 +10,10 @@ dishRouter.get("/:_id", getDishById);
 
 dishRouter.get("/categoria/:categoriaMenu", getDishByCategory);
 
-dishRouter.post("/",auth("admin"), postDish);
+dishRouter.post("/", postDish);
 
-dishRouter.put("/:_id",auth("admin"), putDish);
+dishRouter.put("/:_id", putDish);
 
-dishRouter.delete("/:_id",auth("admin"), deleteDish);
+dishRouter.delete("/:_id", deleteDish);
+
+export default dishRouter; 

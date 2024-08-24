@@ -9,7 +9,7 @@ const dishesSchema = new Schema({
     },
     categoriaMenu: {
         type: String,
-        enum: ['entradas', 'ensaladas', 'bebidas', 'platos fuertes', 'postres'],
+        enum: ['entradas',  'carnes', 'pastas','ensaladas', 'bebidas', 'platos fuertes', 'postres'],
         required: true
     },
     descripcionPlato: {
