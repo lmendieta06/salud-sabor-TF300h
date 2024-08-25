@@ -6,12 +6,13 @@ import { DishService } from '../../services/dish.service';
 import { Dish } from '../../../interfaces/dish';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../../types/category.types';
-
+import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu-restaurant',
   standalone: true,
-  imports: [ FooterComponent, CartComponent, CommonModule ],
+  imports: [RouterLink, FooterComponent, CartComponent, CommonModule ],
   templateUrl: './menu-restaurant.component.html',
   styleUrls: ['./menu-restaurant.component.css']
 })

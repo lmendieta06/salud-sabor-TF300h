@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterLink } from '@angular/router';
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent],
+  imports: [RouterLink,CommonModule, FormsModule, FooterComponent],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
