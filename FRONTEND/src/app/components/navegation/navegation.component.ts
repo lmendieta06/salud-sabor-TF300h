@@ -17,7 +17,7 @@ export class NavegationComponent {
   isCartVisible = false;
   itemsInCart: any[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(public cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.itemsInCart$.subscribe(items => {

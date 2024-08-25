@@ -24,7 +24,7 @@
         <div class="cart-icon">
           <a routerLink="/cart">
             <i class="bi bi-cart-check"></i>
-            <span class="cart-count">{{ itemsInCart.length }}</span>
+            <span class="cart-count">{{ cartService.getItemCount() }}</span>
           </a>
           <span class="userText">Carrito</span>
         </div>

@@ -28,7 +28,7 @@
         <div class="cart-icon">
           <a routerLink="/cart">
             <i class="bi bi-cart-check"></i>
-            <span class="cart-count">{{ itemsInCart.length }}</span>
+            <span class="cart-count">{{ cartService.getItemCount() }}</span>
           </a>
           <span class="userText">Carrito</span>
         </div>
@@ -78,8 +78,8 @@ ORDEN DEFINITIVO (recomendación)
   </div>
 </section>
 
-<h2 class="titulosDeSeccion">CARNES</h2>
-<section class="container miContenedor2" id="carnes">
+<h2 class="titulosDeSeccion">Ensaladas</h2>
+<section class="container miContenedor2" id="ensaladas">
   <div class="row misProductos">
     <div *ngFor="let dish of filteredDishes['ensaladas']" class="col-12 col-md-6 col-lg-4">
       <div class="card border bg-light mx-auto">
@@ -95,17 +95,17 @@ ORDEN DEFINITIVO (recomendación)
   </div>
 </section>
 
-<h2 class="titulosDeSeccion">pastas</h2>
-<section class="container miContenedor2" id="carnes">
+<h2 class="titulosDeSeccion">Bebidas</h2>
+<section class="container miContenedor2" id="bebidas">
   <div class="row misProductos">
-    <div *ngFor="let dish of filteredDishes['pastas']" class="col-12 col-md-6 col-lg-4">
+    <div *ngFor="let dish of filteredDishes['bebidas']" class="col-12 col-md-6 col-lg-4">
       <div class="card border bg-light mx-auto">
         <img [src]="dish.imagenPlato" class="card-img-top" alt="Plato">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">{{ dish.nombrePlato }}</h5>
           <p class="text-center mb-1">{{ dish.descripcionPlato }}</p>
           <p class="text-center text-success mb-1 fw-bolder fs-4">{{ dish.precioPlato | currency }}</p>
-          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al carrito</a>
+          <a class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar" (click)="addDishToCart(dish)">Añadir al carrito</a>
         </div>
       </div>
     </div>

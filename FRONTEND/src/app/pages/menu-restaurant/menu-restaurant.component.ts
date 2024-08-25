@@ -23,7 +23,7 @@ export class MenuRestaurantComponent implements OnInit {
   isCartVisible = false;
   itemsInCart: any[] = [];
 
-  constructor(private cartService: CartService, private dishService: DishService) {}
+  constructor(public cartService: CartService, private dishService: DishService) {}
 
   ngOnInit(): void {
     this.loadDishes();

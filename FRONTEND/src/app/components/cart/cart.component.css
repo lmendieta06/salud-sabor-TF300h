@@ -24,7 +24,19 @@ header {
     height: 150px;
     margin-bottom: 0;
 }
+main {
+  padding-bottom: 80px; /* Ajusta este valor según la altura de tu footer */
+  flex: 1; /* Permite que main se expanda para llenar el espacio disponible */
 
+  box-sizing: border-box; /* Incluye el padding en el cálculo del alto total */
+}
+
+/* Footer */
+app-footer {
+  width: 100%;
+ height: auto;
+  background-color: #f1f1f1;
+}
 
 /* Barra de logo y opciones de usuario */
 .barraLogo {
@@ -85,21 +97,24 @@ overflow: visible;
 
 
 /* ESTILOS PAG CARRITO */
-
+/* Ajuste del tamaño del contenedor */
 .cart-container {
   width: 100%;
-  height: 70vh;
-  max-width: 1200px;
+  min-height: 80vh; /* Aumenta la altura */
+  max-width: 900px; /* Reduce el ancho máximo */
   margin: 0 auto;
   padding: 20px;
   background-color: white;
   border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 
 .cart-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -111,15 +126,12 @@ overflow: visible;
 
 .cart-item {
   display: flex;
+  align-items: center;
   margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
 
-.cart-item-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-right: 10px;
-}
 
 .cart-item-details {
   flex: 1;
@@ -129,7 +141,17 @@ overflow: visible;
   display: flex;
   align-items: center;
 }
-
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+}
+.cart-item-controls button {
+  margin: 0 5px;
+}
+.cart-item-controls span {
+  margin: 0 10px;
+  font-weight: bold;
+}
 .cart-total {
   display: flex;
   justify-content: center;
@@ -142,7 +164,7 @@ overflow: visible;
 .btn-backOrPay{
 display: flex;
 justify-content: space-around;
-
+margin-top: 20px;
 }
 .betene{
   background-color: var(--colorContraste);
@@ -157,20 +179,69 @@ justify-content: space-around;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
 }
-.comments-section {
-  margin-top: 20px;
-}
 
 .comments-section label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
+  font-weight: bold; 
+  display: block; 
+  margin-bottom: 50px; 
+}
+.comments-section textarea {
+  width: 100%; 
+  padding: 10px; 
+  border-radius: 4px; 
+  border: 1px solid #ccc; 
+  resize: vertical; 
 }
 
-.comments-section textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  resize: vertical;
+.comments-section {
+  margin-top: 20px; 
+  padding: 10px; 
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+  background-color: #f9f9f9;
 }
+.cart-item-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+
+.cart-counter {
+  font-size: 18px;
+  font-weight: bold;
+}
+.btn-link {
+  color: var(--colorContraste); /* Cambia el color del texto */
+  text-decoration: none; /* Quita el subrayado */
+  font-size: 1rem; /* Ajusta el tamaño de fuente si es necesario */
+  font-weight: bold; /* Haz que el texto sea más grueso si lo prefieres */
+  padding: 0; /* Ajusta el padding si es necesario */
+  background: none; /* Quita cualquier fondo si es necesario */
+}
+.btn-link:hover {
+  color: var(--colorContraste2); /* Cambia el color al pasar el mouse */
+  text-decoration: underline; /* Agrega subrayado al pasar el mouse si lo prefieres */
+}
+
+.cart-item-controls button {
+  background-color: rgba(0, 0, 0, 0.599); /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Quita el borde */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 0.5rem 1rem; /* Padding interno */
+  margin: 0.2rem; /* Margen entre botones */
+  font-family: var(--tipografiaTitulos); /* Fuente personalizada */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+.cart-item-controls button:hover {
+  background-color: rgb(255, 255, 255); /* Cambia el color al pasar el mouse */
+  transform: scale(1.05); /* Agranda el botón al pasar el mouse */
+color: black;
+border: solid black;
+}
+.accesibilidad{color: black;
+font-weight: 100;}
