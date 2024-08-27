@@ -1,0 +1,34 @@
+<section>
+    <div>
+        <h1>USUARIOS REGISTRADOS</h1>
+    </div>
+    <div>
+
+        <div>
+            <table>
+                <thead>
+                    <th>NOMBRE</th>
+                    <th>DIRECCIÓN</th>
+                    <th>CORREO ELECTRONICO</th>
+                    <th>TELEFONO</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of allUsers">
+                        <td>
+                            <p>{{user.nombre}}</p>
+                        </td>
+                        <td>
+                            <p>{{user.direccion}}</p>
+                        </td>
+                        <td>
+                            <p>{{user.correoElectronico}}</p>
+                        </td>
+                        <td>
+                            <p>{{user.telefono}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

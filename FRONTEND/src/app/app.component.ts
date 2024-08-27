@@ -7,12 +7,16 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CartComponent } from './components/cart/cart.component';
 import AOS from "aos";
+import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CartComponent],
+  imports: [RouterOutlet,CartComponent, NgxEchartsDirective],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers : [
+    provideEcharts(),
+  ]
 })
 export class AppComponent implements AfterViewInit {
 

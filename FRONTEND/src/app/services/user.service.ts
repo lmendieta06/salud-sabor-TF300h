@@ -18,9 +18,9 @@ private URL_USERS = "http://localhost:2000/users"
 
 
 // peticiones get, getById, post y put
-getUsers(options?:any){
-  return this.httpClient.get(this.URL_USERS, options);
-}
+  getUsers(options?:any){
+    return this.httpClient.get(this.URL_USERS, options);
+  }
  
   // Obtener un usuario por ID
   getUserById(id: string) {

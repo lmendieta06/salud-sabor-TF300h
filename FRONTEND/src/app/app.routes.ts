@@ -5,7 +5,6 @@ import { ClientComponent } from './pages/client/client.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuRestaurantComponent } from './pages/menu-restaurant/menu-restaurant.component';
-import { RecipesTipsComponent } from './pages/recipes-tips/recipes-tips.component';
 import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -27,7 +26,6 @@ export const routes: Routes = [
     {path:"administrador", component:AdminComponent, title:"Administrador"},
     {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
     {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
-    {path:"tips", component:RecipesTipsComponent, title:"Recetas"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
     {path:"sobreNosotros", component:AboutUsComponent, title:"Sobre Nosotros"},
     {path:"**", component:NoEncontradoComponent, title:"Salud & Sabor - ERROR"}
