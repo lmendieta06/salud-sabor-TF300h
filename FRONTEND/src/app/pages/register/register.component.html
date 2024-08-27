@@ -16,34 +16,26 @@
                 </div>
             </div>
             <div class="formsSingUp">
-                <form>
-                    <input class="controles" type="text" name="Multiple" value="" placeholder="Nombre" required>
-                    <select class="form-control  controles" id="categorySelect" required>
-                        <option value="" disabled selected>Seleccione tipo de documento</option>
-                        <option value="cedula">Cedula Ciudadania</option>
-                        <option value="tarjeta">Tarjeta de identidad</option>
-                        <option value="extranjero">Cedula de extranjeria</option>
+                <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+                    <input class="controles" type="text" placeholder="Nombre" formControlName="nombre" required>
+                    <!-- <select class="form-control controles" formControlName="documentoTipo" required>
+                        <option value="" disabled>Seleccione tipo de documento</option>
+                        <option value="cedula">Cédula de Ciudadanía</option>
+                        <option value="tarjeta">Tarjeta de Identidad</option>
+                        <option value="extranjero">Cédula de Extranjería</option>
                         <option value="pasaporte">Pasaporte</option>
-                    </select>
-                    <input class="controles" type="text" name="Contraseña" value="" placeholder="Numero de documento" required>
-                    <input class="controles" type="email" name="email" value="" placeholder="Correo electronico" required>
-                    <input class="controles" type="text" name="ciudad" value="" placeholder="Ciudad actual" required>
-                    <input class="controles" type="text" name="Direccion" value="" placeholder="Direccion actual" required>
-                    <input class="botonEnviarRegistro" type="submit" name="enviar" value="CREAR CUENTA">
-                    
+                    </select> -->
+                    <!-- <input class="controles" type="text" placeholder="Número de documento" formControlName="documentoNumero" required> -->
+                    <input class="controles" type="email" placeholder="Correo electrónico" formControlName="correoElectronico" required>
+                    <input class="controles" type="password" placeholder="Contraseña" formControlName="contrasena" required>
+                    <input class="controles" type="tel" placeholder="Teléfono" formControlName="telefono" required>
+                    <input class="controles" type="text" placeholder="Dirección actual" formControlName="direccion" required>
+                   <input class="controles" type="file" (change)="onFileChange($event)">
+                    <input class="botonEnviarRegistro" type="submit" value="CREAR CUENTA">
                 </form>
             </div>
         </div>
     </section>
-
-    <section class="modalCreacion">
-        <div class="contenedorModalCreacion">
-            <img src="../assets/imagenes/ilustracionCreacion.svg" alt="exitoso">
-            <h2>CUENTA CREADA SATISFACTORIAMENTE</h2>
-            <a href="#" class="modalCreacionClose">OK</a>
-        </div>
-    </section>
-
     <app-chat-bot></app-chat-bot>
 </main>
 <app-footer></app-footer>

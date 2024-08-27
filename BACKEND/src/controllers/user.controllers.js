@@ -1,137 +1,118 @@
-// getUsers, postUser, putUser, deleteUser (tentativa), getUserById
-import { userModel } from "../models/user.model.js";
-import bcrytp from "bcryptjs";
+import { userModel } from '../models/user.model.js';
+import bcrypt from 'bcryptjs';
 
+// Crear usuario
 export const postUser = async (req, res) => {
-    try {
-        const {nombre, correoElectronico, contrasena, telefono, direccion, imagenPerfil} = req.body;
-        // El await es para indicar que debe esperar una respuesta
+  try {
+    const { nombre, correoElectronico, contrasena, telefono, direccion } = req.body;
+    const imagenPerfil = req.file ? req.file.filename : null; // Obtener el nombre del archivo subido
 
-        // Se debe pasar la contraseña y salt rounds que define el nivel de encriptacion -> Usualmente se usa el 10 para no comprometer el nivel de rendimiento
-        const codedPassword = await bcrytp.hash(contrasena, 10);
+    const codedPassword = await bcrypt.hash(contrasena, 10);
 
-        // Lo que hace es detenerse en esta linea de codigo, esperar la respuesta y al obtenerla sigue con el resto de lineas
-        const newUser = await userModel.create({
-            nombre,
-            correoElectronico, 
-            contrasena:codedPassword,
-            telefono,
-            direccion, 
-            imagenPerfil
-        });
+    const newUser = await userModel.create({
+      nombre,
+      correoElectronico,
+      contrasena: codedPassword,
+      telefono,
+      direccion,
+      imagenPerfil
+    });
 
-        return res.status(201).json({
-            estado: "201",
-            mensaje: "Usuario creado correctamente",
-            datos: newUser
-        });
-    } catch (error) {
-        if (error.code === 11000) {
-            return res.status(400).json({
-                estado: "400",
-                message: "El correo electrónico ya está en uso"
-            });
-        }
-        return res.status(400).json({
-            estado: "400",
-            message: "No se logró crear el usuario: " + error.message
-        });
+    return res.status(201).json({
+      estado: "201",
+      mensaje: "Usuario creado correctamente",
+      datos: newUser
+    });
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({
+        estado: "400",
+        message: "El correo electrónico ya está en uso"
+      });
     }
-}
+    return res.status(400).json({
+      estado: "400",
+      message: "No se logró crear el usuario: " + error.message
+    });
+  }
+};
 
-export const getUsers = async(req, res) =>{
-
-    try{
-        let users = await userModel.find();
-
-        if(users.length === 0){
-            return res.status(200).json({message: "No se encontraron usuarios registrados"});
-        }
-
-        return res.status(200).json({
-            estado : 200,
-            mensaje: "Se encontraron todos los usuarios",
-            cantidad: users.length,
-            users
-        })
-    }catch(error){
-        return res.status(404).json({
-            message: "Hubo un error al hacer la peticion" + error.message
-        })
+// Obtener todos los usuarios
+export const getUsers = async (req, res) => {
+  try {
+    let users = await userModel.find();
+    if (users.length === 0) {
+      return res.status(200).json({ message: "No se encontraron usuarios registrados" });
     }
-}
+    return res.status(200).json({
+      estado: 200,
+      mensaje: "Se encontraron todos los usuarios",
+      cantidad: users.length,
+      users
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: "Hubo un error al hacer la petición: " + error.message
+    });
+  }
+};
 
-export const putUser = async(req, res) =>{
+// Actualizar usuario
+export const putUser = async (req, res) => {
+  try {
+    let idUpdate = req.params._id;
+    const dataForUpdate = req.body;
 
-    try{
-        let idUpdate = req.params._id;
-        // Se debe poder recibir informacion
-        const dataForUpdate = req.body;
+    let userUpdate = await userModel.findByIdAndUpdate(idUpdate, dataForUpdate, { new: true });
 
-        let userUpdate = await userModel.findByIdAndUpdate(idUpdate, dataForUpdate);
-    
-        if(!userUpdate){
-            return res.status(200).json({
-                estado : 200,
-                mensaje : "No se encontro el usuario para actualizar"
-            })
-        }
-
-        if(idUpdate.length !== 24){
-            return res.status(404).json({
-                estado : 404,
-                mensaje : "No se ingreso el id necesario "
-            })
-        }
-
-        return res.status(200).json({
-            estado : 200,
-            mensaje : "Se actualizo correctamente el usuario",
-            dato : userUpdate._id
-        })
-        
-    }catch(error){
-        return res.status(404).json({
-            message: "No se pudo realizar la peticion " + error.message
-        })
+    if (!userUpdate) {
+      return res.status(404).json({
+        estado: 404,
+        mensaje: "No se encontró el usuario para actualizar"
+      });
     }
-}
 
-export const getUserById = async(req, res) =>{
-    
-    try{
+    return res.status(200).json({
+      estado: 200,
+      mensaje: "Se actualizó correctamente el usuario",
+      dato: userUpdate
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: "No se pudo realizar la petición: " + error.message
+    });
+  }
+};
 
-        // Requiere el id del usuario
-        // El id debe ser llamado igual a como esta escrito en la db
-        let idUser = req.params._id;
+// Obtener usuario por ID
+export const getUserById = async (req, res) => {
+  try {
+    let idUser = req.params._id;
 
-        if(idUser.length !== 24){
-            return res.status(204).json({
-                estado : 204,
-                mensaje : "Se debe ingresar un Id valido"
-            })
-        }
-
-        // 1. Dar la variable donde se recibe el id
-        // 2. Pedirle que me envie el cuerpo de esa peticion
-        let user = await userModel.findById(idUser);
-
-        if(!user){
-            return res.status(200).json({
-                estado : 200,
-                mensaje : "No se encontro el usuario que necesita"
-            })
-        }
-
-        return res.status(200).json({
-            estado : 200,
-            mensaje : "Se encontro el siguiente usuario",
-            usuario : user
-        })
-
-    }catch(error){
-        return res.status(404).json({
-            message: "No se pudo realizar la peticion " + error.message
-        })
+    if (idUser.length !== 24) {
+      return res.status(400).json({
+        estado: 400,
+        mensaje: "Se debe ingresar un ID válido"
+      });
     }
-}
+
+    let user = await userModel.findById(idUser);
+
+    if (!user) {
+      return res.status(404).json({
+        estado: 404,
+        mensaje: "No se encontró el usuario que necesita"
+      });
+    }
+
+    return res.status(200).json({
+      estado: 200,
+      mensaje: "Se encontró el siguiente usuario",
+      usuario: user
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: "No se pudo realizar la petición: " + error.message
+    });
+  }
+};

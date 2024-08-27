@@ -49,12 +49,10 @@ const loginService = async (req, res) => {
         const payload = {
             id: userFound._id,
             name: userFound.nombre,
+            imagenPerfil: userFound.imagenPerfil, // Asegúrate de incluir esto si es necesario
+            isAdmin: userFound.__t === 'Admin' || userFound.categoriaAdmin // Simplifica la verificación
         }
 
-        // validar si mi usuario ingresado es administrador
-        if (userFound.__t === 'Admin' || userFound.categoriaAdmin) {
-            payload.isAdmin = true;
-        }
 
         // GENERAR NUESTRO TOKEN
         const token = await generateToken(payload);

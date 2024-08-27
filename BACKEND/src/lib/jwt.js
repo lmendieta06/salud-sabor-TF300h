@@ -8,6 +8,7 @@ const secretKey = process.env.JWT_SECRETKEY;
 // Función para generar tokens (JWT)
 export function generateToken (payload) {
     // función asincrónica
+    
     return new Promise((res, rej)=>{
         // payload, clave secreta, tiempo de expiración
      

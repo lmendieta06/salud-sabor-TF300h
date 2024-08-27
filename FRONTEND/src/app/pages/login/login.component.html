@@ -1,29 +1,23 @@
 <app-navegation></app-navegation>
 <main>
-    <section class="modalInicioSesion">
-        <div class="modal-contenedorInicioSesion">
+    <section class="login-container">
+        <img src="assets/logoSinFondo.png" alt="logo-saborysalud" class="login-logo">
+        <h2 class="login-title">¡ERES INCREÍBLE! <br> Bienvenido</h2>
         
-            <img src="/assets/login/LOGO SALUD Y SABOR.png" alt="logo-saborysalud"
-                class="Log-ss">
-            <article class="Eres-Increible">
-                <h2 class="modal-titulo">¡ERES INCREIBLE! <br> Bienvenido</h2>
-                
-            </article>
-
-            <div class="input-login">
-                <input class="controles" type="email" name="Multiple" value="" placeholder="email">
-                <input class="controles" type="password" name="Contraseña" value="" placeholder="Contraseña">
-                <p><a class="recuperar-pass" routerLink="/recover">¿Olvidaste tu contraseña?</a></p>
-                <input class="botonesInicioSesion" type="submit" name="" value="Entrar">
-                <p>¿No tienes cuenta?<a routerLink="/registro"><span> Crear cuenta</span></a></p>
-                <p>Al crear una cuenta, aceptas nuestros <strong>términos y condiciones</strong></p>
+        <form [formGroup]="credentialForm" (ngSubmit)="handleSubmint()">
+            <div class="form-group">
+                <input class="input-control" type="email" placeholder="Email" formControlName="email">
             </div>
-        </div>
+            <div class="form-group">
+                <input class="input-control" type="password" placeholder="Contraseña" formControlName="password">
+            </div>
+            <a class="login-link" routerLink="/recover">¿Olvidaste tu contraseña?</a>
+            <input class="login-button" type="submit" value="Entrar" [disabled]="isSubmitting || credentialForm.invalid">
+            <p>¿No tienes cuenta?<a routerLink="/registro"><span> Crear cuenta</span></a></p>
+            <p class="terms-text">Al crear una cuenta, aceptas nuestros <strong>términos y condiciones</strong></p>
+        </form>
     </section>
-
-
 
     <app-chat-bot></app-chat-bot>
 </main>
 <app-footer></app-footer>
-
