@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AdminResponse } from '../../interfaces/adminRes';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,8 +20,8 @@ private URL_ADMIN = "http://localhost:2000/admin"
   }
 
   // Obtener todos los administradores
-  getAdmins() {
-    return this.httpClient.get(this.URL_ADMIN);
+  getAdmins() : Observable<AdminResponse> {
+    return this.httpClient.get<AdminResponse>(this.URL_ADMIN);
   }
 
   // Actualizar un administrador por ID

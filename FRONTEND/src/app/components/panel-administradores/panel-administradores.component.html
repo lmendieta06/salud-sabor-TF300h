@@ -14,18 +14,18 @@
                     <th>ACCIONES</th>
                 </thead>
                 <tbody>
-                    <tr >
+                    <tr *ngFor="let admin of Admins">
                         <td>
-                            <p>NOMBRE</p>
+                            <p>{{admin.nombre}}</p>
                         </td>
                         <td>
-                            <p>DIRECCION</p>
+                            <p>{{admin.direccion}}</p>
                         </td>
                         <td>
-                            <p>CORREO ELECTRONICO</p>
+                            <p>{{admin.correoElectronico}}</p>
                         </td>
                         <td>
-                            <p>TELEFONO</p>
+                            <p>{{admin.telefono}}</p>
                         </td>
                         <td>
                             <button type="button">

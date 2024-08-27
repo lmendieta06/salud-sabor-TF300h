@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../interfaces/user';
-
-
+import { UserResponse } from '../../interfaces/userResponse';
+import { Observable } from 'rxjs';
+import { AdminResponse } from '../../interfaces/adminRes';
 
 
 
@@ -18,8 +19,8 @@ private URL_USERS = "http://localhost:2000/users"
 
 
 // peticiones get, getById, post y put
-  getUsers(options?:any){
-    return this.httpClient.get(this.URL_USERS, options);
+  getUsers() : Observable<UserResponse>{
+    return this.httpClient.get<UserResponse>(this.URL_USERS);
   }
  
   // Obtener un usuario por ID

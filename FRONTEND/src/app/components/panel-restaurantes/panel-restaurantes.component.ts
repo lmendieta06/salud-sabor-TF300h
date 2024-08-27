@@ -5,7 +5,7 @@ import { ModalMenuComponent } from '../modal-menu/modal-menu.component';
 @Component({
   selector: 'app-panel-restaurantes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ModalMenuComponent],
   templateUrl: './panel-restaurantes.component.html',
   styleUrl: './panel-restaurantes.component.css'
 })
@@ -54,5 +54,8 @@ export class PanelRestaurantesComponent {
     this.selectedRestaurantId = restaurant.menu; // Asume que `restaurant.menu` es el ID del menú
     this.selectedRestaurantName = restaurant.nombre;
     this.isModalVisible = true;
+
+    console.log(this.selectedRestaurantId);
+    console.log(this.selectedRestaurantName);
   }
 }
