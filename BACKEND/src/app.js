@@ -12,23 +12,46 @@ import dishRouter from "./routes/dish.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import menuRouter from "./routes/menu.routes.js";
 import loginRouter from "./routes/login.routes.js"
+import path from 'path';
+import { fileURLToPath } from 'url'; // Importar fileURLToPath desde 'url'
+
+
+
+
 const app = express();
 
-
 dotenv.config(); //Nuestras variables de entorno
+app.use(cors({
+    origin: 'http://localhost:4200',
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type, Authorization'
+}));
+app.use(express.json());
 
-app.use(cors());
+
 
 const port = process.env.PORT; //mi puerto en variable de entorno
 
 connexionMongo();
-app.use(express.json());
+
+// Middleware para servir archivos
+// Carpeta estática para archivos subidos
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const uploadsPath = path.join(__dirname, 'uploads'); // Ajuste para que la carpeta uploads esté dentro de src
+
+app.use('/uploads', express.static(uploadsPath));
+
+
+
+
 
 //usamos rutas
- app.use("/admin", adminRouter);
- app.use("/menu", menuRouter)
-//platilloooos
- app.use("/dishes", dishRouter)
+app.use("/admin", adminRouter);
+// menu
+app.use("/menu", menuRouter)
+//platillos
+app.use("/dishes", dishRouter)
 // Usuarios
 app.use("/users", usersRouter);
 // Restaurantes
@@ -37,6 +60,6 @@ app.use("/restaurants", restaurantRouter);
 app.use("/login", loginRouter)
 
 
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`El servidor se está escuchando en: http://localhost:${port}`);
 });

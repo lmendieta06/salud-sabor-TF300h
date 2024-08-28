@@ -27,7 +27,7 @@
 
 main {
     width: 100%;
-    height: 82vh;
+    height: 100vh;
     background-image: url(https://images.pexels.com/photos/326281/pexels-photo-326281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-size: cover;
     position: relative;
@@ -46,16 +46,18 @@ main {
 }
 
 .containerModal{
-    
-    width: 70%;
-    height: 100%;
-    background-color: white;
+    width: 700px; /* Fijo en 700px para pantallas grandes */
+    height: 500px; /* Fijo en 500px para pantallas grandes */
+    background-color: rgba(109, 97, 97, 0.284);
+    box-shadow: 8px 10px 20px rgba(158, 149, 149, 0.601);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
+    
+   
 
 }
 
@@ -122,6 +124,7 @@ main {
     justify-content: center;
     align-items: center;
     padding: 7px;
+    margin-bottom: 40px;
 }
 
 .formsSingUp form{
@@ -142,28 +145,27 @@ main {
     font-family: var(--tipografiaTexto);
 }
 
-.botonEnviarRegistro{
+.botonEnviarRegistro {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    width: 60%;
-    height: 40px;
-    border-radius: 7px;
-    background: var(--colorNav);
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: var(--colorContraste);
     border: none;
     color: #ffffff;
-    margin-top: 5px;
     font-family: var(--tipografiaTexto);
     font-weight: 700;
-    /* Sombra de la caja */
+    transition: background-color 0.3s ease;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
-.botonEnviarRegistro:hover{
-    background-color: var(--colorFiguras);
+.botonEnviarRegistro:hover {
+    background-color: var(--colorContraste2);
 }
-
 /* FOOTER */
 
 footer{
@@ -204,6 +206,7 @@ footer{
     bottom: 0;
     z-index: 100;
     background-color: rgba(128, 128, 128, 0.368);
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -272,12 +275,32 @@ footer{
 }
 
 /* Pantallas pequeñas */
-@media screen and (max-width:600px){
-    .containerModal{
-        width: 90%;
+@media screen and (max-width: 650px) {
+    .modalRegistro {
+        width: 90vw;
+        height: auto;
+        top: 5%;
+        right: 5%;
+    }
+    .imgEncabezado img{
+        width: 150px;
+        height: 150px;
+        padding-top: 0;
+    }
+    
+h2{background-color: #ffffff;}
+    .containerModal {
+        width: 100%;
+        height: auto;
+        padding: 20px;
     }
 
-    .formsSingUp form{
+    .formsSingUp form {
         width: 100%;
+    }
+
+    .botonEnviarRegistro {
+        width: 100%;
+        height: 45px;
     }
 }

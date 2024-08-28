@@ -28,7 +28,7 @@
         <div class="cart-icon">
           <a routerLink="/cart">
             <i class="bi bi-cart-check"></i>
-            <span class="cart-count">{{ itemsInCart.length }}</span>
+            <span class="cart-count">{{ cartService.getItemCount() }}</span>
           </a>
           <span class="userText">Carrito</span>
         </div>
@@ -51,18 +51,20 @@
         <h1 class="suna" >suna</h1>
     </section>    
 
-<!-- Sección de productos -->
-<!-- 
-ORDEN DEFINITIVO (recomendación)
-1. LAYOUT -> La estructura de contenedor, filas y columnas
-2. BREAKPOINTS -> el responsive
-3. LOS COMPONENTES
-4. MODIFICAMOS LAS CLASES SEGÚN LA APARIENCIA QUE QUERAMOS DAR
--->
+         
+
+
+
+
+
+
+
+    
 
 <!-- 1. El contenedor ENTRADAS-->
-<h2 class="titulosDeSeccion">ENTRADAS</h2>
-<section class="container miContenedor1" id="entradas">
+
+<h4 class="titulosDeSeccion">Entradas</h4>
+<section class="container miContenedor2" id="entradas">
   <div class="row misProductos">
     <div *ngFor="let dish of filteredDishes['entradas']" class="col-12 col-md-6 col-lg-4">
       <div class="card border bg-light mx-auto">
@@ -71,32 +73,32 @@ ORDEN DEFINITIVO (recomendación)
           <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">{{ dish.nombrePlato }}</h5>
           <p class="text-center mb-1">{{ dish.descripcionPlato }}</p>
           <p class="text-center text-success mb-1 fw-bolder fs-4">{{ dish.precioPlato | currency }}</p>
-          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al carrito</a>
+          <a class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar" (click)="addDishToCart(dish)">Añadir al carrito</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<h2 class="titulosDeSeccion">CARNES</h2>
+<h4 class="titulosDeSeccion">Carnes</h4>
 <section class="container miContenedor2" id="carnes">
   <div class="row misProductos">
-    <div *ngFor="let dish of filteredDishes['ensaladas']" class="col-12 col-md-6 col-lg-4">
+    <div *ngFor="let dish of filteredDishes['carnes']" class="col-12 col-md-6 col-lg-4">
       <div class="card border bg-light mx-auto">
         <img [src]="dish.imagenPlato" class="card-img-top" alt="Plato">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">{{ dish.nombrePlato }}</h5>
           <p class="text-center mb-1">{{ dish.descripcionPlato }}</p>
           <p class="text-center text-success mb-1 fw-bolder fs-4">{{ dish.precioPlato | currency }}</p>
-          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al carrito</a>
+          <a class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar" (click)="addDishToCart(dish)">Añadir al carrito</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<h2 class="titulosDeSeccion">pastas</h2>
-<section class="container miContenedor2" id="carnes">
+<h2 class="titulosDeSeccion">Pastas</h2>
+<section class="container miContenedor2" id="pastas">
   <div class="row misProductos">
     <div *ngFor="let dish of filteredDishes['pastas']" class="col-12 col-md-6 col-lg-4">
       <div class="card border bg-light mx-auto">
@@ -105,7 +107,7 @@ ORDEN DEFINITIVO (recomendación)
           <h5 class="card-title text-center mb-3 text-success fw-bolder mt-1">{{ dish.nombrePlato }}</h5>
           <p class="text-center mb-1">{{ dish.descripcionPlato }}</p>
           <p class="text-center text-success mb-1 fw-bolder fs-4">{{ dish.precioPlato | currency }}</p>
-          <a href="#" class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar">Añadir al carrito</a>
+          <a class="btn btn-dark bg-success bg-gradient mt-4 text-white agregar" (click)="addDishToCart(dish)">Añadir al carrito</a>
         </div>
       </div>
     </div>

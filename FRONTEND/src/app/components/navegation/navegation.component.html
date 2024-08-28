@@ -1,35 +1,48 @@
 <header>
-    <div class="barraLogo">
-      <div class="logo">
-        <a routerLink="/">
-          <img src="assets/logoSinFondo.png" alt="logoSaludSabor">
-        </a>
+  <div class="barraLogo">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/logoSinFondo.png" alt="logoSaludSabor">
+      </a>
+    </div>
+    <div class="userOptions">
+      <!-- Cambia de texto cuando el usuario inicie sesión -->
+      <div class="inicioSesionOpcion" *ngIf="!isLoggedIn">
+        <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
       </div>
-      <div class="userOptions">
-        <div class="inicioSesionOpcion">
-          <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+      <div class="bienvenida" *ngIf="isLoggedIn">
+        <i class="bi bi-hand-thumbs-up"></i>
+        <p>Hola! , {{ userName }}</p>
+      </div>
+      
+      <div class="dropdown">
+        <!-- Cambia el icono del usuario por la imagen del usuario cuando esté log -->
+        <a href="#" class="userIcon" *ngIf="!isLoggedIn">
+          <i class="bi bi-person-fill"></i>
+        </a>
+        <div class="userImageContainer" *ngIf="isLoggedIn">
+          <img [src]="imagenPerfil || 'assets/default-user.png'" alt="Imagen del usuario" class="userImage">
         </div>
-        <div class="dropdown">
-          <a href="#" class="userIcon"> <!-- Evento click para abrir/cerrar el menú -->
-            <i class="bi bi-person-fill"></i>
-          </a>
-          <span class="userText">Mi cuenta <i class="bi bi-chevron-down"></i></span>
-          <ul class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
-            <li class="dropdown-item"><a routerLink="/profile"><i class="bi bi-person"></i> Mi Perfil</a></li>
-            <li class="dropdown-item"><a routerLink="/orders"><i class="bi bi-box"></i> Mis pedidos</a></li>
-            <li class="dropdown-item"><a routerLink="/login"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a></li>
-            <li class="dropdown-item"><a routerLink="/registro"><i class="bi bi-person-add"></i> Regístrate</a></li>
-          </ul>
-        </div>
-        <div class="cart-icon">
-          <a routerLink="/cart">
-            <i class="bi bi-cart-check"></i>
-            <span class="cart-count">{{ itemsInCart.length }}</span>
-          </a>
-          <span class="userText">Carrito</span>
-        </div>
+        <span class="userText">Mi cuenta <i class="bi bi-chevron-down"></i></span>
+        <ul class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
+          <li class="dropdown-item"><a routerLink="/profile"><i class="bi bi-person"></i> Mi Perfil</a></li>
+          <li class="dropdown-item"><a routerLink="/orders"><i class="bi bi-box"></i> Mis pedidos</a></li>
+          <!-- Mostrar opción de "Cerrar sesión" si el usuario está logueado -->
+          <li class="dropdown-item" *ngIf="isLoggedIn"><a (click)="logout()"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+          <!-- Ocultar opciones de "Iniciar sesión" y "Regístrate" si el usuario está logueado -->
+          <li class="dropdown-item" *ngIf="!isLoggedIn"><a routerLink="/login"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a></li>
+          <li class="dropdown-item" *ngIf="!isLoggedIn"><a routerLink="/registro"><i class="bi bi-person-add"></i> Regístrate</a></li>
+        </ul>
+      </div>
+      <div class="cart-icon">
+        <a routerLink="/cart">
+          <i class="bi bi-cart-check"></i>
+          <span class="cart-count">{{ cartService.getItemCount() }}</span>
+        </a>
+        <span class="userText">Carrito</span>
       </div>
     </div>
+  </div>
     <nav class="menuNav">
       <ul class="listaMenu">
         <li><a routerLink="/" class="nav-link">Inicio</a></li>

@@ -79,7 +79,21 @@ overflow: visible;
     text-align: center;
     cursor: pointer;
 }
-
+.bienvenida {
+    padding: 10px;
+    background-color: #f0f8ff; /* Color de fondo suave */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .bienvenida p {
+    font-size: 1.2em; /* Tamaño de fuente más grande */
+    color: #333; /* Color del texto */
+    margin: 0; /* Elimina el margen predeterminado */
+  }
 .userIcon i {
     font-size: 1rem;
 }
@@ -87,16 +101,33 @@ overflow: visible;
 .userText {
     font-weight: 400;
 }
-.dropdown{
-  margin-top: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
+.userImageContainer {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .userImage {
+    width: 100%;
+    height: auto;
+  }
+  
+  .userText {
+    margin-left: 10px;
+    cursor: pointer;
+  }
 
 /* Menú desplegable */
-
+.dropdown{
+    margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  
   
   .dropdown-menu {
     position: absolute;

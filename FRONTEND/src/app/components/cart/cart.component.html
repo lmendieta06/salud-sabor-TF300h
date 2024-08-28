@@ -18,17 +18,26 @@
   <div class="cart-container">
     <div class="cart-header">
       <h2>Carrito de Compras</h2>
-
+      <div class="cart-counter">Productos en el carrito: {{ cartService.getItemCount() }}</div>
     </div>
     <div class="cart-items">
-      <div *ngFor="let item of itemsInCart; let i = index" class="cart-item">
-        <img [src]="item.image" alt="{{item.name}}" class="cart-item-image">
+      <div *ngFor="let item of itemsInCart" class="cart-item">
+        <img [src]="item.imagenPlato" alt="{{item.nombrePlato}}" class="cart-item-image">
         <div class="cart-item-details">
-          <h4>{{item.name}}Carne asada</h4>
-          <p>${{item.price}}5000</p>
-          <div class="cart-item-quantity">
-            <button (click)="removeFromCart(item.id)">Remove</button>
-          </div>
+          <h4>{{item.nombrePlato}}</h4> <!-- Aquí debe mostrarse el nombre correcto del plato -->
+          <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#description' + item._id" aria-expanded="false" [attr.aria-controls]="'description' + item._id">
+            Mostrar descripción <span class="accesibilidad">(click para ver)</span>
+          </button>
+          <div [id]="'description' + item._id" class="collapse">
+            <p class="item-description">{{item.descripcionPlato}}</p>
+          </div><!-- Aquí debe mostrarse el nombre correcto del plato -->
+          <p>{{item.precioPlato | currency}}</p> <!-- Precio correcto -->
+         </div>
+        <div class="cart-item-controls">
+          <button (click)="cartService.updateQuantity(item._id, -1)">-</button>
+          <span>{{item.quantity}}</span>
+          <button (click)="cartService.updateQuantity(item._id, 1)">+</button>
+          <button (click)="removeFromCart(item._id)">Eliminar</button>
         </div>
       </div>
     </div>
@@ -38,7 +47,7 @@
       <textarea id="additionalComments" [(ngModel)]="additionalComments" rows="4" placeholder="Escribe aquí tus comentarios..."></textarea>
     </div>
     <div class="cart-total">
-      <h3>Total a Pagar: ${{totalPrice}}</h3>
+      <h3>Total a Pagar: {{totalPrice | currency}}</h3>
     </div>
     <div class="btn-backOrPay">
       <button type="button" class="btn btn-success betene">Continuar comprando</button>
@@ -47,3 +56,4 @@
 
   </div>
 </main>
+<app-footer></app-footer>
