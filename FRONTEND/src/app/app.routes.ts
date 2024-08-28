@@ -12,8 +12,11 @@ import { RegisterComponent } from './pages/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NoEncontradoComponent } from './pages/no-encontrado/no-encontrado.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-
-
+import { PanelAdministradoresComponent } from './components/panel-administradores/panel-administradores.component';
+import { PanelRestaurantesComponent } from './components/panel-restaurantes/panel-restaurantes.component';
+import { PanelUusariosComponent } from './components/panel-uusarios/panel-uusarios.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MenuRestauranteComponent } from './components/menu-restaurante/menu-restaurante.component';
 
 export const routes: Routes = [
     {path:"", component: HomeComponent, title: "Salud & Sabor"},
@@ -23,7 +26,13 @@ export const routes: Routes = [
     {path:"recover", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
     {path: 'cart', component: CartComponent },  // Ruta para el carrito
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
-    {path:"administrador", component:AdminComponent, title:"Administrador"},
+    {path:"administrador", component:AdminComponent, title:"Administrador", children:[
+        {path:"panel-restaurantes", component:PanelRestaurantesComponent, title:"Restaurantes"},
+        {path:"panel-restaurantes/:idMenu", component:MenuRestauranteComponent, title:"Panel Menú"},
+        {path:"administradores", component:PanelAdministradoresComponent, title:"Administradores"},
+        {path:"usuarios", component:PanelUusariosComponent, title:"Usuarios"},
+        {path:"dashboard", component:DashboardComponent, title:"Dashboard"}
+    ]},
     {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
     {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
