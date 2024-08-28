@@ -7,22 +7,19 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CartComponent } from './components/cart/cart.component';
 import AOS from "aos";
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,CartComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router,
-    private httpClient: HttpClient 
-
+    private router: Router // Inyecta Router aquí
   ) {}
 
   ngAfterViewInit(): void {

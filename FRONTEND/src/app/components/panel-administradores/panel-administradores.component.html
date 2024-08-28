@@ -1,0 +1,44 @@
+<section>
+    <div>
+        <h1>PANEL DE CONTROL - ADMINISTRADORES</h1>
+    </div>
+    <div>
+        <div>
+            <button (click)="openModalAddAdmin()">AGREGAR ADMINISTRADOR</button>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <th>NOMBRE</th>
+                    <th>CORREO ELECTRONICO</th>
+                    <th>ACCIONES</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of Admins">
+                        <td>
+                            <p>{{admin.nombre}}</p>
+                        </td>
+
+                        <td>
+                            <p>{{admin.correoElectronico}}</p>
+                        </td>
+
+                        <td>
+                            <button type="button" (click)="openModelUpdateAdmin(admin)">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div *ngIf="isAdding">
+        <app-modal-add-admin></app-modal-add-admin>
+    </div>
+
+    <div *ngIf="isUpdating">
+        <app-modal-update-admin></app-modal-update-admin>
+    </div>
+</section>

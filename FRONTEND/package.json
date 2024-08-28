@@ -24,10 +24,12 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "echarts": "^5.5.1",
     "express": "^4.18.2",
     "jwt-decode": "^4.0.0",
+    "ngx-echarts": "^18.0.0",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.6.13",
+    "sweetalert2": "^11.12.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

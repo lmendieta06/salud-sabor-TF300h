@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../interfaces/user';
-import { Observable } from 'rxjs'; 
-
+import { UserResponse } from '../../interfaces/userResponse';
+import { Observable } from 'rxjs';
+import { AdminResponse } from '../../interfaces/adminRes';
 
 
 
@@ -18,25 +19,24 @@ private URL_USERS = "http://localhost:2000/users"
 
 
 // peticiones get, getById, post y put
-getUsers(options?: any): Observable<any> {
-  return this.httpClient.get<any>(this.URL_USERS, options);
-}
+  getUsers() : Observable<UserResponse>{
+    return this.httpClient.get<UserResponse>(this.URL_USERS);
+  }
  
   // Obtener un usuario por ID
   getUserById(id: string) {
     return this.httpClient.get(`${this.URL_USERS}/${id}`);
   }
   // CREAR USUARIO
-  postUser(formData: FormData): Observable<any> {
-    return this.httpClient.post<any>(this.URL_USERS, formData);
+  postUser(user: User){
+    return this.httpClient.post(this.URL_USERS,user);
   }
 
-
-  // Actualizar usuario
-  putUser(userUpdate: User, id: string): Observable<any> {
-    return this.httpClient.put<any>(`${this.URL_USERS}/${id}`, userUpdate);
+  // ACTUALIZAR USUARIO
+  putUser(userUpdate:User, id:string){
+    return this.httpClient.put(`${this.URL_USERS}/${id}`, userUpdate);
   }
+
 
 
 }
-

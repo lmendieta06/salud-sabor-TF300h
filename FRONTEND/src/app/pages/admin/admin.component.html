@@ -1,1 +1,60 @@
-<p>admin works!</p>
+<header class="navigationAdmin">
+    <div class="imgAdmin">
+        <div>
+            <img src="./assets/admin/perfilAdminPrueba.jpg" alt="perfilAdministrador">
+        </div>
+    </div>
+    <div class="nombreAdmin">
+        <p>Bienvenid&#64; nombre</p>
+    </div>
+    <div class="buttonNavigation">
+        <nav>
+            <ul class="buttonsContainer">
+                <li>
+                    <button (click)="showRestaurants()">
+                        <i class="bi bi-building" ></i>
+                        Restaurantes
+                    </button>
+                </li>
+                <li>
+                    <button (click)="showUsers()">
+                        <i class="bi bi-people-fill" ></i>
+                        Usuarios
+                    </button>
+                </li>
+                <li>
+                    <button (click)="showDashboard()">
+                        <i class="bi bi-bar-chart"></i>
+                        Dashboard
+                    </button>
+                </li>
+                <li>
+                    <button (click)="showAdmins()">
+                        <i class="bi bi-person-vcard"></i>
+                        Administradores
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        <i class="bi bi-door-open-fill"></i>
+                        Cerrar sesión
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <div *ngIf="isVisibleAdmins">
+        <app-panel-administradores></app-panel-administradores>
+    </div>
+    <div *ngIf="isVisibleDashboard">
+        <app-dashboard></app-dashboard>
+    </div>
+    <div *ngIf="isVisibleRestaurants">
+        <app-panel-restaurantes></app-panel-restaurantes>
+    </div>
+    <div *ngIf="isVisibleUsers">
+        <app-panel-uusarios></app-panel-uusarios>
+    </div>
+</main>
