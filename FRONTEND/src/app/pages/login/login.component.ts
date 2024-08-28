@@ -27,7 +27,7 @@ export class LoginComponent {
    // Conectar nuestro formulario con nuestro grupo y añadir validaciones
    credentialForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    password: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
 
  // Estado para manejar el envío del formu
