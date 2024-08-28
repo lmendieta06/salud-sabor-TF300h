@@ -13,7 +13,7 @@
             </li>
           </ul>
         </div>
-        <div *ngIf="!menu.dishes || menu.dishes.length === 0">
+        <div *ngIf="!menu.dishes || menu.dishes.length === 0 || menu == null">
           <p>No hay platos disponibles en este menú.</p>
         </div>
       </div>

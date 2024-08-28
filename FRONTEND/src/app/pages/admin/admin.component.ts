@@ -4,7 +4,6 @@ import { PanelAdministradoresComponent } from '../../components/panel-administra
 import { PanelRestaurantesComponent } from '../../components/panel-restaurantes/panel-restaurantes.component';
 import { PanelUusariosComponent } from '../../components/panel-uusarios/panel-uusarios.component';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
-  
 @Component({
   selector: 'app-admin',
   standalone: true,
@@ -16,7 +15,7 @@ export class AdminComponent {
   isVisibleUsers : boolean = false;
   isVisibleAdmins : boolean = false;
   isVisibleDashboard : boolean = false;
-  isVisibleRestaurants : boolean = false;
+  isVisibleRestaurants : boolean = true;
 
   // Ver panel restaurantes
   showRestaurants(){

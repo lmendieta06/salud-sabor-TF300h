@@ -4,6 +4,4 @@ export interface AdminInterface {
     nombre: string;
     correoElectronico: string;
     contrasena: string;
-    direccion: string; 
-    telefono: string;
-  }
+}

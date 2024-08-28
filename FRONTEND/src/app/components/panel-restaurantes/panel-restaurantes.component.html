@@ -23,7 +23,7 @@
                             <p>{{restaurant.direccion}}</p>
                         </td>
                         <td>
-                            <button (click)="openMenuModal(restaurant)">VER MENÚ</button>
+                            <button (click)="handleVerMenu(restaurant)">VER MENÚ</button>
                         </td>
                         <td>
                             <button type="button" (click)="deleteRestaurant(restaurant._id)">
@@ -39,5 +39,6 @@
         </div>
     </div>
 
-    <app-modal-menu [idMenu]="selectedRestaurantId" [nameRestaurant]="selectedRestaurantName" [isVisible]="isModalVisible"></app-modal-menu>
+    <app-modal-menu [isVisible]="isModalVisible" [menu]="menu" [nameRestaurant]="selectedRestaurantName" [closeModal]="closeModal.bind(this)"></app-modal-menu>
+    <!-- [idMenu]="selectedRestaurantId"   -->
 </section>

@@ -21,7 +21,7 @@ export const routes: Routes = [
     {path:"registro", component: RegisterComponent, title: "Registro"},
     {path:"login", component:LoginComponent, title: "Log in"},
     {path:"recover", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
-    { path: 'cart', component: CartComponent },  // Ruta para el carrito
+    {path: 'cart', component: CartComponent },  // Ruta para el carrito
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador"},
     {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},

@@ -3,14 +3,14 @@
         <h1>PANEL DE CONTROL - ADMINISTRADORES</h1>
     </div>
     <div>
-
+        <div>
+            <button (click)="openModalAddAdmin()">AGREGAR ADMINISTRADOR</button>
+        </div>
         <div>
             <table>
                 <thead>
                     <th>NOMBRE</th>
-                    <th>DIRECCIÓN</th>
                     <th>CORREO ELECTRONICO</th>
-                    <th>TELEFONO</th>
                     <th>ACCIONES</th>
                 </thead>
                 <tbody>
@@ -18,17 +18,13 @@
                         <td>
                             <p>{{admin.nombre}}</p>
                         </td>
-                        <td>
-                            <p>{{admin.direccion}}</p>
-                        </td>
+
                         <td>
                             <p>{{admin.correoElectronico}}</p>
                         </td>
+
                         <td>
-                            <p>{{admin.telefono}}</p>
-                        </td>
-                        <td>
-                            <button type="button">
+                            <button type="button" (click)="openModelUpdateAdmin(admin)">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
@@ -36,5 +32,13 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div *ngIf="isAdding">
+        <app-modal-add-admin></app-modal-add-admin>
+    </div>
+
+    <div *ngIf="isUpdating">
+        <app-modal-update-admin></app-modal-update-admin>
     </div>
 </section>
