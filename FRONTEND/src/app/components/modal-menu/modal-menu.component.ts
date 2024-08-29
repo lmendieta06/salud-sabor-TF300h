@@ -1,7 +1,7 @@
 import { Component, Input , inject, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../../services/menu.service.js';
-import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-modal-menu',
   standalone: true,

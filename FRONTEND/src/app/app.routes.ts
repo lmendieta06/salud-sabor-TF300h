@@ -28,7 +28,7 @@ export const routes: Routes = [
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador", children:[
         {path:"panel-restaurantes", component:PanelRestaurantesComponent, title:"Restaurantes"},
-        {path:"panel-restaurantes/:idMenu", component:MenuRestauranteComponent, title:"Panel Menú"},
+        {path:"panel-restaurantes/:restauranteId", component:MenuRestauranteComponent, title:"Panel Menú"},
         {path:"administradores", component:PanelAdministradoresComponent, title:"Administradores"},
         {path:"usuarios", component:PanelUusariosComponent, title:"Usuarios"},
         {path:"dashboard", component:DashboardComponent, title:"Dashboard"}

@@ -2,11 +2,6 @@ import { adminModel } from "../models/admin.models.js";
 import bcrypt from 'bcryptjs';
 
 
-
-
-
-
-
 // petición POST para crear administradores
 export const postAdmin = async (request, response) => {
     try{
@@ -113,4 +108,19 @@ export const putAdminById = async (request, response) => {
             datos: error.message
         });
     };
+}
+
+export const deleteAdmin = async(req, res) =>{
+    try{
+        let adminToDelete = req.params.id;
+        let adminDeleted = await adminModel.findByIdAndDelete(adminToDelete);
+
+        if(!adminDeleted){
+            return res.status(404).son({message: "No se encontro el admin que estas buscando "})
+        }
+
+        return res.status(200).json({message:"Elemento eliminado satisfactoriamente"});
+    }catch(error){
+        return res.status(500).json({message:"Error del servidor" + error.message});
+    }
 }

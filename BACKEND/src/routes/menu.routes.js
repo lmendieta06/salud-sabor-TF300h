@@ -16,7 +16,7 @@ menuRouter.get('/categoria/:categoria', getMenuByCategory);
 menuRouter.post('/',auth("admin"), postMenu);
 
 // Ruta para actualizar un menu por ID
-menuRouter.put('/:_id',auth("admin"), updateMenuById);
+menuRouter.put('/:_id', updateMenuById);
 
 // Ruta para eliminar un menu por ID
 menuRouter.delete('/:_id',auth("admin"), deleteMenuById);

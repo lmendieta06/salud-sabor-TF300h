@@ -12,6 +12,7 @@ export class RestaurantService{
     httpClient = inject(HttpClient);
 
     API_URL_GET = "http://localhost:2000/restaurants/";
+    API_URL_GET_ID = "http://localhost:2000/restaurants/:_id";
     API_URL_GET_CATEGORY = "http://localhost:2000/restaurants/:categoria";
     API_URL_GET_CITY = "http://localhost:2000/restaurants/:ciudad";
     API_URL_POST = "http://localhost:2000/restaurants/";
@@ -28,6 +29,10 @@ export class RestaurantService{
 
     getRestaurantByCity(ciudad:string){
         return this.httpClient.get(`${this.API_URL_GET_CATEGORY}/${ciudad}`);
+    }
+
+    getRestaurantById(id:string){
+        return this.httpClient.get(`${this.API_URL_GET_ID.replace(":_id",id)}`);
     }
 
     postRestaurant(nombre:string, ciudad:string, correoElectronico:string, categoria:string, descripcion:string, direccion:string, menu:Object, logo:string){

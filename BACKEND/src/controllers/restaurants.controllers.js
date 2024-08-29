@@ -1,5 +1,6 @@
 // getRestaurants, getRestaurantsByCategory, getRestaurantsByCity, postRestaurant, putRestaurant, deleteRestaurant
 
+import { adminModel } from "../models/admin.models.js";
 import { restaurantModel } from "../models/restaurants.model.js";
 
 export const postRestaurant = async(req, res) =>{
@@ -44,6 +45,24 @@ export const getRestaurants = async(req, res) =>{
             message: "Hubo un error al hacer la peticion" + error.message
         })
     }
+}
+
+export const getRestaurantById = async(req, res)=>{
+    try{
+        let idRestaurant = req.params._id;
+        let restaurant = await restaurantModel.findById(idRestaurant);
+
+        if(!restaurant){
+            return res.status(200).json({message:"Restaurante no encontrado"});
+        }
+
+        return res.status(200).json(restaurant);
+    }catch(error){
+        return res.status(404).json({
+            message:"No se pudo realizar la peticion" + error.message
+        })
+    }
+
 }
 
 export const getRestaurantByCategory = async(req, res) =>{

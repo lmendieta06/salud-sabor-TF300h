@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { postAdmin, getAdmin, putAdminById } from "../controllers/admin.controllers.js";
+import { postAdmin, getAdmin, putAdminById, deleteAdmin } from "../controllers/admin.controllers.js";
 import auth from "../middlewares/auth.js";
 const adminRouter = Router();
 
@@ -9,5 +9,7 @@ adminRouter.get('/', getAdmin);
 adminRouter.post('/', auth("admin"), postAdmin);
 //ruta para actualizar administrador
 adminRouter.put('/:id',auth("admin"), putAdminById);
+// ruta para eliminar administrador
+adminRouter.delete("/:id", deleteAdmin);
 
 export default adminRouter; 
