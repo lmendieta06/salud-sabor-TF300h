@@ -2,6 +2,7 @@ import express from "express";
 
 import dotenv from "dotenv";
 //variables de entorno con DOTENV
+import bodyParser from 'body-parser';
 import cors from "cors"
 
 
@@ -21,6 +22,7 @@ import { fileURLToPath } from 'url'; // Importar fileURLToPath desde 'url'
 const app = express();
 
 dotenv.config(); //Nuestras variables de entorno
+app.use(bodyParser.json());
 app.use(cors({
     origin: 'http://localhost:4200',
     methods: 'GET,POST,PUT,DELETE',

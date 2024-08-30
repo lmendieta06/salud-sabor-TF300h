@@ -1,0 +1,47 @@
+<div class="profile-container" *ngIf="!loading; else loadingTemplate">
+  <h2>Perfil de Usuario</h2>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+  <div class="profile-header">
+    <div class="profile-image-container">
+      <img [src]="profileForm.get('imagenPerfil')?.value || 'assets/default-profile.png'" alt="Imagen de Perfil" />
+      <label for="file-upload" class="edit-icon">
+        <i class="bi bi-pencil"></i>
+        <input id="file-upload" type="file" (change)="onFileChange($event)" />
+      </label>
+    </div>
+  </div>
+  <form [formGroup]="profileForm" class="profile-form">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" formControlName="nombre" type="text" />
+    </div>
+
+    <div class="form-group">
+      <label for="correoElectronico">Correo Electrónico</label>
+      <input id="correoElectronico" formControlName="correoElectronico" type="email" />
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" formControlName="telefono" type="text" />
+    </div>
+
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input id="direccion" formControlName="direccion" type="text" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-save">Guardar Cambios</button>
+    </div>
+  </form>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-message">
+    <p>Cargando perfil...</p>
+  </div>
+</ng-template>

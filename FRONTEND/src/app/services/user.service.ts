@@ -28,15 +28,16 @@ private URL_USERS = "http://localhost:2000/users"
     return this.httpClient.get(`${this.URL_USERS}/${id}`);
   }
   // CREAR USUARIO
-  postUser(user: User){
-    return this.httpClient.post(this.URL_USERS,user);
+  postUser(userData: FormData): Observable<any> {
+    return this.httpClient.post(this.URL_USERS,userData);
   }
 
   // ACTUALIZAR USUARIO
   putUser(userUpdate:User, id:string){
     return this.httpClient.put(`${this.URL_USERS}/${id}`, userUpdate);
   }
-
-
-
+  getUserProfile(): Observable<User> {
+    return this.httpClient.get<User>(`${this.URL_USERS}/profile`);
+  }
 }
+

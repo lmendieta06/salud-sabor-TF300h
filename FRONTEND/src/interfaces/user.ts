@@ -9,7 +9,7 @@ export interface User {
     contrasena: string;
        
     
-    telefono: number;
+    telefono?: number;
         
     
     direccion: string;

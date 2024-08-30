@@ -116,3 +116,31 @@ export const getUserById = async (req, res) => {
     });
   }
 };
+
+
+export const getUserProfile = async (req, res) => {
+  try {
+    // Obtén el ID del usuario desde el token decodificado
+    const userId = req.user.id; // Accediendo al id desde req.user
+    console.log('ID del Usuario:', userId);
+
+    // Busca al usuario en la base de datos
+    const user = await userModel.findById(userId).select('-contrasena');  // Usa await aquí y excluye la contraseña
+
+    // Si el usuario no se encuentra, devuelve un error 404
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    // Si todo está bien, devuelve el perfil del usuario
+    res.json(user);
+  } catch (error) {
+    console.error('Error al obtener el perfil del usuario:', error); // Imprime el error completo en la consola
+
+    // Devuelve un error 500 con detalles del error
+    res.status(500).json({ 
+      message: 'Error al obtener el perfil del usuario',
+      error: error.message || error // Incluye el mensaje de error en la respuesta
+    });
+  }
+};

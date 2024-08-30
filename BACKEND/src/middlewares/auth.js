@@ -1,56 +1,29 @@
-import { verifyToken } from "../lib/jwt.js";
+import jwt from 'jsonwebtoken';
+import { secretKey } from '../lib/jwt.js';
 
-
-
-// manejo de roles
 const auth = (requiredRole) => {
-
-    return async (req, res, next) =>{
-
-        // validación de token
-        let token = req.headers['authorization'];
-        if(!token){
-            return res.status(401).json({
-                mensaje: 'No se encontró token'
-            })
-        } 
-        if (token) {
-            // Quitar la palabra 'Bearer'
-            if (token.startsWith('Bearer ')) {
-                token = token.slice(7, token.length); // Eliminar 'Bearer ' del inicio
-            }
-        } else {
-            return res.status(401).json({
-                mensaje: 'No se encontró token'
-            });
-        }
-
-        // Verificar si el token es válido
-        try {
-            // Decodificacion del token
-            const decoded = await verifyToken(token);
-            
-
-            // Validar el rol
-            if (requiredRole === 'admin' && !decoded.isAdmin) {
-                return res.status(403).json({
-                    mensaje: 'Acceso denegado, no tiene permisos de administrador'
-                });
-            }
-
-            // Adjuntar la información del usuario al request
-            req.user = decoded;
-            next(); // Continuar con la siguiente función de middleware
-
-        } catch (error) {
-            return res.status(401).json({
-                mensaje: 'Falló la autenticación con el token, token inválido',
-                error: error.message || error
-            });
-        }
+  return (req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    
+    if (!token) {
+      return res.status(401).json({ message: 'No se encontró token' });
     }
-}
 
+    try {
+      const decoded = jwt.verify(token, secretKey);
+      
 
+      // Validar el rol si se requiere
+      if (requiredRole && requiredRole !== decoded.role) {
+        return res.status(403).json({ message: 'Acceso denegado' });
+      }
+
+      req.user = decoded;
+      next(); // Continuar con la siguiente función de middleware
+    } catch (error) {
+      return res.status(401).json({ message: 'Token inválido', error: error.message });
+    }
+  };
+};
 
 export default auth;
