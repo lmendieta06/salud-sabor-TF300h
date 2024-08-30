@@ -6,7 +6,7 @@ const adminRouter = Router();
 //ruta para obtener los administradores
 adminRouter.get('/', getAdmin);
 // ruta para crear administrador
-adminRouter.post('/', auth("admin"), postAdmin);
+adminRouter.post('/', postAdmin);
 //ruta para actualizar administrador
 adminRouter.put('/:id',auth("admin"), putAdminById);
 // ruta para eliminar administrador

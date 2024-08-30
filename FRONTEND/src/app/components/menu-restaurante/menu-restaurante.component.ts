@@ -6,11 +6,14 @@ import { DishService } from '../../services/dish.service';
 import { CommonModule } from '@angular/common';
 import { ModalAddDishComponent } from '../modal-add-dish/modal-add-dish.component';
 import { ModalUpdateDishComponent } from '../modal-update-dish/modal-update-dish.component';
+import { ModalUpdateMenuDataComponent } from '../modal-update-menu-data/modal-update-menu-data.component';
+import { ModalUpdateRestaurantDataComponent } from '../modal-update-restaurant-data/modal-update-restaurant-data.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-menu-restaurante',
   standalone: true,
-  imports: [CommonModule, ModalAddDishComponent, ModalUpdateDishComponent],
+  imports: [CommonModule, ModalAddDishComponent, ModalUpdateRestaurantDataComponent, ModalUpdateMenuDataComponent, ModalUpdateDishComponent, RouterLink],
   templateUrl: './menu-restaurante.component.html',
   styleUrl: './menu-restaurante.component.css'
 })
@@ -19,6 +22,12 @@ export class MenuRestauranteComponent {
   menu: any = {};
   isAddingDish : boolean = false;
   isUpdatingDish : boolean = false;
+  isUpdatingRestaurant : boolean = false;
+  restaurantToUpdate : any[] = [];
+  restaurantUpdateId : string = "";
+  isUpdatingMenu : boolean = false;
+  menuToUpdate : any[] = [];
+  menuUpdateId : string = "";
   dishToUpdate : any [] = [];
   dishToUpdateId : string = "";
 
@@ -89,6 +98,18 @@ export class MenuRestauranteComponent {
     this.isUpdatingDish = true;
     this.dishToUpdate = dish;
     this.dishToUpdateId = dish._id;
+  }
+
+  updateRestaurant(restaurant : any){
+    this.isUpdatingRestaurant = true,
+    this.restaurantToUpdate = restaurant;
+    this.restaurantUpdateId = restaurant._id;
+  }
+
+  updateMenu(menu:any){
+    this.isUpdatingMenu = true;
+    this.menuToUpdate = menu;
+    this.menuUpdateId = menu._id;
   }
 }
 

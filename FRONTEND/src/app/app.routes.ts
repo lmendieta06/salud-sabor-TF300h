@@ -17,6 +17,7 @@ import { PanelRestaurantesComponent } from './components/panel-restaurantes/pane
 import { PanelUusariosComponent } from './components/panel-uusarios/panel-uusarios.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MenuRestauranteComponent } from './components/menu-restaurante/menu-restaurante.component';
+import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
 
 export const routes: Routes = [
     {path:"", component: HomeComponent, title: "Salud & Sabor"},
@@ -24,10 +25,11 @@ export const routes: Routes = [
     {path:"registro", component: RegisterComponent, title: "Registro"},
     {path:"login", component:LoginComponent, title: "Log in"},
     {path:"recover", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
-    {path: 'cart', component: CartComponent },  // Ruta para el carrito
+    {path: 'cart', component: CartComponent }, 
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador", children:[
         {path:"panel-restaurantes", component:PanelRestaurantesComponent, title:"Restaurantes"},
+        {path:"panel-restaurantes/formsAgregarRestaurante", component:AddRestaurantComponent, title:"Formulario - Crear Restaurante"},
         {path:"panel-restaurantes/:restauranteId", component:MenuRestauranteComponent, title:"Panel Menú"},
         {path:"administradores", component:PanelAdministradoresComponent, title:"Administradores"},
         {path:"usuarios", component:PanelUusariosComponent, title:"Usuarios"},

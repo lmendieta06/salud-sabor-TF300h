@@ -1,4 +1,9 @@
 <section>
+    <div>
+        <a routerLink="/administrador/panel-restaurantes">
+            <i class="bi bi-arrow-left-short"></i>
+        </a>
+    </div>
     <h1>{{restaurantRecibido.nombre}}</h1>
     <h2>Categoria restaurante: {{restaurantRecibido.categoria}}</h2>
     <h3>Categorias del menú: {{menu.category}}</h3>
@@ -27,10 +32,10 @@
 </section>
 <section>
     <div>
-        <button>EDITAR DATOS RESTAURANTE</button>
+        <button (click)="updateRestaurant(restaurantRecibido)">EDITAR DATOS RESTAURANTE</button>
     </div>
     <div>
-        <button>EDITAR DATOS MENÚ</button>
+        <button (click)="updateMenu(menu)">EDITAR DATOS MENÚ</button>
     </div>
     <div>
         <button (click)="addDishModal()">AGREGAR PLATO</button>
@@ -42,6 +47,14 @@
 
     <div *ngIf="isUpdatingDish">
         <app-modal-update-dish></app-modal-update-dish>
+    </div>
+
+    <div *ngIf="isUpdatingRestaurant">
+        <app-modal-update-restaurant-data></app-modal-update-restaurant-data>
+    </div>
+
+    <div *ngIf="isUpdatingMenu">
+        <app-modal-update-menu-data></app-modal-update-menu-data>
     </div>
 </section>
 

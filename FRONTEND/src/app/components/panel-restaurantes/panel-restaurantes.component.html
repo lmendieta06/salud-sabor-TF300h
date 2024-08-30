@@ -4,7 +4,7 @@
     </div>
     <div>
         <div>
-            <button>AGREGAR RESTAURANTE</button>
+            <button type="button" routerLink="/administrador/panel-restaurantes/formsAgregarRestaurante">AGREGAR RESTAURANTE</button>
         </div>
         <div>
             <table>
@@ -24,8 +24,6 @@
                         </td>
                         <td>
                             <button (click)="handleVerMenu(restaurant)" type="button">VER MENÚ</button>
-
-                            <!-- /administrador/panel-restaurantes/ -->
                         </td>
                         <td>
                             <button type="button" (click)="deleteRestaurant(restaurant._id)">

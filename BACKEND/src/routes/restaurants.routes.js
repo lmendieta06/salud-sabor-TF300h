@@ -9,5 +9,5 @@ restaurantRouter.get("/:_id", getRestaurantById)
 restaurantRouter.get("/category/:categoria", getRestaurantByCategory);
 restaurantRouter.get("/city/:ciudad", getRestaurantByCity);
 restaurantRouter.post("/",auth("admin"), postRestaurant);
-restaurantRouter.put("/:_id",auth("admin"), putRestaurant);
+restaurantRouter.put("/:_id", putRestaurant);
 restaurantRouter.delete("/:_id", auth("admin"),deleteRestaurant);
