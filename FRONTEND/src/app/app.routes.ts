@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { ClientComponent } from './pages/client/client.component';
+// import { ClientComponent } from './pages/client/client.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuRestaurantComponent } from './pages/menu-restaurant/menu-restaurant.component';
@@ -35,7 +35,7 @@ export const routes: Routes = [
         {path:"usuarios", component:PanelUusariosComponent, title:"Usuarios"},
         {path:"dashboard", component:DashboardComponent, title:"Dashboard"}
     ]},
-    {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
+    // {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
     {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
     {path:"sobreNosotros", component:AboutUsComponent, title:"Sobre Nosotros"},

@@ -1,17 +1,26 @@
-<header class="navigationAdmin">
+<header *ngIf="viewMenu === false" class="navigationAdminBurguer">
+    <button (click)="changeMenu()" class="hamburgerButton">
+        <i class="bi bi-list"></i>
+    </button>
+    <button (click)="logout()" class="hamburgerButton">
+        <i class="bi bi-door-open-fill"></i>
+    </button>
+</header>
+<header class="navigationAdmin" *ngIf="viewMenu === true">
+    <button (click)="changeMenu()" class="hamburgerButton">
+        <i class="bi bi-list"></i>
+    </button>
     <div class="imgAdmin">
-        <div>
-            <img src="./assets/admin/perfilAdminPrueba.jpg" alt="perfilAdministrador">
-        </div>
+            <img src="./assets/admin/logo.jpg" alt="perfilAdministrador">
     </div>
     <div class="nombreAdmin">
-        <p>Bienvenid&#64; nombre</p>
+        <p>¡Bienvenid&#64;!</p>
     </div>
     <div class="buttonNavigation">
         <nav>
             <ul class="buttonsContainer">
                 <li>
-                    <a routerLink="/administrador/panel-restaurantes">
+                    <a routerLink="/administrador/panel-restaurantes" (click)="changeRoute()">
                         <button>
                             <i class="bi bi-building"></i>
                             Restaurantes
@@ -19,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/administrador/usuarios">
+                    <a routerLink="/administrador/usuarios" (click)="changeRoute()">
                         <button>
                             <i class="bi bi-people-fill"></i>
                             Usuarios
@@ -27,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/administrador/dashboard">
+                    <a routerLink="/administrador/dashboard" (click)="changeRoute()">
                         <button>
                             <i class="bi bi-bar-chart"></i>
                             Dashboard
@@ -35,7 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/administrador/administradores">
+                    <a routerLink="/administrador/administradores" (click)="changeRoute()">
                         <button>
                             <i class="bi bi-person-vcard"></i>
                             Administradores
@@ -43,7 +52,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/logout">
+                    <a (click)="logout()">
                         <button>
                             <i class="bi bi-door-open-fill"></i>
                             Cerrar sesión
@@ -56,5 +65,10 @@
     </div>
 </header>
 <main>
+    <section *ngIf="isInRouter===false">
+        <img src="./assets/admin/hiAdmin.png" alt="hiAdminPhoto">
+        <h1>BIENVENIDO ADMINISTRADOR</h1>
+        <h2>¿QUÉ DESEAS REALIZAR HOY?</h2>
+    </section>
     <router-outlet/>
 </main>
