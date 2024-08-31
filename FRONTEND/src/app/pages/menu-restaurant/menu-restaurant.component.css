@@ -23,7 +23,11 @@ header {
     height: 150px;
     margin-bottom: 0;
 }
-
+main {
+    flex: 1;
+    padding-bottom: 40px; /* Ajusta el padding según tu diseño */
+    min-height: 100vh;
+  }
 
 /* Barra de logo y opciones de usuario */
 .barraLogo {
@@ -347,25 +351,38 @@ overflow: visible;
     }
 
 
-.card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+    .card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px; /* Añadido padding interno a la tarjeta */
+        margin: 10px; /* Añadido margen externo a la tarjeta */
+    }
+    
+    .card-body {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px; /* Padding interno de la tarjeta */
+    }
  
   .card-img-top {
     width: 100%;
     height: 200px;
     object-fit: cover; 
   }
-  
-  .card-body {
-    flex: 1 0 auto; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
+  .titulosDeSeccion {
+    font-family: var(--tipografiaTitulos);
+    font-size: 2rem; /* Tamaño del texto */
+    color: var(--colorContraste); /* Color del texto */
+    margin-top: 40px; /* Espacio superior */
+    margin-bottom: 20px; /* Espacio inferior */
+    padding-bottom: 10px; /* Espacio inferior dentro del título */
+    border-bottom: 2px solid var(--colorContraste); /* Línea inferior */
+    text-align: center; /* Centramos el texto */
+}
+
  
   .miContenedor1 {
     margin-top: 20px;
@@ -375,4 +392,9 @@ overflow: visible;
   .btn {
     width: 100%; 
   }
+
+.miContenedor2 {
+    margin-top: 20px;
+    padding: 0 10px; /* Padding en los laterales de la sección */
+}
 

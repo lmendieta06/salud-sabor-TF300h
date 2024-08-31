@@ -58,10 +58,16 @@ export const getUsers = async (req, res) => {
 };
 
 // Actualizar usuario
+// Actualizar usuario
 export const putUser = async (req, res) => {
   try {
     let idUpdate = req.params._id;
     const dataForUpdate = req.body;
+    const file = req.file;
+
+    if (file) {
+      dataForUpdate.imagenPerfil = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`; // Actualiza la URL de la imagen
+    }
 
     let userUpdate = await userModel.findByIdAndUpdate(idUpdate, dataForUpdate, { new: true });
 

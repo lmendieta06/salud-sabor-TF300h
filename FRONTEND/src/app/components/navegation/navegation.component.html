@@ -26,9 +26,13 @@
         <span class="userText">Mi cuenta <i class="bi bi-chevron-down"></i></span>
         <ul class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
           <li class="dropdown-item" *ngIf="isLoggedIn"><a routerLink="/profile"><i class="bi bi-person"></i> Mi Perfil</a></li>
-          <li class="dropdown-item"*ngIf="isLoggedIn"><a routerLink="/orders"><i class="bi bi-box"></i> Mis pedidos</a></li>
+          <li class="dropdown-item"*ngIf="isLoggedIn"><a routerLink="/pedidos"><i class="bi bi-box"></i> Mis pedidos</a></li>
           <!-- Mostrar opción de "Cerrar sesión" si el usuario está logueado -->
-          <li class="dropdown-item" *ngIf="isLoggedIn"><a (click)="logout()"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+          <li class="dropdown-item" *ngIf="isLoggedIn">
+            <a (click)="logout()" style="cursor: pointer;">
+              <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+            </a>
+          </li>
           <!-- Ocultar opciones de "Iniciar sesión" y "Regístrate" si el usuario está logueado -->
           <li class="dropdown-item" *ngIf="!isLoggedIn"><a routerLink="/login"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a></li>
           <li class="dropdown-item" *ngIf="!isLoggedIn"><a routerLink="/registro"><i class="bi bi-person-add"></i> Regístrate</a></li>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavegationComponent } from '../../components/navegation/navegation.component';
 import { FooterComponent } from '../../components/footer/footer.component';
@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
   registroForm: FormGroup;
   selectedFile?: File; // Propiedad para manejar el archivo seleccionado
+  @ViewChild('fileInput') fileInput?: ElementRef; // Referencia al input de archivo
 
   constructor(private fb: FormBuilder, private userService: UserService) {
     // Inicialización de formulario con FormBuilder
@@ -61,6 +62,14 @@ export class RegisterComponent implements OnInit {
             text: 'Usuario registrado con éxito',
             icon: 'success',
             confirmButtonText: 'OK'
+          }).then(() => {
+            // Limpiar el formulario después de mostrar el mensaje de éxito
+            this.registroForm.reset();
+            this.selectedFile = undefined; // Opcional: Limpiar el archivo seleccionado
+             // Limpiar el input de archivo en el DOM
+             if (this.fileInput) {
+              this.fileInput.nativeElement.value = '';
+            }
           });
         },
         error: (error) => {

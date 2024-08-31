@@ -9,6 +9,7 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NoEncontradoComponent } from './pages/no-encontrado/no-encontrado.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
@@ -23,11 +24,11 @@ export const routes: Routes = [
     {path:"recover", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
     {path: 'cart', component: CartComponent },  // Ruta para el carrito
     { path: 'profile', component: ProfileComponent,title:"Mi Perfil" },
+    {path:"pedidos", component:PedidosComponent, title:"Mis pedidos"},
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador"},
  
     {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
-    {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
     {path:"sobreNosotros", component:AboutUsComponent, title:"Sobre Nosotros"},
     {path:"**", component:NoEncontradoComponent, title:"Salud & Sabor - ERROR"}
     

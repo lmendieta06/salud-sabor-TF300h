@@ -1,0 +1,56 @@
+.mis-pedidos {
+    padding: 20px;
+    background-color: var(--colorFondo);
+    font-family: var(--tipografiaTexto);
+  }
+  
+  /* Estilo del título de la sección */
+  .mis-pedidos h2 {
+    font-family: var(--tipografiaTitulos);
+    font-size: 24px;
+    color: var(--colorContraste);
+    border-bottom: 2px solid var(--colorContraste);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo general de la tabla */
+  .table {
+    font-size: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--colorFondo);
+    color: #333;
+  }
+  
+  /* Estilo para las cabeceras de la tabla */
+  .table thead th {
+    background-color: var(--colorContraste);
+    color: white;
+    text-align: center;
+    font-family: var(--tipografiaTitulos);
+    padding: 12px;
+  }
+  
+  /* Estilo para el cuerpo de la tabla */
+  .table tbody td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Estilo para las filas alternas de la tabla */
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: salmon;
+  }
+  
+  /* Estilo para las celdas con borde */
+  .table-bordered {
+    border: 1px solid salmon;
+  }
+  
+  /* Estilo para las filas con borde */
+  .table-bordered td, .table-bordered th {
+    border: 1px solid salmon;
+  }

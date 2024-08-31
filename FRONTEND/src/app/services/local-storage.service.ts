@@ -22,7 +22,7 @@ export class StorageService {
     if (this.isBrowser) {
       const value = localStorage.getItem(key);
       try {
-        return value ? JSON.parse(value) : null; // Esto funciona para JSON. No hay problema si el valor es una cadena.
+        return value ? JSON.parse(value) : null; // Esto funciona para JSON.
       } catch (e) {
         return value; // Si no se puede parsear, devolvemos la cadena original.
       }

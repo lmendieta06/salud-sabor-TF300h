@@ -46,7 +46,6 @@ export class NavegationComponent implements OnInit, OnDestroy, AfterViewInit {
 
     // Inicializar la información del usuario
     this.isLoggedIn = this.loginService.isLogged();
-    console.log('Estado de autenticación al cargar el componente:', this.isLoggedIn);
    
     this.updateUserInfo();
 

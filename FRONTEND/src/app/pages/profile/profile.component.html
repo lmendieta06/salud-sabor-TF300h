@@ -1,9 +1,12 @@
+<app-navegation></app-navegation>
+
 <div class="profile-container" *ngIf="!loading; else loadingTemplate">
   <h2>Perfil de Usuario</h2>
 
   <div *ngIf="error" class="error-message">
     <p>{{ error }}</p>
   </div>
+
   <div class="profile-header">
     <div class="profile-image-container">
       <img [src]="profileForm.get('imagenPerfil')?.value || 'assets/default-profile.png'" alt="Imagen de Perfil" />
@@ -13,7 +16,8 @@
       </label>
     </div>
   </div>
-  <form [formGroup]="profileForm" class="profile-form">
+
+  <form [formGroup]="profileForm" class="profile-form" (ngSubmit)="updateProfile()">
     <div class="form-group">
       <label for="nombre">Nombre</label>
       <input id="nombre" formControlName="nombre" type="text" />
@@ -45,3 +49,5 @@
     <p>Cargando perfil...</p>
   </div>
 </ng-template>
+
+<app-footer></app-footer>

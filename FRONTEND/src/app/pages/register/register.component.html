@@ -10,7 +10,7 @@
             <div class="containerEncabezado">
                 <div class="encabezado">
                     <div class="imgEncabezado">
-                        <img src="assets/login/LOGO SALUD Y SABOR.png" alt="logo">
+                        <img src="assets/logoSinFondo.png" alt="logo">
                     </div>
                     <h2>CREAR CUENTA</h2>
                 </div>
@@ -30,7 +30,10 @@
                     <input class="controles" type="password" placeholder="Contraseña" formControlName="contrasena" required>
                     <input class="controles" type="tel" placeholder="Teléfono" formControlName="telefono" required>
                     <input class="controles" type="text" placeholder="Dirección actual" formControlName="direccion" required>
-                   <input class="controles" type="file" (change)="onFileChange($event)">
+                    <div class="file-upload-container">
+                        <input class="controles fileChange" placeholder="Imagen de perfil" type="file" (change)="onFileChange($event)" #fileInput>
+                        <span class="tooltip-text">Selecciona una imagen para tu perfil</span>
+                      </div>
                     <input class="botonEnviarRegistro" type="submit" value="CREAR CUENTA">
                 </form>
             </div>

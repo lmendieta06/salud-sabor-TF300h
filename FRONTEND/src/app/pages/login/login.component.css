@@ -50,10 +50,11 @@ main {
     font-size: 24px;
     color: var(--colorContraste);
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .input-control {

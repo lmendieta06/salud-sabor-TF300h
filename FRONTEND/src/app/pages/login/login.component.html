@@ -7,9 +7,19 @@
         <form [formGroup]="credentialForm" (ngSubmit)="handleSubmint()">
             <div class="form-group">
                 <input class="input-control" type="email" placeholder="Email" formControlName="email">
+                <!-- Mensaje de error para el email -->
+                <div *ngIf="emailControl?.invalid && emailControl?.touched" class="error-message">
+                    <span *ngIf="emailControl?.errors?.['required']">El email es obligatorio.</span>
+                    <span *ngIf="emailControl?.errors?.['email']">Ingresa un email válido.</span>
+                </div>
             </div>
             <div class="form-group">
                 <input class="input-control" type="password" placeholder="Contraseña" formControlName="password">
+                <!-- Mensaje de error para la contraseña -->
+                <div *ngIf="passwordControl?.invalid && passwordControl?.touched" class="error-message">
+                    <span *ngIf="passwordControl?.errors?.['required']">La contraseña es obligatoria.</span>
+                    <span *ngIf="passwordControl?.errors?.['minlength']">La contraseña debe tener al menos 4 caracteres.</span>
+                </div>
             </div>
             <a class="login-link" routerLink="/recover">¿Olvidaste tu contraseña?</a>
             <input class="login-button" type="submit" value="Entrar" [disabled]="isSubmitting || credentialForm.invalid">

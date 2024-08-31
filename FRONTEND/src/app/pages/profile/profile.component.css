@@ -1,23 +1,31 @@
+/* Estilo para el contenedor del perfil */
 .profile-container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 60px auto; /* Agrega espacio arriba y abajo del contenedor */
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: var(--colorFondo);
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Opcional: limita la altura del contenedor si es necesario */
+min-height: 100vh;
+ 
 }
 
+/* Estilo del título del perfil */
 .profile-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--colorContraste);
+  font-family: var(--tipografiaTitulos);
 }
 
+/* Estilo del encabezado del perfil */
 .profile-header {
   text-align: center;
   margin-bottom: 20px;
 }
 
+/* Estilo para el contenedor de la imagen del perfil */
 .profile-image-container {
   position: relative;
   width: 150px;
@@ -25,53 +33,60 @@
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
-  border: solid black;
+  border: 3px solid var(--colorContraste);
 }
 
+/* Estilo para la imagen del perfil */
 .profile-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+  object-fit: cover;
 }
 
+/* Estilo del icono de edición */
 .edit-icon {
   position: absolute;
-  bottom: 10px; /* Ajusta el margen desde la parte inferior */
-  right: 10px; /* Ajusta el margen desde el lado derecho */
-  background: rgb(0, 0, 0);
+  bottom: 10px;
+  right: 10px;
+  background: var(--colorContraste);
   color: #fff;
   border-radius: 50%;
-  padding: 8px; /* Aumenta el padding para hacer el área de clic más grande */
+  padding: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* Ajusta el ancho del contenedor del ícono */
-  height: 40px; /* Ajusta la altura del contenedor del ícono */
-  z-index: 10; /* Asegúrate de que el ícono esté por encima de la imagen */
+  width: 40px;
+  height: 40px;
+  z-index: 10;
 }
 
+/* Tamaño del icono de edición */
 .edit-icon i {
-  font-size: 20px; /* Tamaño del ícono */
+  font-size: 20px;
   color: white;
 }
 
-
+/* Ocultar el input de archivo */
 #file-upload {
   display: none;
 }
 
+/* Estilo para los grupos de formularios */
 .profile-form .form-group {
   margin-bottom: 15px;
 }
 
+/* Estilo para las etiquetas del formulario */
 .profile-form label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #555;
+  color: var(--colorContraste);
+  font-family: var(--tipografiaTitulos);
 }
 
+/* Estilo para los campos de entrada del formulario */
 .profile-form input {
   width: 100%;
   padding: 10px;
@@ -81,6 +96,7 @@
   box-sizing: border-box;
 }
 
+/* Estilo para los botones del formulario */
 .profile-form .form-actions {
   text-align: center;
   margin-top: 20px;
@@ -88,26 +104,31 @@
 
 .profile-form .btn-save {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--colorContraste);
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-family: var(--tipografiaTitulos);
 }
 
 .profile-form .btn-save:hover {
-  background-color: #0056b3;
+  background-color: var(--colorContraste2);
 }
 
+/* Estilo para los mensajes de error */
 .error-message {
   color: #ff0000;
   text-align: center;
   margin-bottom: 20px;
+  font-family: var(--tipografiaTexto);
 }
 
+/* Estilo para el mensaje de carga */
 .loading-message {
   text-align: center;
   color: #777;
   font-size: 18px;
+  font-family: var(--tipografiaTexto);
 }

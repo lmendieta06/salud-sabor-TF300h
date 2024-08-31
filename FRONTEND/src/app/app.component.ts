@@ -6,8 +6,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CartComponent } from './components/cart/cart.component';
 import AOS from 'aos';
-import { ProfileService } from './services/profile.service';
-import { StorageService } from './services/local-storage.service'; // Importa el servicio de almacenamiento
+
+import { StorageService } from './services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +21,7 @@ export class AppComponent implements AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-  
-    private storageService: StorageService, // Usa el servicio de almacenamiento
+    private storageService: StorageService, 
     private router: Router
   ) {}
 
@@ -41,19 +40,28 @@ export class AppComponent implements AfterViewInit {
         window.scrollTo(0, 0);
       });
 
-      const token = this.storageService.load('token'); // Usa el servicio para acceder a localStorage
+      const token = this.storageService.load('token');
       if (token) {
         console.log('Token encontrado:', token);
       } else {
         console.log('No hay token disponible.');
       }
-    } else {
-      this.error = 'localStorage no está disponible en el servidor.';
-      console.error(this.error);
+    
     }
   }
 
   loadUserProfile(): void {
-    // Implementa la lógica para cargar el perfil del usuario si es necesario
+    const userProfile = this.storageService.load('userProfile'); // Cargar perfil del usuario desde localStorage
+    if (userProfile) {
+      try {
+        const userData = JSON.parse(userProfile);
+        // Aquí puedes manejar la imagen de perfil u otros datos del usuario
+        console.log('Imagen de perfil:', userData.imagenPerfil);
+      } catch (e) {
+        console.error('Error al parsear userProfile:', e);
+      }
+    } else {
+      console.log('No se encontró perfil de usuario en localStorage.');
+    }
   }
 }

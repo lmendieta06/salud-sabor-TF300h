@@ -9,10 +9,12 @@ import { Category } from '../../../types/category.types';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
+
 @Component({
   selector: 'app-menu-restaurant',
   standalone: true,
-  imports: [RouterLink, FooterComponent, CartComponent, CommonModule ],
+  imports: [RouterLink, FooterComponent, CartComponent, CommonModule],
   templateUrl: './menu-restaurant.component.html',
   styleUrls: ['./menu-restaurant.component.css']
 })
@@ -27,26 +29,29 @@ export class MenuRestaurantComponent implements OnInit {
   constructor(public cartService: CartService, private dishService: DishService) {}
 
   ngOnInit(): void {
+    
     this.loadDishes();
     this.cartService.itemsInCart$.subscribe(items => {
       this.itemsInCart = items;
     });
   }
+
   loadDishes(): void {
     this.dishService.getDishes().subscribe(
       response => {
-        console.log('Response from server:', response); // Verifica la respuesta
         this.dishes = response.dishes;
         this.filterDishesByCategory();
+        
       },
       error => {
         console.error('Error loading dishes', error);
+        
       }
     );
   }
+
   filterDishesByCategory(): void {
     this.filteredDishes = this.dishes.reduce((acc, dish) => {
-      // Asegurarse de que la categoría es válida
       if (isCategory(dish.categoriaMenu)) {
         const category = dish.categoriaMenu as Category;
         if (!acc[category]) {
@@ -60,13 +65,10 @@ export class MenuRestaurantComponent implements OnInit {
     }, {} as { [key in Category]?: Dish[] });
   }
 
-
-
   addDishToCart(dish: Dish) {
     this.cartService.addToCart(dish);
   }
 
-  // Listeners para manejar el menú desplegable
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
@@ -87,7 +89,7 @@ export class MenuRestaurantComponent implements OnInit {
     this.hideTimeout = setTimeout(() => {
       this.isDropdownVisible = false;
       console.log('Dropdown visible:', this.isDropdownVisible);
-    }, 500);
+    }, 800);
   }
 
   hideDropdown() {
@@ -96,7 +98,7 @@ export class MenuRestaurantComponent implements OnInit {
   }
 }
 
-// Función  verificar categorías
+// Función para verificar categorías
 function isCategory(value: any): value is Category {
   return [
     'entradas',
