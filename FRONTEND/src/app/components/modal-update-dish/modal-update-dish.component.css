@@ -1,0 +1,112 @@
+.addProduct{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: rgba(128, 128, 128, 0.368);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Para poder interactuar con la pagina */
+    transition: opacity .6s;
+}
+
+.container{
+    background-color: white;
+    border-radius: 20px;
+    width: 60%;
+    height: 80%;
+}
+
+.containerForms{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10pxs;
+}
+
+.cerrarModal{
+    width: 90%;
+    top: 0;
+    text-decoration: none;
+    text-align: left;
+    height: auto;
+}
+
+.regresarBtn{
+    border: none;
+    background-color: var(--colorContraste2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+}
+
+.containerForms i{
+    color: white;
+    font-size: 40px;
+}
+
+.containerForms h3{
+    width: 90%;
+    text-align: center;
+    font-family: var(--tipografiaTitulos);
+    color: var(--colorContraste);
+    font-size: 50px;
+    overflow-y:hidden;
+    margin-bottom: 20px;
+}
+
+.containerForms form{
+    width: 90%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--tipografiaTextos);
+}
+
+.containerForms div{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-align: left;
+
+}
+
+.containerForms input{
+    color: var(--colorTextos);
+    width: 90%;
+    border: none;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.525);
+}
+
+.enviarForms{
+    width: 45%;
+    height: 40px;
+    background-color: var(--colorContraste2);
+    margin-top: 20px;
+    border: none;
+    font-family: var(--tipografiaTextos);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    overflow-y: hidden;
+
+}

@@ -1,0 +1,84 @@
+<section>
+    <div>
+        <button routerLink="/administrador/panel-restaurantes">
+            <i class="bi bi-arrow-left-short"></i>
+        </button>
+    </div>
+    <h2>INFORMACIÓN RESTAURANTE</h2>
+    <div>
+        <div>
+            <div>
+                <label for="nombreRestaurant">Nombre restaurante</label>
+                <input type="text" [(ngModel)]="nombreRestaurant">
+            </div>
+            <div>
+                <label for="">Ciudad</label>
+                <input type="text" [(ngModel)]="ciudad">
+            </div>
+            <div>
+                <label for="">Correo electronico</label>
+                <input type="text" [(ngModel)]="correoElectronico">
+            </div>
+            <div>
+                <label for="">Categoria restaurante</label>
+                <input type="text" [(ngModel)]="categoriaRestaurant">
+            </div>
+            <div>
+                <label for="">Descripción</label>
+                <input type="text" [(ngModel)]="descripcion">
+            </div>
+            <div>
+                <label for="">Dirección</label>
+                <input type="text" [(ngModel)]="direccion">
+            </div>
+            <div>
+                <label for="">Categorias del menú</label>
+                <input type="text" [(ngModel)]="categoriaMenu">
+            </div>
+            <div>
+                <label for="">Logo restaurante</label>
+                <input type="text" [(ngModel)]="imgLogo">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary mb-3 enviarForms" [disabled]="isDishes === false" (click)="addRestaurant()" routerLink="/administrador/panel-restaurantes">CREAR RESTAURANTE</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div *ngIf="isDishes === false">
+        <h3>AQUI SE MOSTRARAN LOS PLATOS QUE AGREGUES</h3>
+        <div>        
+            <button (click)="addingDishes()">CREAR PLATILLOS</button>
+        </div>
+    </div>
+    <article *ngIf="isDishes === true">
+        <h2>PLATOS CREADOS</h2>
+        <article *ngFor="let dish of dishesMenu">
+            <div>
+                <img src="{{dish.imagenPlato}}" alt="">
+            </div>
+            <div>
+                <h2>{{dish.nombrePlato}}</h2>
+                <h3>Categoria: {{dish.categoria}}</h3>
+                <h3>Descripción: {{dish.descripcionPlato}}</h3>
+                <h3>Precio : {{dish.precioPlato}}</h3>
+            </div>
+            <div>
+                <button (click)="deleteDish(dish._id)">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+        </article>
+        <div>        
+            <button (click)="addingDishes()">CREAR PLATILLOS</button>
+        </div>
+    </article>
+
+
+    <div *ngIf="isAddingDishes">
+        <app-modal-dishes-table></app-modal-dishes-table>
+    </div>
+
+
+</section>

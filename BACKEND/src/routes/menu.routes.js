@@ -13,10 +13,10 @@ menuRouter.get('/:_id', getMenuById);
 menuRouter.get('/categoria/:categoria', getMenuByCategory);
 
 // Ruta para crear un nuevo menu
-menuRouter.post('/',auth("admin"), postMenu);
+menuRouter.post('/', postMenu);
 
 // Ruta para actualizar un menu por ID
-menuRouter.put('/:_id',auth("admin"), updateMenuById);
+menuRouter.put('/:_id', updateMenuById);
 
 // Ruta para eliminar un menu por ID
 menuRouter.delete('/:_id',auth("admin"), deleteMenuById);

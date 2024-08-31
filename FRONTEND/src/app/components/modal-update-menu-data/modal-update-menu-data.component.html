@@ -1,0 +1,25 @@
+<section class="addProduct">
+    <div class="container">
+        <div class="containerForms">
+            <article class="cerrarModal">
+                <button class="regresarBtn" (click)="closeModal()"><i class="bi bi-x-lg"></i></button>
+            </article>
+            <h3 class="text-center">ACTUALIZANDO MENÚ</h3>
+            <div class="mb-3">
+                <input type="text" class="form-control"  name="nombre"
+                placeholder="Ingrese el titulo del menú"  [(ngModel)]="title"/>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese una logo del restaurante relacionado"  name="imagen" [(ngModel)]="imgLogo" />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese categorias relacionadas"  name="precioBase" [(ngModel)]="category"/>
+            </div>
+    
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="updateMenu()">CONFIRMAR</button>
+            </div>
+    
+        </div>
+    </div>
+</section>
