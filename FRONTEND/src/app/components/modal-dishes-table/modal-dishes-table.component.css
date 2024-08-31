@@ -1,0 +1,34 @@
+.addProduct{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: rgba(128, 128, 128, 0.368);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Para poder interactuar con la pagina */
+    transition: opacity .6s;
+}
+
+.container{
+    background-color: white;
+    border-radius: 20px;
+    width: 80%;
+    height: 90%;
+    overflow-y: scroll;
+}
+
+.containerForms{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10pxs;
+}
