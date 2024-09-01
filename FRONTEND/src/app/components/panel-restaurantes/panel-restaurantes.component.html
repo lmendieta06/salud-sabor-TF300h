@@ -1,12 +1,12 @@
 <section>
-    <div>
+    <div class="restaurantTexto">
         <h1>RESTAURANTES</h1>
     </div>
-    <div>
-        <div>
+    <div class="containerTabla">
+        <div class="containerBtns">
             <button type="button" routerLink="/administrador/panel-restaurantes/formsAgregarRestaurante">AGREGAR RESTAURANTE</button>
         </div>
-        <div>
+        <div class="tablaRestaurantes">
             <table>
                 <thead>
                     <th>NOMBRE</th>
@@ -15,21 +15,21 @@
                     <th>ACCIONES</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let restaurant of allRestaurants">
-                        <td>
+                    <tr *ngFor="let restaurant of allRestaurants" class="restaurants">
+                        <td class="tdContenido">
                             <p>{{restaurant.nombre}}</p>
                         </td>
-                        <td>
+                        <td class="tdContenido">
                             <p>{{restaurant.direccion}}</p>
                         </td>
-                        <td>
-                            <button (click)="handleVerMenu(restaurant)" type="button">VER MENÚ</button>
+                        <td class="tdContenido actionMenu">
+                            <button (click)="handleVerMenu(restaurant)" type="button" class="menuButton">VER MENÚ</button>
                         </td>
-                        <td>
-                            <button type="button" (click)="deleteRestaurant(restaurant._id)">
+                        <td class="tdContenido actions ">
+                            <button type="button" (click)="deleteRestaurant(restaurant._id)" class="eliminarButton">
                                 <i class="bi bi-trash3" ></i>
                             </button>
-                            <button type="button" [routerLink]="['/administrador/panel-restaurantes/', restaurant._id]">
+                            <button type="button" [routerLink]="['/administrador/panel-restaurantes/', restaurant._id]" class="updateButton">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>

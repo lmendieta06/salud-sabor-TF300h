@@ -1,12 +1,12 @@
 <section>
-    <div>
-        <h1>PANEL DE CONTROL - ADMINISTRADORES</h1>
+    <div class="adminTexto">
+        <h1>ADMINISTRADORES</h1>
     </div>
-    <div>
-        <div>
+    <div class="containerTabla">
+        <div class="containerBtns">
             <button (click)="openModalAddAdmin()">AGREGAR ADMINISTRADOR</button>
         </div>
-        <div>
+        <div class="tablaAdmins">
             <table>
                 <thead>
                     <th>NOMBRE</th>
@@ -14,20 +14,20 @@
                     <th>ACCIONES</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let admin of Admins">
-                        <td>
+                    <tr *ngFor="let admin of Admins" class="admins">
+                        <td class="tdContenido">
                             <p>{{admin.nombre}}</p>
                         </td>
 
-                        <td>
+                        <td class="tdContenido">
                             <p>{{admin.correoElectronico}}</p>
                         </td>
 
-                        <td>
-                            <button type="button" (click)="openModelUpdateAdmin(admin)">
+                        <td class="actions tdContenido" >
+                            <button type="button" (click)="openModelUpdateAdmin(admin)" class="updateButton"> 
                                 <i class="bi bi-pencil-square"></i>
                             </button>
-                            <button type="button" (click)="deleteAdmin(admin._id)">
+                            <button type="button" (click)="deleteAdmin(admin._id)" class="eliminarButton">
                                 <i class="bi bi-trash3" ></i>
                             </button>
                         </td>

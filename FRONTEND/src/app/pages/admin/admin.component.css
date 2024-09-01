@@ -25,6 +25,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
+
 }
 /* Menú hamburguesa */
 .hamburgerButton{
@@ -124,4 +126,77 @@ main{
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+/* SECTION */
+
+.welcomePage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.imgWelcome{
+    width: 30%;
+    height: 45%;
+}
+
+.imgWelcome img{
+    width: 100%;
+    height: 100%;
+}
+
+.welcomePage h1{
+    text-align: center;
+    font-family: var(--tipografiaTexto);
+    font-weight: 700;
+    color: var(--colorContraste);
+}
+
+.welcomePage h2{
+    font-family: var(--tipografiaTitulos);
+    font-weight: 600;
+    color: var(--colorContraste2);
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width:980px){
+    .imgWelcome{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:940px){
+    .navigationAdmin{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width:610px){
+    .navigationAdmin{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:490px){
+    
+    .imgWelcome{
+        width: 70%;
+    }
+
+    main{
+        overflow-x: scroll;
+    }
+}
+
+@media screen and (max-width:460px){
+    .navigationAdmin{
+        width: 60%;
+    }
+}
+
 

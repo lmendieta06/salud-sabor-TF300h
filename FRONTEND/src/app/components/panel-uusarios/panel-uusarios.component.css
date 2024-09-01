@@ -1,0 +1,114 @@
+section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    align-items: center;
+}
+
+
+.containerTabla{
+    overflow-y: visible;
+    width: 90%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TITULO */
+
+.userTexto{
+    width: 90%;
+    text-align: center;
+}
+
+.userTexto h1{
+    color: var(--colorContraste);
+    font-family: var(--tipografiaTitulos);
+    font-size: 50px;
+    overflow-y: hidden;
+}
+
+/* TABLA */
+
+.containerTabla table{
+    width: 100%;
+    /* HACER QUE LOS BORDES DE CADA ELEMENTO SE COMBINEN CON LAS DEL LADO Y ASI SE MUESTRE SOLO UN BORDE */
+    border-collapse: collapse;
+    border-bottom: 100px;
+}
+
+.containerTabla div{
+    width: 100%;
+}
+
+.tablaUsers{
+    border-bottom: 100px;
+    padding-bottom: 100px;
+}
+
+.users{
+    height: 40px;
+}
+
+.td{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+th, td {
+    border: 1px solid #dddddda5;
+    padding: 8px;
+    text-align: left;
+    font-family: var(--tipografiaTexto);
+}
+
+th {
+    background-color: var(--colorContraste2);
+    color: white;
+    text-align: center;
+
+}
+
+.tdContenido{
+    text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width:490px){
+    .userTexto h1{
+        font-size: 40px;
+        text-align: center;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width:490px){
+
+    .userTexto{
+        margin-left: 20%;
+        width: auto;
+        text-align: center;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    .userTexto h1{
+        font-size: 30px;
+        text-align: center;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    .containerTabla{
+        overflow-x: visible;
+        width: 80%;
+    }
+}

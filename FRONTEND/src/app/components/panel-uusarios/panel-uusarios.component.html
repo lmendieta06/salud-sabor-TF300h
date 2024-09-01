@@ -1,10 +1,10 @@
 <section>
-    <div>
+    <div class="userTexto">
         <h1>USUARIOS REGISTRADOS</h1>
     </div>
-    <div>
+    <div class="containerTabla">
 
-        <div>
+        <div class="tablaUsers">
             <table>
                 <thead>
                     <th>NOMBRE</th>
@@ -13,17 +13,17 @@
                     <th>TELEFONO</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of allUsers">
-                        <td>
+                    <tr *ngFor="let user of allUsers" class="users">
+                        <td class="tdContenido">
                             <p>{{user.nombre}}</p>
                         </td>
-                        <td>
+                        <td class="tdContenido">
                             <p>{{user.direccion}}</p>
                         </td>
-                        <td>
+                        <td class="tdContenido">
                             <p>{{user.correoElectronico}}</p>
                         </td>
-                        <td>
+                        <td class="tdContenido">
                             <p>{{user.telefono}}</p>
                         </td>
                     </tr>
