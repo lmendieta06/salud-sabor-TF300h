@@ -8,6 +8,9 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { jwtDecode } from 'jwt-decode';
 import { StorageService } from '../../services/local-storage.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+
 interface TokenPayload {
   id: string;
   name: string;
@@ -27,11 +30,15 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   loading = true;
   error: string | null = null;
+  previewImage: string | ArrayBuffer | null = null;
+  selectedFile: File | null = null;
 
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
+    private loginService: LoginService,
     private storageService: StorageService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     // Configuración del formulario reactivo
@@ -54,22 +61,29 @@ export class ProfileComponent implements OnInit {
       if (token) {
         try {
           const decoded: TokenPayload = jwtDecode(token);
-          this.profileService.getUserProfile().subscribe(user => {
-            // Actualiza los valores del formulario con los datos del usuario
-            this.profileForm.patchValue({
-              nombre: user.nombre,
-              correoElectronico: user.correoElectronico,
-              telefono: user.telefono,
-              direccion: user.direccion,
-              imagenPerfil: user.imagenPerfil ? `http://localhost:2000/uploads/${user.imagenPerfil}` : 'assets/default-profile.png'
-            });
-
-            this.loading = false;
-          }, error => {
-            this.error = 'Error al cargar la información del perfil.';
-            this.loading = false;
+          console.log('decoded', decoded);
+          this.profileService.getUserProfile().subscribe({
+            next: (user) => {
+              console.log('user', user.nombre, user.imagenPerfil);
+              // Actualiza los valores del formulario con los datos del usuario
+              this.profileForm.patchValue({
+                nombre: user.nombre,
+                correoElectronico: user.correoElectronico,
+                telefono: user.telefono,
+                direccion: user.direccion,
+              });
+              this.previewImage = decoded.imagenPerfil ? decoded.imagenPerfil : 'assets/default-profile.png';
+              console.log(this.previewImage);
+              this.loading = false;
+            },
+            error: (err) => {
+              console.error('Error al cargar la información del perfil', err);
+              this.error = 'Error al cargar la información del perfil.';
+              this.loading = false;
+            }
           });
         } catch (err) {
+          console.error('Error al decodificar el token', err);
           this.error = 'Error al cargar el token.';
           this.loading = false;
         }
@@ -86,69 +100,71 @@ export class ProfileComponent implements OnInit {
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
+      this.selectedFile = file;
+
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        // Actualiza el valor de imagenPerfil en el formulario con la imagen cargada
-        this.profileForm.patchValue({
-          imagenPerfil: e.target.result
-        });
+        this.previewImage = e.target.result; // Vista previa
       };
-      reader.readAsDataURL(file); // Convierte la imagen en una URL de datos
+      reader.readAsDataURL(file); // ruta en base64
     }
   }
-// Método para enviar el formulario
 
+  updateProfile(): void {
+    if (this.profileForm.valid) {
+      const formData = new FormData();
 
-    updateProfile(): void {
-      if (this.profileForm.valid) {
-        const formData = new FormData();
-  
-        Object.keys(this.profileForm.value).forEach(key => {
-          formData.append(key, this.profileForm.get(key)?.value);
-        });
-        console.log('Valores del formulario:', this.profileForm.value);
-        console.log('Valores del formdata:', formData);
+      // Añadir los otros campos del formulario
+      formData.append('nombre', this.profileForm.get('nombre')?.value);
+      formData.append('correoElectronico', this.profileForm.get('correoElectronico')?.value);
+      formData.append('telefono', this.profileForm.get('telefono')?.value);
+      formData.append('direccion', this.profileForm.get('direccion')?.value);
 
-        this.profileService.updateUserProfile(formData).subscribe(
-
-          (response) => {
-            console.log(response);
-            Swal.fire({
-              title: 'Éxito',
-              text: 'Perfil actualizado con éxito. Debe iniciar sesión para verificar los cambios.',
-              icon: 'success',
-              confirmButtonText: 'OK'
-              
-            }).then(() => {
-
-              // Limpiar el formulario
-              this.profileForm.reset();
-              // Limpiar el archivo seleccionado
-              this.storageService.remove('token'); // Eliminar el token para cerrar sesión
-              window.location.href = '/login'; // Redirigir al usuario a la página de inicio de sesión
-            });
-          },
-          (error) => {
-            console.error('Error al actualizar el perfil', error);
-            Swal.fire({
-              title: 'Error',
-              text: 'Error al actualizar el perfil.',
-              icon: 'error',
-              confirmButtonText: 'OK'
-            });
-          }
-        );
-      } else {
-        Swal.fire({
-          title: 'Formulario no válido',
-          text: 'Por favor, complete todos los campos.',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        });
+      // Si hay un archivo seleccionado, añadirlo al FormData
+      if (this.selectedFile) {
+        formData.append('imagenPerfil', this.selectedFile);
       }
+
+      // Suscribirse al observable de actualización del perfil
+      this.profileService.updateUserProfile(formData).subscribe({
+        next: (response) => {
+          console.log(response);
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Perfil actualizado con éxito. Debe iniciar sesión para verificar los cambios.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(() => {
+            // Limpiar el formulario
+            this.profileForm.reset();
+            // Limpiar el archivo seleccionado
+            this.selectedFile = null;
+            this.previewImage = null;
+
+            // Eliminar el token para cerrar sesión
+            this.storageService.remove('token');
+
+            // Limpiar cualquier otro dato de la sesión (opcional)
+            this.storageService.remove('userData');
+
+            // Notificar al LoginService que la sesión ha terminado
+            this.loginService.setAuthStatus(false);
+
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 100); // Forma correcta de manejar redirección
+          });
+        },
+        error: (err) => {
+          console.error('Error al actualizar el perfil', err);
+          Swal.fire({
+            title: 'Error',
+            text: 'Hubo un problema al actualizar el perfil.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+      });
     }
   }
-
-
-
-
+}

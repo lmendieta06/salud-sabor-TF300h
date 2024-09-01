@@ -9,7 +9,7 @@
 
   <div class="profile-header">
     <div class="profile-image-container">
-      <img [src]="profileForm.get('imagenPerfil')?.value || 'assets/default-profile.png'" alt="Imagen de Perfil" />
+      <img [src]="previewImage || 'assets/default-user.png'" alt="Imagen de Perfil" />
       <label for="file-upload" class="edit-icon">
         <i class="bi bi-pencil"></i>
         <input id="file-upload" type="file" (change)="onFileChange($event)" />

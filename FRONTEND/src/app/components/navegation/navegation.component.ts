@@ -14,7 +14,7 @@ import {jwtDecode} from 'jwt-decode'; // Asegúrate de importar jwt-decode corre
   templateUrl: './navegation.component.html',
   styleUrls: ['./navegation.component.css']
 })
-export class NavegationComponent implements OnInit, OnDestroy, AfterViewInit {
+export class NavegationComponent implements OnInit, OnDestroy {
   isDropdownVisible: boolean = false;
   private hideTimeout: any;
   isCartVisible: boolean = false;
@@ -57,9 +57,8 @@ export class NavegationComponent implements OnInit, OnDestroy, AfterViewInit {
     );
 
     // Actualiza la información del usuario durante la inicialización
-  }
+  
 
-  ngAfterViewInit(): void {
 
     this.authSubscription = this.loginService.authStatus$.subscribe(
       (isLoggedIn) => {
@@ -87,7 +86,8 @@ export class NavegationComponent implements OnInit, OnDestroy, AfterViewInit {
           // Asigna el nombre del usuario segun la informacion decodificada en nuestro token
           this.userName = decodedToken.name || 'Usuario';
           if (decodedToken.imagenPerfil) {
-            this.imagenPerfil = `http://localhost:2000/uploads/${decodedToken.imagenPerfil}`;
+            this.imagenPerfil=decodedToken.imagenPerfil;
+            // this.imagenPerfil = `http://localhost:2000/uploads/${decodedToken.imagenPerfil}`;
 
           } else {
             this.imagenPerfil = 'http://localhost:2000/uploads/default-user.png';

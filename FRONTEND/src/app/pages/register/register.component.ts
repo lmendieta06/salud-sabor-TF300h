@@ -4,8 +4,9 @@ import { NavegationComponent } from '../../components/navegation/navegation.comp
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ChatBotComponent } from '../../components/chat-bot/chat-bot.component';
 import { UserService } from '../../services/user.service'; // Asegúrate de que el servicio esté importado correctamente
-import { User } from '../../../interfaces/user';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,11 @@ export class RegisterComponent implements OnInit {
   selectedFile?: File; // Propiedad para manejar el archivo seleccionado
   @ViewChild('fileInput') fileInput?: ElementRef; // Referencia al input de archivo
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder,
+     private userService:UserService,
+      private router: Router,
+      private cdRef: ChangeDetectorRef,
+    ) {
     // Inicialización de formulario con FormBuilder
     this.registroForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -52,9 +57,14 @@ export class RegisterComponent implements OnInit {
       formData.append('direccion', this.registroForm.value.direccion);
   
       if (this.selectedFile) {
+        console.log(this.selectedFile)
         formData.append('imagenPerfil', this.selectedFile);
       }
-  
+      
+      // formData.forEach((value, key) => {
+      //   console.log(`${key}: ${value}`);
+      // });
+
       this.userService.postUser(formData).subscribe({
         next: (response) => {
           Swal.fire({
@@ -65,10 +75,15 @@ export class RegisterComponent implements OnInit {
           }).then(() => {
             // Limpiar el formulario después de mostrar el mensaje de éxito
             this.registroForm.reset();
-            this.selectedFile = undefined; // Opcional: Limpiar el archivo seleccionado
+            this.selectedFile = undefined;
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+              this.cdRef.detectChanges(); 
+            }, 0); // Opcional: Limpiar el archivo seleccionado
              // Limpiar el input de archivo en el DOM
              if (this.fileInput) {
               this.fileInput.nativeElement.value = '';
+              
             }
           });
         },

@@ -6,7 +6,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CartComponent } from './components/cart/cart.component';
 import AOS from 'aos';
-
+//hola soy grabriel
 import { StorageService } from './services/local-storage.service';
 
 @Component({
