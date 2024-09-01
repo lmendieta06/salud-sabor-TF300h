@@ -1,48 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PanelAdministradoresComponent } from '../../components/panel-administradores/panel-administradores.component';
 import { PanelRestaurantesComponent } from '../../components/panel-restaurantes/panel-restaurantes.component';
 import { PanelUusariosComponent } from '../../components/panel-uusarios/panel-uusarios.component';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
+import { RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, PanelAdministradoresComponent, PanelRestaurantesComponent, PanelUusariosComponent, DashboardComponent],
+  imports: [RouterOutlet ,RouterLink, CommonModule, PanelAdministradoresComponent, PanelRestaurantesComponent, PanelUusariosComponent, DashboardComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-  isVisibleUsers : boolean = false;
-  isVisibleAdmins : boolean = false;
-  isVisibleDashboard : boolean = false;
-  isVisibleRestaurants : boolean = true;
+  viewMenu : boolean = false;
+  loginService = inject(LoginService);
+  isInRouter : boolean = false;
+  changeMenu(){
+    this.viewMenu = !this.viewMenu;
+  }
 
-  // Ver panel restaurantes
-  showRestaurants(){
-    this.isVisibleRestaurants = true;
-    this.isVisibleAdmins = false;
-    this.isVisibleDashboard = false;
-    this.isVisibleUsers = false;
+  logout(): void {
+    this.loginService.logout();
   }
-  // Ver panel usuarios
-  showUsers (){
-    this.isVisibleRestaurants = false;
-    this.isVisibleAdmins = false;
-    this.isVisibleDashboard = false;
-    this.isVisibleUsers = true;
-  }
-  // Ver panel administradores
-  showAdmins(){
-    this.isVisibleRestaurants = false;
-    this.isVisibleAdmins = true;
-    this.isVisibleDashboard = false;
-    this.isVisibleUsers = false;
-  }
-  // Ver dashboard
-  showDashboard(){
-    this.isVisibleRestaurants = false;
-    this.isVisibleAdmins = false;
-    this.isVisibleDashboard = true;
-    this.isVisibleUsers = false;
+
+  changeRoute(){
+    this.isInRouter = true;
   }
 }

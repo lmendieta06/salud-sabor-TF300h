@@ -1,60 +1,74 @@
-<header class="navigationAdmin">
+<header *ngIf="viewMenu === false" class="navigationAdminBurguer">
+    <button (click)="changeMenu()" class="hamburgerButton">
+        <i class="bi bi-list"></i>
+    </button>
+    <button (click)="logout()" class="hamburgerButton">
+        <i class="bi bi-door-open-fill"></i>
+    </button>
+</header>
+<header class="navigationAdmin" *ngIf="viewMenu === true">
+    <button (click)="changeMenu()" class="hamburgerButton">
+        <i class="bi bi-list"></i>
+    </button>
     <div class="imgAdmin">
-        <div>
-            <img src="./assets/admin/perfilAdminPrueba.jpg" alt="perfilAdministrador">
-        </div>
+            <img src="./assets/admin/logo.jpg" alt="perfilAdministrador">
     </div>
     <div class="nombreAdmin">
-        <p>Bienvenid&#64; nombre</p>
+        <p>¡Bienvenid&#64;!</p>
     </div>
     <div class="buttonNavigation">
         <nav>
             <ul class="buttonsContainer">
                 <li>
-                    <button (click)="showRestaurants()">
-                        <i class="bi bi-building" ></i>
-                        Restaurantes
-                    </button>
+                    <a routerLink="/administrador/panel-restaurantes" (click)="changeRoute()">
+                        <button>
+                            <i class="bi bi-building"></i>
+                            Restaurantes
+                        </button>
+                    </a>
                 </li>
                 <li>
-                    <button (click)="showUsers()">
-                        <i class="bi bi-people-fill" ></i>
-                        Usuarios
-                    </button>
+                    <a routerLink="/administrador/usuarios" (click)="changeRoute()">
+                        <button>
+                            <i class="bi bi-people-fill"></i>
+                            Usuarios
+                        </button>
+                    </a>
                 </li>
                 <li>
-                    <button (click)="showDashboard()">
-                        <i class="bi bi-bar-chart"></i>
-                        Dashboard
-                    </button>
+                    <a routerLink="/administrador/dashboard" (click)="changeRoute()">
+                        <button>
+                            <i class="bi bi-bar-chart"></i>
+                            Dashboard
+                        </button>
+                    </a>
                 </li>
                 <li>
-                    <button (click)="showAdmins()">
-                        <i class="bi bi-person-vcard"></i>
-                        Administradores
-                    </button>
+                    <a routerLink="/administrador/administradores" (click)="changeRoute()">
+                        <button>
+                            <i class="bi bi-person-vcard"></i>
+                            Administradores
+                        </button>
+                    </a>
                 </li>
                 <li>
-                    <button>
-                        <i class="bi bi-door-open-fill"></i>
-                        Cerrar sesión
-                    </button>
+                    <a (click)="logout()">
+                        <button>
+                            <i class="bi bi-door-open-fill"></i>
+                            Cerrar sesión
+                        </button>
+                    </a>
                 </li>
             </ul>
+            
         </nav>
     </div>
 </header>
 <main>
-    <div *ngIf="isVisibleAdmins">
-        <app-panel-administradores></app-panel-administradores>
-    </div>
-    <div *ngIf="isVisibleDashboard">
-        <app-dashboard></app-dashboard>
-    </div>
-    <div *ngIf="isVisibleRestaurants">
-        <app-panel-restaurantes></app-panel-restaurantes>
-    </div>
-    <div *ngIf="isVisibleUsers">
-        <app-panel-uusarios></app-panel-uusarios>
-    </div>
+    <section *ngIf="isInRouter===false" class="welcomePage">
+        <img src="./assets/admin/hiAdmin.png" alt="hiAdminPhoto" class="imgWelcome">
+        <h1>BIENVENIDO ADMINISTRADOR</h1>
+        <h2>¿QUÉ DESEAS REALIZAR HOY?</h2>
+    </section>
+    <router-outlet/>
 </main>

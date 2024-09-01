@@ -45,6 +45,22 @@ export class PanelAdministradoresComponent {
     console.log(this.adminToUpdate);
   }
 
+  deleteAdmin(id:string){
+    if(id){
+      console.log(id);
+      this.adminService.deleteAdmin(id).subscribe((req:any) =>{
+        if(req){
+          alert("Admin eliminado satisfactoriamente");
+          this.getAdmins();
+        }else{
+          console.error("Hubo un error");
+        }
+      })
+    }else{
+      console.error("ID no esta definido");
+    }
+  }
+
   // Se llama cuando el componente se inicializa
   ngOnInit() {
     this.getAdmins();

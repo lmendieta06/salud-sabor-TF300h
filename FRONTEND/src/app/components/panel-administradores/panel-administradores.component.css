@@ -1,0 +1,186 @@
+section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    align-items: center;
+}
+
+
+.containerTabla{
+    overflow-y: visible;
+    width: 90%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TITULO */
+
+.adminTexto{
+    width: 90%;
+    text-align: center;
+}
+
+.adminTexto h1{
+    color: var(--colorContraste);
+    font-family: var(--tipografiaTitulos);
+    font-size: 50px;
+    overflow-y: hidden;
+}
+
+/* BOTONES */
+
+.containerBtns{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 5px;
+    padding-bottom: 10px;
+}
+
+.containerBtns button{
+    width: 25%;
+    height: 100%;
+    background-color: var(--colorNav);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-family: var(--tipografiaTexto);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.containerBtns button:hover{
+    background-color: #f6c263;
+}
+
+/* TABLA */
+
+.containerTabla table{
+    width: 100%;
+    /* HACER QUE LOS BORDES DE CADA ELEMENTO SE COMBINEN CON LAS DEL LADO Y ASI SE MUESTRE SOLO UN BORDE */
+    border-collapse: collapse;
+    border-bottom: 100px;
+}
+
+.containerTabla div{
+    width: 100%;
+}
+
+.tablaAdmins{
+    border-bottom: 100px;
+    padding-bottom: 100px;
+}
+
+.admins{
+    height: 40px;
+}
+
+.td{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+th, td {
+    border: 1px solid #dddddda5;
+    padding: 8px;
+    text-align: left;
+    font-family: var(--tipografiaTexto);
+}
+
+th {
+    background-color: var(--colorContraste2);
+    color: white;
+    text-align: center;
+
+}
+
+.tdContenido{
+    text-align: center;
+}
+
+.actions {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions button{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.eliminarButton{
+    background-color: rgb(227, 55, 55);
+}
+
+.eliminarButton:hover{
+    background-color: red;
+}
+
+.updateButton{
+    background-color: var(--colorContraste2);
+}
+
+.updateButton:hover{
+    background-color: rgb(71, 205, 71);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width:820px){
+    .containerBtns button{
+        width: 40%;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:490px){
+
+    .adminTexto{
+        margin-left: 20%;
+        width: auto;
+        text-align: center;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    .adminTexto h1{
+        font-size: 40px;
+        text-align: center;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    .containerBtns{
+        height: 40px;
+    }
+
+    .containerBtns button{
+        width: 70%;
+        font-size: 12px;
+    }
+
+    .containerTabla{
+        overflow-x: visible;
+        width: 80%;
+    }
+}

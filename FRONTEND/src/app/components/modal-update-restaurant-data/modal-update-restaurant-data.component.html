@@ -1,0 +1,38 @@
+<section class="addProduct">
+    <div class="container">
+        <div class="containerForms">
+            <article class="cerrarModal">
+                <button class="regresarBtn" (click)="closeModal()"><i class="bi bi-x-lg"></i></button>
+            </article>
+            <h3 class="text-center">ACTUALIZANDO RESTAURANTE</h3>
+            <div class="mb-3">
+                <input type="text" class="form-control"  name="nombre"
+                placeholder="Ingrese el nombre del restaurante"  [(ngModel)]="nombre"/>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese el correo electronico"  name="imagen" [(ngModel)]="correoElectronico" />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese la ciudad en la que se ubica"  name="precioBase" [(ngModel)]="ciudad"/>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control"  name="nombre"
+                placeholder="Ingrese el nombre del restaurante"  [(ngModel)]="direccion"/>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese la categoria del restaurante"  name="imagen" [(ngModel)]="categoria" />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese una descripcion breve"  name="precioBase" [(ngModel)]="descripcion"/>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese el logo o una imagen relacionada"  name="precioBase" [(ngModel)]="logo"/>
+            </div>
+    
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="updateRestaurant()">CONFIRMAR</button>
+            </div>
+    
+        </div>
+    </div>
+</section>

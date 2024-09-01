@@ -25,5 +25,9 @@ export class AdminService {
   updateAdmin(adminId: string, updatedData: any) {
     return this.httpClient.put(`${this.URL_ADMIN}/${adminId}`, updatedData);
   }
+
+  deleteAdmin(id:string){
+    return this.httpClient.delete(`${this.URL_ADMIN}/${id}`);
+  }
 }
 

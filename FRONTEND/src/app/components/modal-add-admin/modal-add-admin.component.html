@@ -1,23 +1,23 @@
 <section class="addProduct">
     <div class="container">
-        <div class="containerForms">
-            <article class="cerrarModal">
-                <button class="regresarBtn" (click)="cerrarModal()"><i class="bi bi-x-lg"></i></button>
-            </article>
-            <h3 class="text-center">AGREGANDO NUEVO ADMINISTRADOR</h3>
-            <div class="mb-3">
-                <input type="text" class="form-control"  name="nombre"
-                placeholder="Ingrese el nombre del administrador"  [(ngModel)]="nombre"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese el correo electronico del administrador"  name="imagen" [(ngModel)]="correoElectronico"/>
-            </div>
-            <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="precioBase" [(ngModel)]="contrasena"/>
-            </div>
-    
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="agregarAdmin()">Crear Producto</button>
+        <div>
+            <span class="close" (click)="cerrarModal()">&times;</span>
+            <div class="containerForms">
+                <h3 class="text-center">AGREGANDO NUEVO ADMINISTRADOR</h3>
+                <div class="mb-3">
+                    <input type="text" class="form-control"  name="nombre"
+                    placeholder="Ingrese el nombre del administrador"  [(ngModel)]="nombre"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese el correo electronico del administrador"  name="imagen" [(ngModel)]="correoElectronico"/>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="precioBase" [(ngModel)]="contrasena"/>
+                </div>
+        
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="agregarAdmin()">CONFIRMAR</button>
+                </div>
             </div>
     
         </div>

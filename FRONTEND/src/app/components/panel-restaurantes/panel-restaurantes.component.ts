@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RestaurantService } from '../../services/restaurant.service';
 import { ModalMenuComponent } from '../modal-menu/modal-menu.component';
 import { MenuService } from '../../services/menu.service';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-panel-restaurantes',
   standalone: true,
-  imports: [CommonModule, ModalMenuComponent],
+  imports: [CommonModule, ModalMenuComponent, RouterLink],
   templateUrl: './panel-restaurantes.component.html',
   styleUrl: './panel-restaurantes.component.css'
 })
@@ -19,6 +20,7 @@ export class PanelRestaurantesComponent {
   selectedRestaurantId: string = "";
   selectedRestaurantName: string = "";
   isModalVisible: boolean = false;
+  restaurantMenu : string = "";
   
   getRestaurants(){
     this.restaurantService.getRestaurants().subscribe((res:any)=>{
