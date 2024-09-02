@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 export const postUser = async (req, res) => {
   try {
     const { nombre, correoElectronico, contrasena, telefono, direccion } = req.body;
-    const imagenPerfil = req.file ? req.file.filename : null; // Obtener el nombre del archivo subido
+    const imagenPerfil = req.file ? `http://localhost:2000/uploads/${req.file.filename}` : null; // Obtener la ruta del archivo subido
 
     const codedPassword = await bcrypt.hash(contrasena, 10);
 

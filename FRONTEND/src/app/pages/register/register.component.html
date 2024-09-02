@@ -18,14 +18,7 @@
             <div class="formsSingUp">
                 <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
                     <input class="controles" type="text" placeholder="Nombre" formControlName="nombre" required>
-                    <!-- <select class="form-control controles" formControlName="documentoTipo" required>
-                        <option value="" disabled>Seleccione tipo de documento</option>
-                        <option value="cedula">Cédula de Ciudadanía</option>
-                        <option value="tarjeta">Tarjeta de Identidad</option>
-                        <option value="extranjero">Cédula de Extranjería</option>
-                        <option value="pasaporte">Pasaporte</option>
-                    </select> -->
-                    <!-- <input class="controles" type="text" placeholder="Número de documento" formControlName="documentoNumero" required> -->
+                   
                     <input class="controles" type="email" placeholder="Correo electrónico" formControlName="correoElectronico" required>
                     <input class="controles" type="password" placeholder="Contraseña" formControlName="contrasena" required>
                     <input class="controles" type="tel" placeholder="Teléfono" formControlName="telefono" required>

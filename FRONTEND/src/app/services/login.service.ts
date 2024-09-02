@@ -128,7 +128,7 @@ export class LoginService {
       localStorage.setItem('token', token);
     }
   }
-  
-  private setAuthStatus(status: boolean) {
+
+  public setAuthStatus(status: boolean) {
     this.authStatusSubject.next(status);
   }}
