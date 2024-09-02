@@ -21,29 +21,25 @@ export class AdminService {
   }
   // Crear un nuevo administrador
   createAdmin(adminUser: {nombre: string, correoElectronico: string, contrasena: string}) {
-    console.log('isLogged:', this.loginService.isLogged());
-    console.log('isAdmin:', this.loginService.isAdmin());
+
     return this.httpClient.post(`${this.URL_ADMIN}`, adminUser,{ headers: this.getAuthHeaders() });
  
   }
 
   // Obtener todos los administradores
   getAdmins() : Observable<AdminResponse> {
-    console.log('isLogged:', this.loginService.isLogged());
-    console.log('isAdmin:', this.loginService.isAdmin());
+
     return this.httpClient.get<AdminResponse>(this.URL_ADMIN,{ headers: this.getAuthHeaders() });
   }
 
   // Actualizar un administrador por ID
   updateAdmin(adminId: string, updatedData: any) {
-    console.log('isLogged:', this.loginService.isLogged());
-    console.log('isAdmin:', this.loginService.isAdmin());
+   
     return this.httpClient.put(`${this.URL_ADMIN}/${adminId}`, updatedData,{ headers: this.getAuthHeaders() });
   }
 
   deleteAdmin(id:string){
-    console.log('isLogged:', this.loginService.isLogged());
-    console.log('isAdmin:', this.loginService.isAdmin());
+  
     return this.httpClient.delete(`${this.URL_ADMIN}/${id}`,);
   }
 }

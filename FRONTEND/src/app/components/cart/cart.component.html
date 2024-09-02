@@ -50,8 +50,8 @@
       <h3>Total a Pagar: {{totalPrice | currency}}</h3>
     </div>
     <div class="btn-backOrPay">
-      <button type="button" class="btn btn-success betene">Continuar comprando</button>
-      <button type="button" class="btn btn-success betene">Ir a pagar</button>
+      <button type="button" class="btn btn-success betene"(click)="goBack()">Continuar comprando</button>
+      <button type="button" class="btn btn-success betene"(click)="mostrarMensajePago()">Ir a pagar</button>
     </div>
 
   </div>

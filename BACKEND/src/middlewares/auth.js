@@ -10,7 +10,6 @@ const auth = (requiredRole) => {
 
     // Obtener el token después de 'Bearer'
     const token = authorizationHeader.split(' ')[1];
-    console.log('Token:', token); // Verificación
 
     if (!token) {
       return res.status(401).json({ message: 'No se encontró token' });
@@ -18,7 +17,6 @@ const auth = (requiredRole) => {
 
     try {
       const decoded = jwt.verify(token, secretKey);
-      console.log('Decoded Token:', decoded); // Verificación
 
       // Validación adicional para el rol de admin
       // Verificación de roles
