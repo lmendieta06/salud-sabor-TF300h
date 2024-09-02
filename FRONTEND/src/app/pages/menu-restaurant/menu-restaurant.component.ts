@@ -1,12 +1,14 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CartComponent } from '../../components/cart/cart.component';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { NavegationComponent } from '../../components/navegation/navegation.component';
 import { CartService } from '../../services/cart.service';
 import { DishService } from '../../services/dish.service';
 import { Dish } from '../../../interfaces/dish';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../../types/category.types';
 import { RouterLink } from '@angular/router';
+
 import Swal from 'sweetalert2';
 
 
@@ -14,7 +16,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-menu-restaurant',
   standalone: true,
-  imports: [RouterLink, FooterComponent, CartComponent, CommonModule],
+  imports: [RouterLink, FooterComponent, CartComponent, CommonModule,NavegationComponent,FooterComponent],
   templateUrl: './menu-restaurant.component.html',
   styleUrls: ['./menu-restaurant.component.css']
 })
@@ -69,33 +71,7 @@ export class MenuRestaurantComponent implements OnInit {
     this.cartService.addToCart(dish);
   }
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if (!target.closest('.dropdown') && !target.closest('.userIcon')) {
-      this.hideDropdown();
-    }
-  }
 
-  @HostListener('mouseenter', ['$event'])
-  onMouseEnter(event: Event) {
-    clearTimeout(this.hideTimeout);
-    this.isDropdownVisible = true;
-    console.log('Dropdown visible:', this.isDropdownVisible);
-  }
-
-  @HostListener('mouseleave', ['$event'])
-  onMouseLeave(event: Event) {
-    this.hideTimeout = setTimeout(() => {
-      this.isDropdownVisible = false;
-      console.log('Dropdown visible:', this.isDropdownVisible);
-    }, 800);
-  }
-
-  hideDropdown() {
-    clearTimeout(this.hideTimeout);
-    this.isDropdownVisible = false;
-  }
 }
 
 // Función para verificar categorías
