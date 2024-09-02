@@ -199,3 +199,76 @@ main{
 .imgError img{
     width: 150px;
 }
+
+/* ESTILOS PARA PANTALLAS MEDIANAS */
+@media screen and (max-width:1200px){
+
+    .barraBuscar{
+        color:var(--colorContraste);
+        width: 70%;
+        height: 70px;
+        margin: 30px;
+    }
+
+    .cajasCategorias a{
+        width: 90%;
+    }
+
+    .restaurantes img{
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+}
+
+/* ESTILOS PARA PANTALLAS MEDIANAS - PEQUEÑAS */
+@media screen and (max-width:900px){
+
+    main{
+        height: auto;
+    }
+
+    .barraBuscar{
+        width: 80%;
+    }
+
+    .categoriasSection{
+        width: 100%;
+    }
+    .categorias{
+        width: 100%;
+    }
+    .cajasCategorias{
+        margin-bottom: 10px;
+    }
+    .opcionRestaurante{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        padding-bottom: 20px; 
+    }
+
+    .infoOpcion{
+        width: 100%;
+    }
+
+    .imgOpcion{
+        width: 90%;
+        height: 50%;
+    }
+
+    .imgOpcion img{
+        width: 100%;
+    }
+
+}
+
+@media screen  and (max-width:400px){
+    .listaMenu a{
+        font-size: 15px;
+    }
+}
+

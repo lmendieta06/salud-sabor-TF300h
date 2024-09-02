@@ -114,6 +114,7 @@ h1, h2, h3{
     margin-right: 90px; */
     /* gap: 10%; */
     background-color: transparent;
+    justify-content: center;
 }
 
 /* Div que contiene la imagen */

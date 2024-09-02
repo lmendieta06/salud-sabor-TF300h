@@ -53,14 +53,14 @@
     <section class="formularioSolicitudes">
         <div class="contenedorForms">
             <div class="forms">
-                <form class="formularioPQR">
+                <form class="formularioPQR"   action="https://formspree.io/f/movabqgj" method="POST">
                     <article>
                         <label>Nombre</label>
-                        <input type="text">
+                        <input type="text" name="nombre">
                     </article>
                     <article>
                         <label>Correo Electronico</label>
-                        <input type="email">
+                        <input type="email" name="email">
                     </article>
                     <article>
                         <label>¿Eres un restaurante?</label>
@@ -72,7 +72,7 @@
                     </article>
                     <article>
                         <label>Comentarios</label>
-                        <input type="text">
+                        <input type="text" name="message">
                     </article>
                     <button type="submit" class="enviarForms">ENVIAR</button>
                 </form>
