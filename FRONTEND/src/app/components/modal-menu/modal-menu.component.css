@@ -8,7 +8,6 @@
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
   }
   
@@ -17,7 +16,13 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 95%;
+    overflow-y: scroll;
   }
+
+  .modal-content::-webkit-scrollbar{
+    width: 5px;
+}
   
   .close {
     color: var(--colorContraste2);

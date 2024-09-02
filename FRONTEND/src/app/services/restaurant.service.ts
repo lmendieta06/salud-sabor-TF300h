@@ -13,8 +13,8 @@ export class RestaurantService{
 
     API_URL_GET = "http://localhost:2000/restaurants";
     API_URL_GET_ID = "http://localhost:2000/restaurants/:_id";
-    API_URL_GET_CATEGORY = "http://localhost:2000/restaurants/:categoria";
-    API_URL_GET_CITY = "http://localhost:2000/restaurants/:ciudad";
+    API_URL_GET_CATEGORY = "http://localhost:2000/restaurants/category/:categoria";
+    API_URL_GET_CITY = "http://localhost:2000/restaurants/city/:ciudad";
     API_URL_POST = "http://localhost:2000/restaurants";
     API_URL_PUT = "http://localhost:2000/restaurants/:_id";
     API_URL_DELETE = "http://localhost:2000/restaurants/:_id";
@@ -28,7 +28,7 @@ export class RestaurantService{
     }
 
     getRestaurantByCity(ciudad:string){
-        return this.httpClient.get(`${this.API_URL_GET_CATEGORY}/${ciudad}`);
+        return this.httpClient.get(`${this.API_URL_GET_CITY.replace(":ciudad", ciudad)}`);
     }
 
     getRestaurantById(id:string){

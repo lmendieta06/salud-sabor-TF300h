@@ -5,8 +5,8 @@
     <section class="barraBuscar">
         <div class="container-fluid">
             <form class="d-flex" role="search" id="searchForm">
-              <input class="form-control me-2 barraTexto" type="search" placeholder="¿En que ciudad te encuentras?" aria-label="Search" id="searchInput">
-              <button class="btn btn-outline-success botonBuscar" type="submit">
+              <input class="form-control me-2 barraTexto" type="search" placeholder="¿En que ciudad te encuentras?" aria-label="Search" id="searchInput" [(ngModel)]="ciudad" name="ciudad">
+              <button class="btn btn-outline-success botonBuscar" type="submit" (click)="getRestaurantByCity()">
                 <i class="bi bi-search-heart"></i>
               </button>
             </form>
@@ -16,11 +16,6 @@
     <!-- CATEGORIAS DE COMIDAS -->
     <section class="categoriasSection" id="categorias">
         <h2>¿Algún antojo en especial?</h2>
-        
-    <!-- EL ORDEN DE CLASES PARA LAS PANTALLAS
-      1. pantallas pequeñas
-      2. pantallas medianas
-      3. pantallas grandes -->
         <div class="row categorias">
             <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
                 <a href="#" data-category="almuerzo" class="categoria">

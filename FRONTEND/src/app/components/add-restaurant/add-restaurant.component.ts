@@ -80,6 +80,7 @@ export class AddRestaurantComponent {
           this.restaurantService.postRestaurant(this.nombreRestaurant, this.ciudad, this.correoElectronico, this.categoriaRestaurant, this.descripcion, this.direccion, this.menu._id, this.imgLogo).subscribe((res:any)=>{
             if(res){
               alert("Se creo el restaurante satisfactoriamente");
+              
               Swal.fire("Se creo el restaurante exitosamente");
             }else{
               console.error("Error al crear el restaurante");

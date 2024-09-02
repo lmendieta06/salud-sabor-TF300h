@@ -5,7 +5,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { ChatBotComponent } from '../../components/chat-bot/chat-bot.component';
 import { RestaurantService } from '../../services/restaurant.service.js';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-restaurants',
@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
     FooterComponent, 
     ChatBotComponent, 
     CommonModule, 
+    FormsModule
     
   ],
   templateUrl: './restaurants.component.html',
@@ -30,6 +31,7 @@ export class RestaurantsComponent {
 
 
   allRestaurants: any[] = [];
+  ciudad : string = "";
 
   // Método para obtener restaurantes
   getRestaurants() {
@@ -42,10 +44,25 @@ export class RestaurantsComponent {
     });
   }
 
+  getRestaurantByCity(){
+    this.restaurantsService.getRestaurantByCity(this.ciudad).subscribe((res:any)=>{
+      if(res){
+        this.allRestaurants = res.restaurantes;
+      }else{
+        console.error("Hubo un error");
+      }
+    })
+  }
+
 
 
   // Método de inicialización
   ngOnInit() {
-    this.getRestaurants();
+    if(this.ciudad===""){
+      this.getRestaurants();
+    }else{
+      this.getRestaurantByCity();
+
+    }
   }
 }
