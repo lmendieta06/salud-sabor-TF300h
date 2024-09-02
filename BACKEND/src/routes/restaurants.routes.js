@@ -5,9 +5,9 @@ import auth from "../middlewares/auth.js";
 export const restaurantRouter = Router();
 
 restaurantRouter.get("/", getRestaurants);
-restaurantRouter.get("/:_id", getRestaurantById)
-restaurantRouter.get("/category/:categoria", getRestaurantByCategory);
-restaurantRouter.get("/city/:ciudad", getRestaurantByCity);
-restaurantRouter.post("/", postRestaurant);
-restaurantRouter.put("/:_id", putRestaurant);
-restaurantRouter.delete("/:_id",deleteRestaurant);
+restaurantRouter.get("/:_id",  getRestaurantById)
+restaurantRouter.get("/category/:categoria",  getRestaurantByCategory);
+restaurantRouter.get("/city/:ciudad",  getRestaurantByCity);
+restaurantRouter.post("/",auth("admin"),  postRestaurant);
+restaurantRouter.put("/:_id",auth("admin"),  putRestaurant);
+restaurantRouter.delete("/:_id",auth("admin"), deleteRestaurant);

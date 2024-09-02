@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 export const secretKey = process.env.JWT_SECRETKEY;
-
 
 // Función para generar tokens (JWT)
 export function generateToken(payload) {
@@ -17,7 +17,8 @@ export function generateToken(payload) {
         });
     });
 }
-// Funcion para verificar token(jwt)
+
+// Función para verificar token (JWT)
 export function verifyToken(token) {
     return new Promise((res, rej) => {
         jwt.verify(token, secretKey, (error, decoded) => {
@@ -29,4 +30,3 @@ export function verifyToken(token) {
         });
     });
 }
-

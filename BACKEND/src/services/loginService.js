@@ -39,7 +39,7 @@ const loginService = async (req, res) => {
             id: userFound._id,
             name: userFound.nombre,
             imagenPerfil: userFound.imagenPerfil, // Asegúrate de incluir esto si es necesario
-            role: userFound.role || (userFound.__t === 'Admin' ? 'admin' : 'user'), // Determinar el rol del usuario
+            role:  userFound.__t === 'Admin' ? 'admin' : 'user', // Determinar el rol del usuario
             isAdmin: userFound.__t === 'Admin' || userFound.categoriaAdmin // Simplificar la verificación
         };
 

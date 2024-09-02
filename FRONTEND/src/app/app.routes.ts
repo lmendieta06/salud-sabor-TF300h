@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MenuRestauranteComponent } from './components/menu-restaurante/menu-restaurante.component';
 import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { authGuard } from '../guards/auth.guards';
 
 
 export const routes: Routes = [
@@ -29,13 +30,13 @@ export const routes: Routes = [
     {path:"recover-password", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
     {path: 'cart', component: CartComponent }, 
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
-    {path:"administrador", component:AdminComponent, title:"Administrador", children:[
-        {path:"panel-restaurantes", component:PanelRestaurantesComponent, title:"Restaurantes"},
-        {path:"panel-restaurantes/formsAgregarRestaurante", component:AddRestaurantComponent, title:"Formulario - Crear Restaurante"},
-        {path:"panel-restaurantes/:restauranteId", component:MenuRestauranteComponent, title:"Panel Menú"},
-        {path:"administradores", component:PanelAdministradoresComponent, title:"Administradores"},
-        {path:"usuarios", component:PanelUusariosComponent, title:"Usuarios"},
-        {path:"dashboard", component:DashboardComponent, title:"Dashboard"}
+    {path:"administrador", component:AdminComponent, title:"Administrador",canActivate: [authGuard], children:[
+        {path:"panel-restaurantes", component:PanelRestaurantesComponent, title:"Restaurantes",canActivate: [authGuard]},
+        {path:"panel-restaurantes/formsAgregarRestaurante", component:AddRestaurantComponent, title:"Formulario - Crear Restaurante",canActivate: [authGuard]},
+        {path:"panel-restaurantes/:restauranteId", component:MenuRestauranteComponent, title:"Panel Menú",canActivate: [authGuard]},
+        {path:"administradores", component:PanelAdministradoresComponent, title:"Administradores",canActivate: [authGuard]},
+        {path:"usuarios", component:PanelUusariosComponent, title:"Usuarios",canActivate: [authGuard]},
+        {path:"dashboard", component:DashboardComponent, title:"Dashboard",canActivate: [authGuard]}
     ]},
     // {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
     {path:"profile", component:ProfileComponent, title: "Mi perfil"},
