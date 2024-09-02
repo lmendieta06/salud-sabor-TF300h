@@ -32,6 +32,7 @@ export class RestaurantsComponent {
 
   allRestaurants: any[] = [];
   ciudad : string = "";
+  categoria : string = "";
 
   // Método para obtener restaurantes
   getRestaurants() {
@@ -45,6 +46,9 @@ export class RestaurantsComponent {
   }
 
   getRestaurantByCity(){
+    if(this.ciudad===""){
+      this.ngOnInit();
+    }
     this.restaurantsService.getRestaurantByCity(this.ciudad).subscribe((res:any)=>{
       if(res){
         this.allRestaurants = res.restaurantes;
@@ -54,15 +58,27 @@ export class RestaurantsComponent {
     })
   }
 
-
+  getRestaurantByCategory(categoria:string){
+    this.categoria = categoria;
+    console.log(this.categoria);
+    this.restaurantsService.getRestaurantByCategory(this.categoria).subscribe((res:any)=>{
+      if(res){
+        console.log("Se encontraron los restaurantes");
+        this.allRestaurants = res.restaurantes;
+      }else{
+        console.error("Hubo un error");
+      }
+    })
+  }
 
   // Método de inicialización
   ngOnInit() {
-    if(this.ciudad===""){
+    if(this.ciudad==="" && this.categoria===""){
       this.getRestaurants();
-    }else{
+    }else if(!(this.ciudad==="") && this.categoria===""){
       this.getRestaurantByCity();
-
+    }else{
+      this.getRestaurantByCategory(this.categoria);
     }
   }
 }

@@ -24,7 +24,7 @@ export class RestaurantService{
     }
 
     getRestaurantByCategory(categoria:string){
-        return this.httpClient.get(`${this.API_URL_GET_CATEGORY}/${categoria}`);
+        return this.httpClient.get(`${this.API_URL_GET_CATEGORY.replace(":categoria", categoria)}`);
     }
 
     getRestaurantByCity(ciudad:string){

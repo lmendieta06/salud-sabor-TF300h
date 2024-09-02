@@ -18,7 +18,7 @@
         <h2>¿Algún antojo en especial?</h2>
         <div class="row categorias">
             <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
-                <a href="#" data-category="almuerzo" class="categoria">
+                <a [attr.categoria]="'almuerzo'" categoria="almuerzo" class="categoria" name="almuerzo" (click)="getRestaurantByCategory('almuerzo')">
                     <div class="imgCategorias">
                         <img src="assets/home/ilustracion5.svg" alt="iconoAlmuerzo">
                     </div>
@@ -27,7 +27,7 @@
                 </a>
             </article>
             <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
-                <a href="#" data-category="ensalada" class="categoria">
+                <a [attr.categoria]="'ensalada'" categoria="ensalada" class="categoria"  (click)="getRestaurantByCategory('ensalada')" >
                     <div class="imgCategorias">
                         <img src="assets/home/ilustracion6.svg" alt="iconoEnsalada">      
                     </div>
@@ -35,7 +35,7 @@
                 </a>
             </article>
             <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
-                <a href="#" data-category="postres" class="categoria">
+                <a  [attr.categoria]="'postres'" categoria="postres" class="categoria"  (click)="getRestaurantByCategory('postres')">
                     <div class="imgCategorias">
                         <img src="assets/home/ilustracion7.svg" alt="iconoPostre">
                     </div>
@@ -44,7 +44,7 @@
                 </a>
             </article>
             <article class=" col-6 col-md-6 col-lg-3 cajasCategorias">
-                <a href="#" data-category="bebidas" class="categoria">
+                <a [attr.categoria]="'bebidas'" categoria="bebidas" class="categoria" (click)="getRestaurantByCategory('bebidas')">
                     <div class="imgCategorias">
                         <img src="assets/home/ilustracion8.svg" alt="iconoBebida">
                     </div>
