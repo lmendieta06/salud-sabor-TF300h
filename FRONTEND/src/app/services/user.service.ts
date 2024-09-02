@@ -39,5 +39,11 @@ private URL_USERS = "http://localhost:2000/users"
   getUserProfile(): Observable<User> {
     return this.httpClient.get<User>(`${this.URL_USERS}/profile`);
   }
+
+  //recuperacion de contraseña 
+  recoverPassword(email: string): Observable<any> {
+    return this.httpClient.post(`${this.URL_USERS}/recover-password`, { email });
+  }
 }
+
 

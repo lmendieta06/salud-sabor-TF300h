@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getUserById, getUsers, putUser, postUser, getUserProfile } from '../controllers/user.controllers.js';
+import { getUserById, getUsers, putUser, postUser, getUserProfile, recoverPassword } from '../controllers/user.controllers.js';
 import auth from '../middlewares/auth.js';
 import upload from '../../config/multerConfig.js';
 
@@ -15,4 +15,6 @@ usersRouter.get('/:_id', auth('admin'), getUserById);
 usersRouter.post('/', upload.single('imagenPerfil'), postUser); // Manejo de archivo en postUser
 
 
+// Añadir ruta para recuperación de contraseña
+usersRouter.post('/recover-password', recoverPassword);
 export default usersRouter;
