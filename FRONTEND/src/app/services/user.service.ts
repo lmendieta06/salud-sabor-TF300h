@@ -1,10 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../interfaces/user';
 import { UserResponse } from '../../interfaces/userResponse';
 import { Observable } from 'rxjs';
 import { AdminResponse } from '../../interfaces/adminRes';
-
+import { LoginService } from './login.service';
 
 
 
@@ -14,13 +14,20 @@ import { AdminResponse } from '../../interfaces/adminRes';
 export class UserService {
 
  //dependencias
-private httpClient = inject(HttpClient);
-private URL_USERS = "http://localhost:2000/users"
+  loginService = inject(LoginService);
+  private httpClient = inject(HttpClient);
+  private URL_USERS = "http://localhost:2000/users"
+  
+  private getAuthHeaders(): HttpHeaders {
+    const token = this.loginService.getToken(); // Asegúrate de tener un método en LoginService que obtenga el token
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+  }
 
-
-// peticiones get, getById, post y put
+  // peticiones get, getById, post y put
   getUsers() : Observable<UserResponse>{
-    return this.httpClient.get<UserResponse>(this.URL_USERS);
+    return this.httpClient.get<UserResponse>(this.URL_USERS, { headers: this.getAuthHeaders() });
   }
  
   // Obtener un usuario por ID
