@@ -1,13 +1,14 @@
 /* FOOTER */
 footer {
     background-color: var(--colorContraste);
-    width: 100vw;
+    width: 100%;
     height: auto;
     color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    overflow: hidden;
     /* No es necesario overflow-y: hidden aquí */
 }
 
@@ -112,6 +113,7 @@ footer h2 {
 
 @media screen and (max-width: 650px) {
     footer {
+        width: 100%;
         height: auto;
     }
     .enlacesFooter {
