@@ -19,9 +19,11 @@
     background-color: white;
     border-radius: 20px;
     width: 80%;
-    height: 90%;
+    height: 95%;
+    padding: 20px;
     overflow-y: scroll;
 }
+
 
 .containerForms{
     width: 100%;
@@ -30,5 +32,248 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10pxs;
+    gap: 10px;
+    padding: 20px;
+}
+
+.close {
+    color: var(--colorContraste2);
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: var(--colorContraste);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.containerForms i{
+    color: white;
+    font-size: 40px;
+}
+
+.containerForms h3{
+    width: 90%;
+    text-align: center;
+    font-family: var(--tipografiaTitulos);
+    color: var(--colorContraste);
+    font-size: 50px;
+    overflow-y:hidden;
+    margin-bottom: 20px;
+}
+
+.containerForms div{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+}
+
+.containerForms input{
+    color: var(--colorTextos);
+    width: 90%;
+    border: none;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.525);
+}
+
+.enviarForms{
+    width: 45%;
+    height: 40px;
+    background-color: var(--colorContraste2);
+    margin-top: 20px;
+    border: none;
+    font-family: var(--tipografiaTextos);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    overflow-y: hidden;
+
+}
+
+/* VISTA PLATOS */
+
+.viewDishes{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: visible;
+}
+
+/* NO HAY PLATOS */
+
+.noDishes{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noDishes h3{
+    font-family: var(--tipografiaTitulos);
+    color: var(--colorContraste2);
+    font-weight: 100;
+    text-align: center;
+}
+
+.addDishesButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.addDishesButton button{
+    border: none;
+    background-color: var(--colorNav);
+    color: white;
+    margin-top: 20px;
+    border: none;
+    font-family: var(--tipografiaTexto);
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    overflow-y: hidden;
+    padding: 10px;
+
+}
+
+/* HAY PLATOS */
+.isDishes{
+    padding: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.isDishes h2{
+    text-align: center;
+    font-family: var(--tipografiaTitulos);
+    color: var(--colorContraste2);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.platosMenu{
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* contenedores informacion */
+
+.imgContainer{
+    height: 100%;
+    width: 40%;
+}
+
+.imgContainer img{
+    width: 100%;
+    height: 100%;
+}
+
+.infoDish{
+    width: 50%;
+    height: 100%;
+}
+
+.infoDish h2{
+    font-family: var(--tipografiaTitulos);
+    font-weight: 700;
+    color: var(--colorContraste);
+    font-size: 30px;
+    text-align: left;
+}
+
+.infoDish h3{
+    font-family: var(--tipografiaTexto);
+    font-size: 20px;
+}
+
+.actionDish{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionDish button{
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(227, 55, 55);
+}
+
+.actionDish button:hover{
+    background-color: red;
+}
+
+/* responsive */
+@media screen and (max-width:1080px){
+    .platosMenu{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .imgContainer{
+        width: 100%;
+        height: 300px;
+    }
+
+    .infoDish{
+        width: 100%;
+        height: 40%;
+    }
+
+    .actionDish{
+        width: 100%;
+        height: 10%;
+    }
+
+}
+
+@media screen and (max-width:620px){
+    .containerForms h3{
+        font-size: 30px;
+    }
+
+    .enviarForms{
+        width: 70%;
+    }
+}
+
+
+@media screen and (max-width:410px){
+    .containerForms h3{
+        font-size: 25px;
+    }
+
+    .enviarForms{
+        width: 80%;
+    }
+
+    .containerForms input{
+        width: 100%;
+    }
+
+    .containerForms div{
+        width: 95%;
+    }
 }

@@ -1,46 +1,46 @@
 <section class="addProduct">
     <div class="container">
-        <div class="containerForms">
-            <article class="cerrarModal" (click)="closeModal()">
-                <button class="regresarBtn"><i class="bi bi-x-lg"></i></button>
-            </article>
-            <h3 class="text-center">AGREGANDO PLATILLOS DEL MENÚ</h3>
-            <div class="mb-3">
-                <input type="text" class="form-control"  name="nombre"
-                placeholder="Ingrese el nombre del plato" [(ngModel)]="nombrePlato"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese a que categoría pertenece"  name="categoria" [(ngModel)]="categoriaMenu"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese una breve descripción del producto"  name="descripcion" [(ngModel)]="descripcionPlato"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese una imagen del plato"  name="imagen" [(ngModel)]="imagenPlato"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese el precio"  name="precio" [(ngModel)]="precioPlato"/>
-            </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="addDish()">Crear Producto</button>
+        <div>
+            <span class="close" (click)="closeModal()">&times;</span>
+            <div class="containerForms">
+                <h3 class="text-center">AGREGANDO PLATILLOS DEL MENÚ</h3>
+                <div class="mb-3">
+                    <input type="text" class="form-control"  name="nombre"
+                    placeholder="Ingrese el nombre del plato" [(ngModel)]="nombrePlato"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese a que categoría pertenece"  name="categoria" [(ngModel)]="categoriaMenu"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese una breve descripción del producto"  name="descripcion" [(ngModel)]="descripcionPlato"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese una imagen del plato"  name="imagen" [(ngModel)]="imagenPlato"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese el precio"  name="precio" [(ngModel)]="precioPlato"/>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="addDish()">Crear Producto</button>
+                </div>
             </div>
         </div>
-        <div>
-            <div *ngIf="dishes.length === 0">
-                Aquí se visualizarán tus platillos
+        <div class="viewDishes">
+            <div *ngIf="dishes.length === 0" class="noDishes">
+                <h3>AQUI SE MOSTRARAN LOS PLATOS QUE AGREGUE</h3>
             </div>
-            <div *ngIf="!(dishes.length === 0)">
-                <div *ngFor="let dish of dishes">
-                    <div>
-                        <img [src]="dish.imagenPlato" alt="">
+            <div *ngIf="!(dishes.length === 0)" class="isDishes">
+                <div *ngFor="let dish of dishes" class="platosMenu">
+                    <div class="imgContainer">
+                        <img [src]="dish.imagenPlato" alt="imagen{{dish.nombrePlato}}">
                     </div>
-                    <div>
+                    <div class="infoDish">
                         <h2>{{dish.nombrePlato}}</h2>
                         <h3>{{dish.categoriaMenu}}</h3>
                         <h3>{{dish.descripcionPlato}}</h3>
                         <h3>{{dish.precioPlato}}</h3>
                     </div>
-                    <div>
+                    <div class="actionDish">
                         <button (click)="deleteDish(dish)">
                             <i class="bi bi-trash3"></i>
                         </button>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="addDishesButton">
             <button (click)="addDishesToMenu()">AGREGAR PLATILLOS </button>
         </div>
     </div>

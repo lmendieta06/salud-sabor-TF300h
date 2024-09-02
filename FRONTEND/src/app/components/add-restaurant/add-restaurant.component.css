@@ -84,13 +84,14 @@ section{
     font-weight: bold;
     font-size: 20px;
     overflow-y: hidden;
+    overflow-x: hidden;
 
 }
 /* PLATOS */
 
 .viewDishes{
     width: 50%;
-    height: 100%;
+    height: auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -134,5 +135,125 @@ section{
     font-size: 20px;
     overflow-y: hidden;
     padding: 10px;
+
+}
+
+/* HAY PLATOS */
+.isDishes{
+    padding: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.isDishes h2{
+    text-align: center;
+    font-family: var(--tipografiaTitulos);
+    color: var(--colorContraste2);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.platosMenu{
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* contenedores informacion */
+
+.imgContainer{
+    height: 100%;
+    width: 40%;
+}
+
+.imgContainer img{
+    width: 100%;
+    height: 100%;
+}
+
+.infoDish{
+    width: 50%;
+    height: 100%;
+}
+
+.infoDish h2{
+    font-family: var(--tipografiaTitulos);
+    font-weight: 700;
+    color: var(--colorContraste);
+    font-size: 30px;
+    text-align: left;
+}
+
+.infoDish h3{
+    font-family: var(--tipografiaTexto);
+    font-size: 20px;
+}
+
+.actionDish{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionDish button{
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(227, 55, 55);
+}
+
+.actionDish button:hover{
+    background-color: red;
+}
+
+
+
+/* RESPONSIVE */
+
+@media screen and (max-width:1080px){
+    section{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .formsContainer{
+        width: 100%;
+        height: 60%;
+    }
+
+    .viewDishes{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:1080px){
+    .platosMenu{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .imgContainer{
+        width: 100%;
+        height: 300px;
+    }
+
+    .infoDish{
+        width: 100%;
+        height: 40%;
+    }
+
+    .actionDish{
+        width: 100%;
+        height: 10%;
+    }
 
 }
