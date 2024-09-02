@@ -27,7 +27,9 @@ const userSchema = new mongoose.Schema({
    },
    imagenPerfil: {
        type: String
-   }
+   },
+   resetPasswordToken: { type: String }, // Token de recuperación de contraseña
+   resetPasswordExpires: { type: Date }, // Expiración del token
 });
 
 export const userModel = mongoose.model("Usuario", userSchema);

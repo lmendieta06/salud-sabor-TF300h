@@ -1,5 +1,7 @@
 import { userModel } from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
+import nodemailer from 'nodemailer';
+import crypto from 'crypto'; // Para generar un token seguro
 
 // Crear usuario
 export const postUser = async (req, res) => {
@@ -7,8 +9,27 @@ export const postUser = async (req, res) => {
     const { nombre, correoElectronico, contrasena, telefono, direccion } = req.body;
     const imagenPerfil = req.file ? `http://localhost:2000/uploads/${req.file.filename}` : null; // Obtener la ruta del archivo subido
 
+    // Validar la longitud de la contraseña
+    if (contrasena.length < 6) {
+      return res.status(400).json({
+        estado: "400",
+        message: "La contraseña debe tener al menos 6 caracteres."
+      });
+    }
+
+    // Verificar si el correo electrónico ya está registrado
+    const existingUser = await userModel.findOne({ correoElectronico });
+    if (existingUser) {
+      return res.status(400).json({
+        estado: "400",
+        message: "El correo electrónico ya está en uso."
+      });
+    }
+
+    // Encriptar la contraseña
     const codedPassword = await bcrypt.hash(contrasena, 10);
 
+    // Crear nuevo usuario
     const newUser = await userModel.create({
       nombre,
       correoElectronico,
@@ -27,11 +48,11 @@ export const postUser = async (req, res) => {
     if (error.code === 11000) {
       return res.status(400).json({
         estado: "400",
-        message: "El correo electrónico ya está en uso"
+        message: "El correo electrónico ya está en uso."
       });
     }
-    return res.status(400).json({
-      estado: "400",
+    return res.status(500).json({
+      estado: "500",
       message: "No se logró crear el usuario: " + error.message
     });
   }
@@ -57,7 +78,6 @@ export const getUsers = async (req, res) => {
   }
 };
 
-// Actualizar usuario
 // Actualizar usuario
 export const putUser = async (req, res) => {
   try {
@@ -123,12 +143,11 @@ export const getUserById = async (req, res) => {
   }
 };
 
-
+// Obtener perfil de usuario
 export const getUserProfile = async (req, res) => {
   try {
     // Obtén el ID del usuario desde el token decodificado
     const userId = req.user.id; // Accediendo al id desde req.user
-    console.log('ID del Usuario:', userId);
 
     // Busca al usuario en la base de datos
     const user = await userModel.findById(userId).select('-contrasena');  // Usa await aquí y excluye la contraseña
@@ -147,6 +166,77 @@ export const getUserProfile = async (req, res) => {
     res.status(500).json({ 
       message: 'Error al obtener el perfil del usuario',
       error: error.message || error // Incluye el mensaje de error en la respuesta
+    });
+  }
+};
+
+
+
+//recuperacion de contraseña 
+export const recoverPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Verificar si el correo electrónico existe en la base de datos
+    const user = await userModel.findOne({ correoElectronico: email });
+    if (!user) {
+      return res.status(404).json({
+        estado: "404",
+        message: "Correo electrónico no encontrado"
+      });
+    }
+
+    // Generar un token de recuperación
+    const token = crypto.randomBytes(32).toString('hex');
+    const tokenExpiration = Date.now() + 3600000; // 1 hora
+
+    // Guardar el token y su fecha de expiración en la base de datos del usuario
+    user.resetPasswordToken = token;
+    user.resetPasswordExpires = tokenExpiration;
+    await user.save();
+
+    // Configurar el transporte de correo
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: process.env.EMAIL_USER, // Usa las variables de entorno para las credenciales
+        pass: process.env.EMAIL_PASS
+        
+      }
+      
+    });
+ 
+    // Configurar las opciones del correo
+    const mailOptions = {
+      from: process.env.EMAIL_USER, // Usa el correo del remitente desde las variables de entorno
+      to: email,
+      subject: 'Recuperación de Contraseña',
+      text: `Haga clic en el siguiente enlace para restablecer su contraseña: http://localhost:4200/reset-password/${token}`
+    };
+
+    // Enviar el correo electrónico
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error al enviar el correo:', error);
+        return res.status(500).json({
+          estado: "500",
+          message: 'Error al enviar el correo',
+          error: error.message
+        });
+      }
+      res.status(200).json({
+        estado: "200",
+        message: 'Correo enviado',
+        info
+      });
+    });
+
+  } catch (error) {
+    console.error('Error en la recuperación de contraseña:', error);
+    return res.status(500).json({
+      estado: "500",
+      message: "Error en la recuperación de contraseña",
+      error: error.message
     });
   }
 };

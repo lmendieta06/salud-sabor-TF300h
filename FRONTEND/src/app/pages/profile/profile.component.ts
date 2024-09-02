@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
                 telefono: user.telefono,
                 direccion: user.direccion,
               });
-              this.previewImage = decoded.imagenPerfil ? decoded.imagenPerfil : 'assets/default-profile.png';
+              this.previewImage = decoded.imagenPerfil ? decoded.imagenPerfil : 'assets/default-user.png';
               console.log(this.previewImage);
               this.loading = false;
             },

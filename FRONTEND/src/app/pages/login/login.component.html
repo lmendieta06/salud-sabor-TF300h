@@ -21,7 +21,7 @@
                     <span *ngIf="passwordControl?.errors?.['minlength']">La contraseña debe tener al menos 4 caracteres.</span>
                 </div>
             </div>
-            <a class="login-link" routerLink="/recover">¿Olvidaste tu contraseña?</a>
+            <a class="login-link" routerLink="/recover-password">¿Olvidaste tu contraseña?</a>
             <input class="login-button" type="submit" value="Entrar" [disabled]="isSubmitting || credentialForm.invalid">
             <p>¿No tienes cuenta?<a routerLink="/registro"><span> Crear cuenta</span></a></p>
             <p class="terms-text">Al crear una cuenta, aceptas nuestros <strong>términos y condiciones</strong></p>

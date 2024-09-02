@@ -165,8 +165,12 @@ main {
     .modalRegistro {
         width: 90vw;
         height: auto;
-        top: 5%;
+        top: 30%;
         right: 5%;
+    }
+    .formsSingUp{
+         width: 64vw;
+      
     }
     .imgEncabezado img{
         width: 150px;

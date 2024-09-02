@@ -365,10 +365,12 @@ overflow: visible;
     .inicioSesionOpcion {
         width: auto; /* Ajustar el ancho */
     }
-}
+   
 
 @media screen and (max-width:650px){
- 
+ .barraLogo{
+    width: 100%;
+ }
     .logo img {
         width: 60px; /* Reducir tamaño del logo */
     }
@@ -399,10 +401,7 @@ overflow: visible;
     .cart-icon i {
         font-size: 1.2rem; /* Ajustar tamaño del ícono */
     }
-    .listaMenu {
-        width: 100%; /* Asegurarse de que el menú no se desborde */
-        padding: 0; /* Eliminar padding si es necesario */
-    }
+  
     .userOptions {
         gap: 5px; /* Reducir espacio entre elementos */
     }
@@ -421,12 +420,13 @@ overflow: visible;
     }
     .listaMenu {
         width: 100%; /* Asegurarse de que el menú no se desborde */
-        padding: 0; /* Eliminar padding si es necesario */
+        padding: 0; 
     }
     .nav-link {
-        font-size: 10px; /* Ajustar el tamaño de fuente */
-        padding: 0.9rem; /* Ajustar el padding */
-        margin-left: -10px;
+        width: 100%;
+        font-size: 13px; /* Ajustar el tamaño de fuente */
+        padding: 0rem; /* Ajustar el padding */
+    
     }
     .dropdown{
         width: 60px;
@@ -467,17 +467,12 @@ overflow: visible;
         z-index:99;
         top: 100px;
         left:0;
-        padding: 0 10px;
+        padding: 0 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Añadido para efecto de sombra */
-    
-    }
-    .listaMenu{
-        width: 80vw;
-        height: 100%;
-        gap: 0px;
-        
+    display: flex;
+    justify-content: space-around;
     }
  
 
     
-}
+}}

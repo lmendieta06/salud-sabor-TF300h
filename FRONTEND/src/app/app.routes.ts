@@ -18,13 +18,15 @@ import { PanelUusariosComponent } from './components/panel-uusarios/panel-uusari
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MenuRestauranteComponent } from './components/menu-restaurante/menu-restaurante.component';
 import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+
 
 export const routes: Routes = [
     {path:"", component: HomeComponent, title: "Salud & Sabor"},
     {path:"restaurantes", component: RestaurantsComponent, title: "Restaurantes"},
     {path:"registro", component: RegisterComponent, title: "Registro"},
     {path:"login", component:LoginComponent, title: "Log in"},
-    {path:"recover", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
+    {path:"recover-password", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
     {path: 'cart', component: CartComponent }, 
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
     {path:"administrador", component:AdminComponent, title:"Administrador", children:[
@@ -36,6 +38,7 @@ export const routes: Routes = [
         {path:"dashboard", component:DashboardComponent, title:"Dashboard"}
     ]},
     // {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
+    {path:"profile", component:ProfileComponent, title: "Mi perfil"},
     {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
     {path:"sobreNosotros", component:AboutUsComponent, title:"Sobre Nosotros"},

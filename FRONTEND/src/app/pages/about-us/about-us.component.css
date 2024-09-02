@@ -360,233 +360,91 @@ footer {
 }
 
 /* aqui emmpieza el responsive para dispositivos moviles */
-@media (max-width:650px) {
+@media (max-width: 650px) {
 
-
-
-
-    
     body {
-        width: 100vw;
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     header {
-        /* ancho */
-        /* vw -> ancho de pantalla
-                vh -> alto de pantalla
-            */
         width: 100vw;
         margin: 0 auto;
-
     }
 
     main {
         width: 100vw;
-        height: 100vh;
-        margin: 20px auto;
-        
+       
     }
 
-    .InicioLogo {
-        width: 100vw;
-        margin: 0 auto;
-
+    .baner {
+        width: 100%;
+        height: 60vh; /* Ajusta la altura para que se vea bien en móviles */
+        background-position: center;
+        background-size: cover;
+        filter: brightness(0.9);
     }
 
-    .InicioLogo img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .ContenedorInicio Img {
-
-        width: 50px;
-        height: 50px;
-    }
-
-    .ContenedorInicio {
-        width: 50vw;
-
-        font-size: 15px;
-    }
-
-    .ContenedorInicio ul {
-        margin: 0px;
-        
-    }
-
-
-    nav {
-        width: 100vw;
-        padding: 15px;
-        margin: 0;
-        
-    }
-
-    h3 {
-        font-size: 10px;
-        
-    }
-
-
-    h1 {
-        width: 350px;
-        font-size: 42px;
-    }
-
-    h2 {
-        
-        margin-top: 20px;
-        font-size: 28px;
-        margin-bottom: 65px;
+    .baner h1 {
+        font-size: 36px; /* Reduce el tamaño del texto */
+        width: 90vw; /* Ajusta el ancho */
+        padding: 10px;
     }
 
     .parrafo-banner {
-        width: 100vw;
-        font-size: 22px;
-        padding: 20px;
-
-    }
-
-    .vision,
-    .mision {
-        
-        width: 80vw;
-        margin: 0 auto;
-
-        display: flex;
-        flex-direction: column;
-    }
-
-    .vision img,
-    .mision img {
-        width: 80px;
-        height: 80px;
-
-    }
-
-    .vision p,
-    .mision p {
-        
-        width: 340px;
-        font-size: 20px;
-        text-align: center;
-        margin: 0 auto;
+        position: absolute;
+       top: 75%;
+    line-height: 40px;
+        font-size: 18px; /* Ajusta el tamaño del texto */
+        width: 90vw;
+        height: 300px; /* Ajusta el alto automáticamente */
         padding: 10px;
+    }
 
+    h2 {
+        font-size: 24px; /* Reduce el tamaño del texto */
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .mision, .vision {
+        width: 90vw;
+        margin: 20px auto;
+        flex-direction: column;
+        align-items: center;
     }
 
     .container-img {
-        
-        margin-top: -40px;
-        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px; 
+    }
+    .mision img, .vision img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .mision p, .vision p {
+        font-size: 16px; 
+        text-align: center;
+        width: 90vw;
+        padding: 10px;
     }
 
     .equipo {
-
         display: flex;
-        justify-content: center;
+        flex-direction: row; 
         align-items: center;
-
-
+        gap: 20px;
     }
 
     .equipo img {
         width: 80px;
         height: 80px;
-        margin-left: 20px;
-
     }
 
-    .gabriel h4,
-    .laura h4{
-        font-size: 15px;
-        padding: 15px;
+    .gabriel h4, .laura h4 {
+        font-size: 14px; /* Ajusta el tamaño del texto */
         margin: 5px 0;
-
         text-align: center;
-    }
-
-    .modal-contenedor {
-        width: 300px;
-        height: 400px;
-    }
-
-    .Eres-Increible {
-        width: 100%;
-        height: 60px;
-        
-        
-
-    }
-    .modal-titulo{
-        margin:0;
-        font-size: 20px;
-        padding: 0;
-    }
-    .modal-contenedor img{
-        width: 80px;
-        height: 80px;
-    }
-    .Cerrar-modal{
-       margin: 0;
-       left: 86%;
-       width: 29px;
-       height: 25px;
-       font-size: 15px;
-       text-align: center;
-    }
-    .controles {
-        width: 50%;
-        margin-top: -10px;
-       
-
-    }
- .input-login{
-    width: 100%;
-    margin: 0;
-    font-size: 13px;
-    
-   
-
-    
- }
-
-    footer {
-        
-        width: 100vw;
-        height: auto;
-    }
-
-    .enlacesFooter {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        justify-content: space-around;
-        padding-top: 0;
-        height: 78%;
-       
-    }
-
-    .contenidoFooter {
-        height: 500px;
-    }
-
-    .contenidoFooter img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .enlaces {
-       
-        height: 30%;
-        width: 100%;
-        margin: 30px;
-    }
-
-    .copyRight {
-   padding: 10px;
-        width: 80%;
     }
 }

@@ -13,6 +13,7 @@ import dishRouter from "./routes/dish.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import menuRouter from "./routes/menu.routes.js";
 import loginRouter from "./routes/login.routes.js"
+
 import path from 'path';
 import { fileURLToPath } from 'url'; // Importar fileURLToPath desde 'url'
 
@@ -61,7 +62,8 @@ app.use("/users", usersRouter);
 // Restaurantes
 app.use("/restaurants", restaurantRouter);
 // login
-app.use("/login", loginRouter)
+app.use("/login", loginRouter);
+
 
 
 app.listen(port, () => {

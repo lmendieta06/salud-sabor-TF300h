@@ -115,23 +115,23 @@ export class NavegationComponent implements OnInit, OnDestroy {
   }
 
   // Métodos para manejar el menú desplegable
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent): void {
-    const target = event.target as HTMLElement;
-    if (
-      !target.closest('.dropdown') &&
-      !target.closest('.userIcon') &&
-      !target.closest('.userImageContainer')
-    ) {
-      this.hideDropdown();
-    }
+  @HostListener('mouseenter', ['$event'])
+  onMouseEnter(event: Event) {
+    clearTimeout(this.hideTimeout);
+    this.isDropdownVisible = true;
+    console.log('Dropdown visible:', this.isDropdownVisible);
   }
 
-  toggleDropdown(): void {
-    this.isDropdownVisible = !this.isDropdownVisible;
+  @HostListener('mouseleave', ['$event'])
+  onMouseLeave(event: Event) {
+    this.hideTimeout = setTimeout(() => {
+      this.isDropdownVisible = false;
+      console.log('Dropdown visible:', this.isDropdownVisible);
+    }, 800);
   }
 
-  hideDropdown(): void {
+  hideDropdown() {
+    clearTimeout(this.hideTimeout);
     this.isDropdownVisible = false;
   }
 }
