@@ -120,7 +120,9 @@ footer h2 {
         align-items: left;
         justify-content: space-around;
         padding-top: 0;
-        height: 70%;
+        height: 100%;
+        width: 90%;
+        overflow: hidden;
     }
 
     .contenidoFooter {
@@ -131,6 +133,7 @@ footer h2 {
         height: 33%;
         width: 100%;
         margin: 30px;
+        overflow: hidden;
     }
 
     .copyRight {
