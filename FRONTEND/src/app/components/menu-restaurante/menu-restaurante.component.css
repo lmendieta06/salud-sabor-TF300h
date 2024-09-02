@@ -1,0 +1,282 @@
+section{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+}
+
+/* BOTON REGRESAR */
+.botonRegresar{
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.botonRegresar a{
+    width: 10%;
+    height: 100%;
+    border: none;
+    background-color: var(--colorContraste2);
+    color: white;
+    border-radius: 1000px;
+}
+
+.botonRegresar a:hover, .botonRegresar button:focus{
+    cursor: pointer;
+    background-color: var(--colorContraste) ;
+}
+
+/* INFO RESTAURANTE */
+.infoRestaurante{
+    height: 100%;
+    width: 70%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+h1{
+    width: 100%;
+    font-family: var(--tipografiaTitulos);
+    font-weight: 900;
+    font-size: 40px;
+    color: var(--colorContraste);
+    margin: 10px;
+    text-align: center;
+}
+
+.infoRestaurante h2{
+    font-family: var(--tipografiaTitulos);
+    font-weight: 900;
+    font-size: 25px;
+    color: var(--colorContraste);
+    text-align: left;
+}
+
+.infoRestaurante h3{
+    width: 100%;
+    font-family: var(--tipografiaTexto);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.infoRestaurante span{
+    width: 100%;
+    font-family: var(--tipografiaTitulos);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--colorContraste2);
+    margin-bottom: 10px;
+    text-align: left;
+}
+/* PLATOS */
+.dishesContainer{
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.dish{
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.imgContainer{
+    height: 100%;
+    width: 40%;
+}
+
+.imgContainer img{
+    width: 100%;
+    height: 100%;
+}
+
+.infoDish{
+    width: 50%;
+    height: 100%;
+}
+
+.infoDish h2{
+    font-family: var(--tipografiaTitulos);
+    font-weight: 700;
+    color: var(--colorContraste);
+    font-size: 30px;
+    text-align: left;
+}
+
+.infoDish h3{
+    font-family: var(--tipografiaTexto);
+    font-size: 18px;
+}
+
+.actionDish{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.actionDish button{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.eliminarButton{
+    background-color: rgb(227, 55, 55);
+}
+
+.eliminarButton:hover{
+    background-color: red;
+}
+
+.updateButton{
+    background-color: var(--colorContraste2);
+}
+
+.updateButton:hover{
+    background-color: rgb(71, 205, 71);
+}
+/* ACTIONS */
+.actions{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    gap: 10px;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 40px;
+}
+
+.actions div{
+    width: 80%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonAction{
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: var(--colorNav);
+    color: white;
+    font-family: var(--tipografiaTexto);
+    font-weight: 700;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width:1150px){
+    .actions div{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width:970px){
+    .dish{
+        height: 300px;
+    }
+
+    .actions{
+        padding: 10px;
+    }
+
+    .infoRestaurante{
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width:780px){
+    section{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .infoRestaurante{
+        height: auto;
+        width: 100%;
+        overflow-y:visible;
+    }
+
+    .actions{
+        position: relative;
+        flex-direction: row;
+        width: 100%;
+        height: 70px;
+        padding: auto;
+        margin-top: 0;
+    }
+
+    .actions div{
+        width: 33%;
+        height: 80%;
+        
+    }
+}
+
+@media screen and (max-width:550px){
+    .dish{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .imgContainer{
+        width: 100%;
+        height: 300px;
+    }
+
+    .infoDish{
+        width: 100%;
+        height: 40%;
+    }
+
+    .actionDish{
+        width: 100%;
+        height: 10%;
+        flex-direction: row;
+    }
+
+    .botonAction{
+        font-size: 12px;
+    }
+    h1{
+        font-size: 30px;
+    }
+    .infoRestaurante h2, .infoRestaurante h3{
+        padding: 20px;
+    }
+
+}

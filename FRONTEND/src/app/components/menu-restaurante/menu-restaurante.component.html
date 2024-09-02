@@ -1,60 +1,68 @@
+<div class="botonRegresar">
+    <a routerLink="/administrador/panel-restaurantes">
+        <i class="bi bi-arrow-left-short"></i>
+    </a>
+</div>
 <section>
-    <div>
-        <a routerLink="/administrador/panel-restaurantes">
-            <i class="bi bi-arrow-left-short"></i>
-        </a>
-    </div>
-    <h1>{{restaurantRecibido.nombre}}</h1>
-    <h2>Categoria restaurante: {{restaurantRecibido.categoria}}</h2>
-    <h3>Categorias del menú: {{menu.category}}</h3>
-    <h3>PLATOS DISPONIBLES</h3>
-    <div *ngIf="menu.dishes && menu.dishes.length > 0">
-        <div *ngFor="let dish of menu.dishes">
-            <div>
-                <img src="{{dish.imagenPlato}}" alt="imgPlato{{dish.nombrePlato}}">
-            </div>
-            <div>
-                <h2>Nombre: {{dish.nombrePlato}}</h2>
-                <h3>Categoria: {{dish.categoriaMenu}}</h3>
-                <h3>Descripción: {{dish.descripcionPlato}}</h3>
-                <h3>Precio: ${{dish.precioPlato}}</h3>
-            </div>
-            <div>
-                <button type="button" (click)="updateDishModal(dish)">
-                    <i class="bi bi-pencil-square"></i>
-                </button>
-                <button type="button" (click)="deleteDish(dish._id)">
-                    <i class="bi bi-trash3" ></i>
-                </button>
+    <article class="infoRestaurante">
+        <h1>{{restaurantRecibido.nombre}}</h1>
+        <h2>MENÚ</h2>
+        <h3><span>Categorias: </span> {{menu.category}}</h3>
+        <h2>PLATOS DISPONIBLES</h2>
+        <div *ngIf="menu.dishes && menu.dishes.length > 0" class="dishesContainer">
+            <div *ngFor="let dish of menu.dishes" class="dish">
+                <div class="imgContainer">
+                    <img src="{{dish.imagenPlato}}" alt="imgPlato{{dish.nombrePlato}}">
+                </div>
+                <div class="infoDish">
+                    <h2>Nombre: {{dish.nombrePlato}}</h2>
+                    <h3>Categoria: {{dish.categoriaMenu}}</h3>
+                    <h3>Descripción: {{dish.descripcionPlato}}</h3>
+                    <h3>Precio: ${{dish.precioPlato}}</h3>
+                </div>
+                <div class="actionDish">
+                    <button type="button" (click)="updateDishModal(dish)" class="updateButton">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" (click)="deleteDish(dish._id)" class="eliminarButton">
+                        <i class="bi bi-trash3" ></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </article>
+    <article class="actions">
+        <div>
+            <button (click)="updateRestaurant(restaurantRecibido)" class="botonAction">
+                EDITAR RESTAURANTE
+            </button>
+        </div>
+        <div>
+            <button (click)="updateMenu(menu)" class="botonAction">
+                EDITAR MENÚ
+            </button>
+        </div>
+        <div>
+            <button (click)="addDishModal()" class="botonAction">
+                AGREGAR PLATO
+            </button>
+        </div>
+    
+        <div *ngIf="isAddingDish">
+            <app-modal-add-dish></app-modal-add-dish>
+        </div>
+    
+        <div *ngIf="isUpdatingDish">
+            <app-modal-update-dish></app-modal-update-dish>
+        </div>
+    
+        <div *ngIf="isUpdatingRestaurant">
+            <app-modal-update-restaurant-data></app-modal-update-restaurant-data>
+        </div>
+    
+        <div *ngIf="isUpdatingMenu">
+            <app-modal-update-menu-data></app-modal-update-menu-data>
+        </div>
+    </article>
+    
 </section>
-<section>
-    <div>
-        <button (click)="updateRestaurant(restaurantRecibido)">EDITAR DATOS RESTAURANTE</button>
-    </div>
-    <div>
-        <button (click)="updateMenu(menu)">EDITAR DATOS MENÚ</button>
-    </div>
-    <div>
-        <button (click)="addDishModal()">AGREGAR PLATO</button>
-    </div>
-
-    <div *ngIf="isAddingDish">
-        <app-modal-add-dish></app-modal-add-dish>
-    </div>
-
-    <div *ngIf="isUpdatingDish">
-        <app-modal-update-dish></app-modal-update-dish>
-    </div>
-
-    <div *ngIf="isUpdatingRestaurant">
-        <app-modal-update-restaurant-data></app-modal-update-restaurant-data>
-    </div>
-
-    <div *ngIf="isUpdatingMenu">
-        <app-modal-update-menu-data></app-modal-update-menu-data>
-    </div>
-</section>
-

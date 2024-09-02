@@ -1,31 +1,31 @@
 <section class="addProduct">
     <div class="container">
-        <div class="containerForms">
-            <article class="cerrarModal">
-                <button class="regresarBtn" (click)="cerrarModal()"><i class="bi bi-x-lg"></i></button>
-            </article>
-            <h3 class="text-center">ACTUALIZANDO PLATILLO</h3>
-            <div class="mb-3">
-                <input type="text" class="form-control"  name="nombre"
-                placeholder="Ingrese el nombre del plato"  [(ngModel)]="nombrePlato"/>
+        <div>
+            <span class="close" (click)="cerrarModal()">&times;</span>
+            <div class="containerForms">
+                <h3 class="text-center">ACTUALIZANDO PLATILLO</h3>
+                <div class="mb-3">
+                    <input type="text" class="form-control"  name="nombre"
+                    placeholder="Ingrese el nombre del plato"  [(ngModel)]="nombrePlato"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese a que categoria pertenece"  name="imagen" [(ngModel)]="categoriaMenu"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese una breve descripción del producto"  name="precioBase" [(ngModel)]="descripcionPlato"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese una imagen del plato"  name="precioBase" [(ngModel)]="imagenPlato"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Ingrese el precio"  name="precioBase" [(ngModel)]="precioPlato"/>
+                </div>
+        
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="updateDish()">CONFIRMAR</button>
+                </div>
+        
             </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese a que categoria pertenece"  name="imagen" [(ngModel)]="categoriaMenu"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese una breve descripción del producto"  name="precioBase" [(ngModel)]="descripcionPlato"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese una imagen del plato"  name="precioBase" [(ngModel)]="imagenPlato"/>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Ingrese el precio"  name="precioBase" [(ngModel)]="precioPlato"/>
-            </div>
-    
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary mb-3 enviarForms" (click)="updateDish()">CONFIRMAR</button>
-            </div>
-    
         </div>
     </div>
 </section>

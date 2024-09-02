@@ -5,6 +5,8 @@ import { AdminResponse } from '../../../interfaces/adminRes';
 import { AdminInterface } from '../../../interfaces/adminInterface';
 import { ModalAddAdminComponent } from '../modal-add-admin/modal-add-admin.component';
 import { ModalUpdateAdminComponent } from '../modal-update-admin/modal-update-admin.component';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-panel-administradores',
   standalone: true,
@@ -25,7 +27,6 @@ export class PanelAdministradoresComponent {
     this.adminService.getAdmins().subscribe((res:AdminResponse) =>{
       if (res && res.admins){
         this.Admins = res.admins;
-        console.log('Administradores:', this.Admins);
       }else{
         console.error("Hubo un error");
       }
@@ -40,24 +41,49 @@ export class PanelAdministradoresComponent {
     this.isUpdating = true;
     this.adminToUpdateId = admin._id;
     this.adminToUpdate = admin;
-
-    console.log(this.adminToUpdateId);
-    console.log(this.adminToUpdate);
   }
 
   deleteAdmin(id:string){
     if(id){
-      console.log(id);
-      this.adminService.deleteAdmin(id).subscribe((req:any) =>{
-        if(req){
-          alert("Admin eliminado satisfactoriamente");
-          this.getAdmins();
-        }else{
-          console.error("Hubo un error");
+      Swal.fire({
+        title: "¿Estas seguro?",
+        text: "No es posible revertir esto",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.adminService.deleteAdmin(id).subscribe((req:any) =>{
+            if(req){
+              this.getAdmins();
+            }else{
+              console.error("Hubo un error");
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "El ID no existe",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+            }
+          })
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "El administrador ha sido eliminado",
+            icon: "success"
+          });
         }
-      })
+      });
+
     }else{
       console.error("ID no esta definido");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El ID no existe",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   }
 

@@ -20,7 +20,6 @@ export class PanelUusariosComponent {
   this.userService.getUsers().subscribe((res: UserResponse) => {
     if (res && res.users) {
       this.allUsers= res.users;
-      console.log(this.allUsers);
     } else {
       console.error("Hubo un error");
     }

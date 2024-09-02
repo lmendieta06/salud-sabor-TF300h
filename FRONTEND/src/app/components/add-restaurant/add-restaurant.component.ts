@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ModalDishesTableComponent } from '../modal-dishes-table/modal-dishes-table.component';
 import { info } from 'console';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-restaurant',
   standalone: true,
@@ -46,12 +47,9 @@ export class AddRestaurantComponent {
 
   ngOnInit(){
     this.verificarPlatos();
-    console.log(this.dishesMenu.length);
-    console.log(this.dishesMenu);
   }
 
   verificarPlatos(){
-    console.log("Verifico plato")
     if(!(this.dishesMenu.length === 0)){
       this.isDishes = true;
     }
@@ -66,7 +64,6 @@ export class AddRestaurantComponent {
   // RESTAURANTE Y MENÚ
   addRestaurant(){
 
-    console.log(this.dishesMenu);
     const infoMenu = {
       title : this.nombreRestaurant,
       imgLogo : this.imgLogo,
@@ -79,22 +76,29 @@ export class AddRestaurantComponent {
 
       this.menuService.postMenu(infoMenu).subscribe((res:any) =>{
         if(res){
-          alert("Se creo el menu exitosamente");
-          console.log(res);
           this.menu = res.datos;
-
-          console.log("Menu agregado a restaurantes: "+this.menu);
-
           this.restaurantService.postRestaurant(this.nombreRestaurant, this.ciudad, this.correoElectronico, this.categoriaRestaurant, this.descripcion, this.direccion, this.menu._id, this.imgLogo).subscribe((res:any)=>{
             if(res){
               alert("Se creo el restaurante satisfactoriamente");
-              console.log(res);
+              Swal.fire("Se creo el restaurante exitosamente");
             }else{
               console.error("Error al crear el restaurante");
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Ocurrio un error",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
             }
           })
         }else{
           console.error("Hubo un error al crear menú");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Ocurrio un error",
+            footer: '<a href="#">Why do I have this issue?</a>'
+          });
         }
       })
 
@@ -107,14 +111,32 @@ export class AddRestaurantComponent {
 
   deleteDish(dishId : any){
     try{
-      this.dishService.deleteDish(dishId).subscribe((res:any)=>{
-        if(res){
-          this.dishesMenu = this.dishesMenu.filter(dish => dish._id !== dishId);
-          this.ngOnInit();
-        }else{
-          console.error("No se pudo eliminar el platillo");
+      Swal.fire({
+        title: "¿Estas seguro?",
+        text: "No es posible revertir esto",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dishService.deleteDish(dishId).subscribe((res:any)=>{
+            if(res){
+              this.dishesMenu = this.dishesMenu.filter(dish => dish._id !== dishId);
+              this.ngOnInit();
+            }else{
+              console.error("No se pudo eliminar el platillo");
+            }
+          })
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "El plato ha sido eliminado",
+            icon: "success"
+          });
         }
-      })
+      });
+
     }catch(error){
       console.error(" Hubo un error con la petición", error);
     }

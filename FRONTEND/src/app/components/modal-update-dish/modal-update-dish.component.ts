@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MenuRestauranteComponent } from '../menu-restaurante/menu-restaurante.component';
 import { DishService } from '../../services/dish.service';
 import { FormsModule } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modal-update-dish',
   standalone: true,
@@ -32,16 +32,45 @@ export class ModalUpdateDishComponent {
     }
 
     if(this.dishId){
-      this.dishService.updateDish(this.dishId, dishInfo).subscribe((res:any) =>{
-        if(res){
-          this.panelMenu.isUpdatingDish = false;
-          this.resetForm();
-          this.panelMenu.ngOnInit();
-        }else{
-          console.error("Hubo un error al actualizar platillo");
-          this.panelMenu.isUpdatingDish = false;
+      Swal.fire({
+        title: "¿Deseas guardar cambios?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Guardar",
+        denyButtonText: `No guardar`
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire("Guardado!", "", "success");
+          this.dishService.updateDish(this.dishId, dishInfo).subscribe((res:any) =>{
+            if(res){
+              this.panelMenu.isUpdatingDish = false;
+              this.resetForm();
+              this.panelMenu.ngOnInit();
+            }else{
+              console.error("Hubo un error al actualizar platillo");
+              this.panelMenu.isUpdatingDish = false;
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Ocurrio un error",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+            }
+          })
+        } else if (result.isDenied) {
+          Swal.fire("Los cambios no han sido guardados", "", "info");
+          this.panelMenu.isUpdatingMenu = false;
         }
-      })
+      });
+    }else{
+      console.error("Hubo un error");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Ocurrio un error",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   }
 

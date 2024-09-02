@@ -4,6 +4,7 @@ import { RestaurantService } from '../../services/restaurant.service';
 import { ModalMenuComponent } from '../modal-menu/modal-menu.component';
 import { MenuService } from '../../services/menu.service';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-panel-restaurantes',
   standalone: true,
@@ -25,7 +26,6 @@ export class PanelRestaurantesComponent {
   getRestaurants(){
     this.restaurantService.getRestaurants().subscribe((res:any)=>{
       if(res){
-        console.log(res);
         this.allRestaurants = res.restaurants;
       }else{
         console.error("Hubo un error");
@@ -35,15 +35,31 @@ export class PanelRestaurantesComponent {
 
   deleteRestaurant(id:string){
     if(id){
-      this.restaurantService.deleteRestaurant(id).subscribe((req:any)=>{
-        if(req){
-          console.log(req);
-          alert("Producto eliminado");
-          this.getRestaurants();
-        }else{
-          console.error("Hubo un error");
+      Swal.fire({
+        title: "¿Estas seguro?",
+        text: "No es posible revertir este",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.restaurantService.deleteRestaurant(id).subscribe((req:any)=>{
+            if(req){
+              this.getRestaurants();
+            }else{
+              console.error("Hubo un error");
+            }
+          })
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "El administrador ha sido eliminado",
+            icon: "success"
+          });
         }
-      })
+      });
+
     }else{
       console.error("ID no esta definido")
     }
@@ -70,7 +86,6 @@ export class PanelRestaurantesComponent {
           if (req) {
             // console.log("Respuesta "+req);
             this.menu = req.datos; 
-            console.log("Menu "+this.menu);
             // console.log(this.menu.dishes);
           } else {
             console.error("Hubo un error al obtener el menú");
@@ -82,8 +97,6 @@ export class PanelRestaurantesComponent {
   }
 
   handleVerMenu(restaurant:any){
-    console.log("Esta es la informacion del restaurante "+restaurant);
-    console.log("Id del menú "+restaurant.menu)
     this.openMenuModal(restaurant);
     this.getMenuById(restaurant.menu);
   }

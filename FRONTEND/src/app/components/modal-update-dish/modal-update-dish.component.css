@@ -18,9 +18,10 @@
 .container{
     background-color: white;
     border-radius: 20px;
-    width: 60%;
-    height: 80%;
+    width: 80%;
+    padding: 20px;
 }
+
 
 .containerForms{
     width: 100%;
@@ -30,27 +31,22 @@
     justify-content: center;
     align-items: center;
     gap: 10pxs;
+    padding: 20px;
 }
 
-.cerrarModal{
-    width: 90%;
-    top: 0;
+.close {
+    color: var(--colorContraste2);
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: var(--colorContraste);
     text-decoration: none;
-    text-align: left;
-    height: auto;
-}
-
-.regresarBtn{
-    border: none;
-    background-color: var(--colorContraste2);
-    width: 40px;
-    height: 40px;
-    border-radius: 50px ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: hidden;
-}
+    cursor: pointer;
+  }
 
 .containerForms i{
     color: white;
@@ -85,7 +81,6 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    text-align: left;
 
 }
 
@@ -110,3 +105,27 @@
     overflow-y: hidden;
 
 }
+
+/* responsive */
+
+@media screen and (max-width:620px){
+    .containerForms h3{
+        font-size: 30px;
+    }
+
+    .enviarForms{
+        width: 70%;
+    }
+}
+
+
+@media screen and (max-width:410px){
+    .containerForms h3{
+        font-size: 25px;
+    }
+
+    .enviarForms{
+        width: 80%;
+    }
+}
+

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PanelAdministradoresComponent } from '../panel-administradores/panel-administradores.component';
 import { AdminService } from '../../services/admin.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modal-add-admin',
   standalone: true,
@@ -29,8 +30,15 @@ export class ModalAddAdminComponent {
           this.panelAdmin.isAdding = false;
           this.resetForm();
           this.panelAdmin.getAdmins();
+          Swal.fire("Se creo administrador satisfactoriamente");
         }else{
           console.error("Hubo un error: ");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Ocurrio un error",
+            footer: '<a href="#">Why do I have this issue?</a>'
+          });
           this.panelAdmin.isAdding = false;
   
         }

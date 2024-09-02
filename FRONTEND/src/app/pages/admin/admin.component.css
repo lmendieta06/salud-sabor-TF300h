@@ -117,6 +117,10 @@ a{
     gap: 5px;
 }
 
+.buttonsContainer a{
+    text-decoration: none;
+}
+
 /* MAIN */
 main{
     width: 95%;

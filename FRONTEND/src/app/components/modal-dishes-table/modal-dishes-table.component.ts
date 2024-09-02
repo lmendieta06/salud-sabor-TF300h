@@ -3,6 +3,7 @@ import { AddRestaurantComponent } from '../add-restaurant/add-restaurant.compone
 import { DishService } from '../../services/dish.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modal-dishes-table',
   standalone: true,
@@ -34,8 +35,7 @@ export class ModalDishesTableComponent {
     try{
       this.dishesService.postDish(dishInfo).subscribe((res:any)=>{
         if(res){
-          alert("Se creo el plato exitosamente");
-          console.log(res);
+          Swal.fire("Se creo plato satisfactoriamente");
           this.resetForm();
           this.dishes.push(res.datos);
         }else{
@@ -51,26 +51,57 @@ export class ModalDishesTableComponent {
 
   deleteDish(dish : any){
     try{
-      this.dishesService.deleteDish(dish._id).subscribe((res:any)=>{
-        if(res){
-          alert("Se elimino el plato exitosamente");
-          // ELIMINAR EL DATO DEL ARREGLO
-          const dishIdDelete = dish._id;
-          this.dishes = this.dishes.filter(dish => dish._id !== dishIdDelete);
-          this.panelAddRestaurant.verificarPlatos();
-          console.log(this.dishes.length);
-          this.panelAddRestaurant.dishesMenu = this.dishes;
+      Swal.fire({
+        title: "¿Estas seguro?",
+        text: "No es posible revertir este",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dishesService.deleteDish(dish._id).subscribe((res:any)=>{
+            if(res){
+              // ELIMINAR EL DATO DEL ARREGLO
+              const dishIdDelete = dish._id;
+              this.dishes = this.dishes.filter(dish => dish._id !== dishIdDelete);
+              this.panelAddRestaurant.verificarPlatos();
+              this.panelAddRestaurant.dishesMenu = this.dishes;
+    
+            }else{
+              console.error("Hubo un error");
+              Swal.fire({
+                title: "¡Eliminado!",
+                text: "El plato ha sido eliminado",
+                icon: "success"
+              });
+              this.panelAddRestaurant.dishesMenu = this.dishes;
 
+            }
+          })
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "El plato ha sido eliminado",
+            icon: "success"
+          });
         }
-      })
+      });
+
     }catch(error){
-      console.log("Hubo un error al eliminar producto" + error);
+      this.panelAddRestaurant.dishesMenu = this.dishes;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El ID no existe",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   }
 
   addDishesToMenu(){
     this.panelAddRestaurant.dishesMenu = this.dishes;
-    alert("Platos creados exitosamente");
+    Swal.fire("Se agregaron platos exitosamente");
     this.panelAddRestaurant.ngOnInit();
     this.closeModal();
 

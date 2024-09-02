@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { PanelAdministradoresComponent } from '../panel-administradores/panel-administradores.component';
 import { AdminService } from '../../services/admin.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modal-update-admin',
   standalone: true,
@@ -28,18 +29,47 @@ export class ModalUpdateAdminComponent {
     };
 
     if(this.adminId){
-       
-    this.adminService.updateAdmin(this.adminId, administradorInfo).subscribe((res:any) => {
-      if(res){
-        this.panelAdmin.isUpdating = false;
-        this.resetForm();
-        this.panelAdmin.getAdmins();
-      }else{
-        console.error("Hubo un error");
-        this.panelAdmin.isUpdating = false;
-      }
-    }) 
 
+      Swal.fire({
+        title: "¿Deseas guardar cambios?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Guardar",
+        denyButtonText: `No guardar`
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire("Guardado!", "", "success");
+          this.adminService.updateAdmin(this.adminId, administradorInfo).subscribe((res:any) => {
+            if(res){
+              this.panelAdmin.isUpdating = false;
+              this.resetForm();
+              this.panelAdmin.getAdmins();
+            }else{
+              console.error("Hubo un error");
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Ocurrio un error",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+              this.panelAdmin.isUpdating = false;
+            }
+          }) 
+        } else if (result.isDenied) {
+          Swal.fire("Los cambios no han sido guardados", "", "info");
+        }
+      });
+
+    }else{
+      this.panelAdmin.isUpdating = false;
+      console.error("Hubo un error");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Ocurrio un error",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   }
 

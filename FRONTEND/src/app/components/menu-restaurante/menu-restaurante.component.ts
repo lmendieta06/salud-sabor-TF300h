@@ -9,7 +9,7 @@ import { ModalUpdateDishComponent } from '../modal-update-dish/modal-update-dish
 import { ModalUpdateMenuDataComponent } from '../modal-update-menu-data/modal-update-menu-data.component';
 import { ModalUpdateRestaurantDataComponent } from '../modal-update-restaurant-data/modal-update-restaurant-data.component';
 import { RouterLink } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-menu-restaurante',
   standalone: true,
@@ -36,7 +36,6 @@ export class MenuRestauranteComponent {
   ngOnInit(): void {
     // Obtener el ID del restaurante desde los parámetros de la ruta
     const id = this.route.snapshot.paramMap.get('restauranteId');
-    console.log(id);
     if (id) {
       this.getRestaurantByIdMenu(id);
     } else {
@@ -49,7 +48,6 @@ export class MenuRestauranteComponent {
       if (res) {
         this.restaurantRecibido = res;
         this.getMenuById(this.restaurantRecibido.menu);
-        console.log("Restaurante recibido:", this.restaurantRecibido);
       } else {
         console.error("Hubo un error al obtener el restaurante");
       }
@@ -62,7 +60,6 @@ export class MenuRestauranteComponent {
           if (req) {
             // console.log("Respuesta "+req);
             this.menu = req.datos; 
-            console.log("Menu "+this.menu);
             // console.log(this.menu.dishes);
           } else {
             console.error("Hubo un error al obtener el menú");
@@ -80,17 +77,44 @@ export class MenuRestauranteComponent {
   
   deleteDish(id:string){
     if(id){
-      console.log(id);
-      this.dishService.deleteDish(id).subscribe((req:any)=>{
-        if(req){
-          alert("Plato eliminado satisfactoriamente");
-          this.ngOnInit();
-        }else{
-          console.error("Hubo un error al eliminar plato");
+      Swal.fire({
+        title: "¿Estas seguro?",
+        text: "No es posible revertir esto",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dishService.deleteDish(id).subscribe((req:any)=>{
+            if(req){
+              this.ngOnInit();
+            }else{
+              console.error("Hubo un error al eliminar plato");
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "El ID no existe",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+            }
+          })
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "El administrador ha sido eliminado",
+            icon: "success"
+          });
         }
-      })
+      });
     }else{
       console.error("ID no esta definido");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El ID no existe",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   }
 

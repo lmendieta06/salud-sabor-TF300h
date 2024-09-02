@@ -3,6 +3,7 @@ import { DishService } from '../../services/dish.service';
 import { MenuRestauranteComponent } from '../menu-restaurante/menu-restaurante.component';
 import { FormsModule } from '@angular/forms';
 import { MenuService } from '../../services/menu.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modal-add-dish',
   standalone: true,
@@ -33,15 +34,12 @@ export class ModalAddDishComponent {
 
     this.dishService.postDish(dishInfo).subscribe((res: any) => {
       if (res) {
-        console.log("Plato creado: "+ res.datos);
-        console.log("Nuevo plato Id: ", res.datos._id);
         this.panelMenu.menu.dishes.push(res.datos);
-        console.log("Platos actualizados"+this.panelMenu.menu.dishes);
         this.menuService.updateMenuById(this.panelMenu.restaurantRecibido.menu, this.panelMenu.menu).subscribe((menuRes: any) => {
           if (menuRes) {
             this.panelMenu.isAddingDish = false;
             this.resetForm();
-            console.log("Plato añadido y actualizado", menuRes);
+            Swal.fire("Se creo plato satisfactoriamente");
           } else {
             console.error("Hubo un error al agregar y actualizar plato");
             this.panelMenu.isAddingDish = false;

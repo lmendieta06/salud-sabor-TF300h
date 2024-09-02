@@ -30,7 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 10pxs;
     padding: 20px;
 }
 
@@ -128,3 +128,4 @@
         width: 80%;
     }
 }
+
