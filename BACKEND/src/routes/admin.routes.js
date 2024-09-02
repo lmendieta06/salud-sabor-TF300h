@@ -4,12 +4,12 @@ import auth from "../middlewares/auth.js";
 const adminRouter = Router();
 
 //ruta para obtener los administradores
-adminRouter.get('/', getAdmin);
+adminRouter.get('/',auth("admin"), getAdmin);
 // ruta para crear administrador
-adminRouter.post('/', postAdmin);
+adminRouter.post('/',auth("admin"), postAdmin);
 //ruta para actualizar administrador
 adminRouter.put('/:id',auth("admin"), putAdminById);
 // ruta para eliminar administrador
-adminRouter.delete("/:id", deleteAdmin);
+adminRouter.delete("/:id",auth("admin"), deleteAdmin);
 
 export default adminRouter; 

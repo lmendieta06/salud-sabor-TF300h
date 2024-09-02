@@ -13,7 +13,7 @@ import dishRouter from "./routes/dish.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import menuRouter from "./routes/menu.routes.js";
 import loginRouter from "./routes/login.routes.js"
-
+import auth from "./middlewares/auth.js";
 import path from 'path';
 import { fileURLToPath } from 'url'; // Importar fileURLToPath desde 'url'
 
@@ -29,7 +29,8 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors({
     origin: 'http://localhost:4200',
     methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type, Authorization'
+    allowedHeaders: 'Content-Type, Authorization',
+    credentials: true
 }));
 app.use(express.json());
 

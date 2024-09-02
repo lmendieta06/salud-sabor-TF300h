@@ -48,12 +48,9 @@ export class LoginComponent {
   }
 
  // Método para controlar el submit del formulario
-handleSubmint() {
+ handleSubmit() {
   if (this.credentialForm.invalid) {
-    // Marca todos los campos como tocados para mostrar los errores
     this.credentialForm.markAllAsTouched();
-
-    // Mostrar un mensaje de error si el formulario es inválido
     Swal.fire({
       icon: 'error',
       title: 'Formulario inválido',
@@ -65,11 +62,11 @@ handleSubmint() {
   }
 
   this.isSubmitting = true;
-  const credenciales = this.getCredentials();
-  if (credenciales) {
-    this.loginService.login(credenciales).subscribe({
+  const credentials = this.getCredentials();
+  if (credentials) {
+    this.loginService.login(credentials).subscribe({
       next: (res: any) => {
-        if (res) {
+        if (res.tokenGenerado) {
           localStorage.setItem('token', res.tokenGenerado);
           this.loginService.redirect();
           Swal.fire({
@@ -85,7 +82,7 @@ handleSubmint() {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: err.error.mensaje || 'Ha ocurrido un error al iniciar sesión',
+          text: err.error.message || 'Ha ocurrido un error al iniciar sesión',
           timer: 3000,
           showConfirmButton: false
         });
@@ -99,7 +96,6 @@ handleSubmint() {
     this.isSubmitting = false;
   }
 }
-
   // Método para restablecer el formulario después de un error
   resetLoginForm() {
     this.credentialForm.reset();
