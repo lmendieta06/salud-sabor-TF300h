@@ -1,5 +1,5 @@
 # Utiliza una imagen oficial de Node.js para compilar el frontend
-FROM node:14 as build
+FROM node:18 as build
 
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app
@@ -26,4 +26,4 @@ COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 4200
 
 # Comando para iniciar nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["ng", "serve", "-o"]

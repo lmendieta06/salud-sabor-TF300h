@@ -20,4 +20,4 @@ COPY .env .env
 EXPOSE 2000
 
 # Comando para ejecutar la aplicación
-CMD ["ng", "serve", "-o"]
+CMD ["npm", "run", "dev"]
