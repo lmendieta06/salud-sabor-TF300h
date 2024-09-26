@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Copia el archivo .env para utilizar variables de entorno en Docker
-COPY .env .env
+COPY .env
 
 # Expone el puerto que utiliza la aplicación (ajustar si es necesario)
 EXPOSE 2000
