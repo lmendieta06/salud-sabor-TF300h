@@ -1,20 +1,20 @@
-# Utiliza una imagen oficial de Node.js para compilar el frontend
+# Usa una imagen oficial de Node
 FROM node:18-alpine
 
-# Establece el directorio de trabajo en el contenedor
+# Establece el directorio de trabajo en /app
 WORKDIR /app
 
-# Copia el package.json y package-lock.json
-COPY package*.json ./
-
-# Construye la aplicación Angular
+# Instala Angular CLI globalmente
 RUN npm install -g @angular/cli
 
-# Instala las dependencias que se encuentran en el package.json
-RUN npm install  
+# Copia package.json y package-lock.json al directorio de trabajo
+COPY package*.json ./
+
+# Instala las dependencias del proyecto
+RUN npm install
 
 # Copia el código de la aplicación
 COPY . .
 
-# Comando para iniciar nginx
-CMD ["ng", "serve", "-o"]
+# Comando para correr Angular en modo desarrollo
+CMD ["ng", "serve", "--host", "0.0.0.0", "--disable-host-check"]

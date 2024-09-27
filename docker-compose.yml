@@ -1,39 +1,30 @@
-version: '3'
-services:
-  backend:
+ services:
+  front:
     build:
-      context: ./BACKEND
+      context: ./front
+      dockerfile: Dockerfile
     ports:
-      - "2000:2000"
-    volumes:
-      - ./BACKEND:/app
-    environment:
-      - NODE_ENV=development
+      - "80:4200"  # Angular servirá en el puerto 4200
     depends_on:
-      - mongo
-    networks:
-      - app-network
+      - back
 
-  frontend:
+  back:
     build:
-      context: ./FRONTEND
+      context: ./back
+      dockerfile: Dockerfile
     ports:
-      - "80:4200"  # Cambiar el puerto a 80 porque es el que usa nginx
-    networks:
-      - app-network
-    depends_on:
-      - backend
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    networks:
-      - app-network
+      - "3000:3000"  # Express servirá en el puerto 3000
+    environment:
+      MONGO_URL: mongodb://mongo:27017/testdb
+    #depends_on:
+    #  - mongo
+
+  #mongo:
+  #  image: mongo:latest
+  #  ports:
+  #    - "27017:27017"
+  #  volumes:
+  #    - mongo-data:/data/db
 
 volumes:
   mongo-data:
-
-networks:
-  app-network:

@@ -1,17 +1,17 @@
-# Usa la imagen oficial de Node.js como base
+# Dockerfile para Node + Express
 FROM node:18-alpine
 
-# Establece el directorio de trabajo dentro del contenedor
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia el archivo package.json y package-lock.json al contenedor
+# Copia package.json y package-lock.json
 COPY package*.json ./
 
 # Instala las dependencias
 RUN npm install
 
-# Copia el resto de la aplicación al directorio de trabajo
+# Copia el código fuente de la aplicación
 COPY . .
 
 # Comando para ejecutar la aplicación
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
