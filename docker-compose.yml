@@ -1,4 +1,5 @@
- services:
+---
+services:
   front:
     build:
       context: ./FRONTEND
@@ -16,15 +17,15 @@
       - "3000:3000"  # Express servirá en el puerto 3000
     environment:
       MONGO_URL: mongodb://mongo:27017/testdb
-    #depends_on:
-    #  - mongo
+    depends_on:
+      - mongo
 
-  #mongo:
-  #  image: mongo:latest
-  #  ports:
-  #    - "27017:27017"
-  #  volumes:
-  #    - mongo-data:/data/db
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
 volumes:
   mongo-data:
