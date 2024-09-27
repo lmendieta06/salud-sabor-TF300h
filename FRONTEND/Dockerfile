@@ -26,4 +26,4 @@ COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 4200
 
 # Comando para iniciar nginx
-CMD ["ng", "serve", "-o"]
+CMD ["nginx", "-g", "daemon off;"]

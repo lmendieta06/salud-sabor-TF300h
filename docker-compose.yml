@@ -2,32 +2,32 @@ version: '3'
 services:
   backend:
     build:
-      context: ./BACKEND  # Ruta donde está el Dockerfile del backend
+      context: ./BACKEND
     ports:
-      - "2000:2000"  # Mapea el puerto del contenedor al puerto local
+      - "2000:2000"
     volumes:
-      - ./BACKEND:/app  # Sincroniza el código fuente con el contenedor
+      - ./BACKEND:/app
     environment:
       - NODE_ENV=development
     depends_on:
-      - mongo  # MongoDB debe estar levantado antes de iniciar el backend
+      - mongo
     networks:
       - app-network
 
   frontend:
     build:
-      context: ./FRONTEND  # Ruta donde está el Dockerfile del frontend
+      context: ./FRONTEND
     ports:
-      - "4200:4200"  # El frontend será servido en el puerto 80
+      - "80:80"  # Cambiar el puerto a 80 porque es el que usa nginx
     networks:
       - app-network
 
   mongo:
     image: mongo:latest
     ports:
-      - "27017:27017"  # Mapea el puerto de MongoDB
+      - "27017:27017"
     volumes:
-      - mongo-data:/data/db  # Almacena los datos de MongoDB
+      - mongo-data:/data/db
     networks:
       - app-network
 
