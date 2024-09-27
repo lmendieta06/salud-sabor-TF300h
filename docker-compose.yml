@@ -14,9 +14,9 @@ services:
       context: ./BACKEND
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"  # Express servirá en el puerto 3000
+      - "2000:2000"  # Express servirá en el puerto 3000
     environment:
-      MONGO_URL: mongodb://mongo:27017/testdb
+      MONGO_URL: mongodb+srv://agugabriel94:jsDw7hP9Jwdouwjj@saludsabor.cg29a0u.mongodb.net/SaludySabor?retryWrites=true&w=majority&appName=SaludSabor
     depends_on:
       - mongo
 
