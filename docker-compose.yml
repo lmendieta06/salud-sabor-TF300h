@@ -1,7 +1,7 @@
  services:
   front:
     build:
-      context: ./front
+      context: ./FRONTEND
       dockerfile: Dockerfile
     ports:
       - "80:4200"  # Angular servirá en el puerto 4200
@@ -10,7 +10,7 @@
 
   back:
     build:
-      context: ./back
+      context: ./BACKEND
       dockerfile: Dockerfile
     ports:
       - "3000:3000"  # Express servirá en el puerto 3000
