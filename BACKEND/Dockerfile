@@ -1,5 +1,5 @@
 # Usa la imagen oficial de Node.js como base
-FROM node:18 as build
+FROM node:18-alpine
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -12,9 +12,6 @@ RUN npm install
 
 # Copia el resto de la aplicación al directorio de trabajo
 COPY . .
-
-# Expone el puerto que utiliza la aplicación (ajustar si es necesario)
-EXPOSE 2000
 
 # Comando para ejecutar la aplicación
 CMD ["npm", "run", "dev"]

@@ -18,9 +18,11 @@ services:
     build:
       context: ./FRONTEND
     ports:
-      - "80:80"  # Cambiar el puerto a 80 porque es el que usa nginx
+      - "80:4200"  # Cambiar el puerto a 80 porque es el que usa nginx
     networks:
       - app-network
+    depends_on:
+      - backend
 
   mongo:
     image: mongo:latest
