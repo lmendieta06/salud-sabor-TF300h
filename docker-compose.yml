@@ -15,8 +15,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "2000:2000"  # Express servirá en el puerto 3000
-    environment:
-      MONGO_URL: mongodb+srv://agugabriel94:jsDw7hP9Jwdouwjj@saludsabor.cg29a0u.mongodb.net/SaludySabor?retryWrites=true&w=majority&appName=SaludSabor
+    env_file:
+      - .env
     depends_on:
       - mongo
 
