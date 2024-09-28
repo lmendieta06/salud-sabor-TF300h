@@ -16,7 +16,7 @@ services:
     ports:
       - "2000:2000"  # Express servirá en el puerto 3000
     env_file:
-      - .env
+      - ./BACKEND/.env
     depends_on:
       - mongo
 
