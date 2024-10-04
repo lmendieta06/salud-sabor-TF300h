@@ -48,10 +48,9 @@ const uploadsPath = path.join(__dirname, '../uploads');
 
 app.use('/uploads', express.static(uploadsPath));
 
-
-
-
-
+app.post("/", async (req, res) => {
+    res.status(200).json("Hello World")
+})
 //usamos rutas
 app.use("/admin", adminRouter);
 // menu
