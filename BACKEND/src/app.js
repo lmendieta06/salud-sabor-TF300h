@@ -26,12 +26,7 @@ dotenv.config(); //Nuestras variables de entorno
 // Configurar body-parser con límites
 app.use(bodyParser.json({ limit: '50mb' })); // Ajusta el límite según tus necesidades
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors({
-    origin: 'http://localhost:4200',
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type, Authorization',
-    credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
 
