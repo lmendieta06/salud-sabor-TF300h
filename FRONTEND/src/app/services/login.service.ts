@@ -13,7 +13,7 @@ import { tap, catchError } from 'rxjs/operators';
 export class LoginService {
   private httpClient = inject(HttpClient);
   private router = inject(Router);
-  private API_URL = 'http://localhost:2000/login'; 
+  private API_URL = 'http://159.223.114.19:2000/login'; 
   private ngZone = inject(NgZone);
 
   // BehaviorSubject para manejar el estado de autenticación

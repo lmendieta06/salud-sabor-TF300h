@@ -16,7 +16,7 @@ export class UserService {
  //dependencias
   loginService = inject(LoginService);
   private httpClient = inject(HttpClient);
-  private URL_USERS = "http://localhost:2000/users"
+  private URL_USERS = "http://159.223.114.19:2000/users"
   
   private getAuthHeaders(): HttpHeaders {
     const token = this.loginService.getToken(); // Asegúrate de tener un método en LoginService que obtenga el token

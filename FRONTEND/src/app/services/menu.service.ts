@@ -12,9 +12,9 @@ export class MenuService {
   httpClient = inject(HttpClient);
   loginService = inject(LoginService);
 
-  API_URL_GET_ID = "http://localhost:2000/menu/:_id";
-  API_URL_UPDATE_ID = "http://localhost:2000/menu/:_id";
-  API_URL_POST = "http://localhost:2000/menu";
+  API_URL_GET_ID = "http://159.223.114.19:2000/menu/:_id";
+  API_URL_UPDATE_ID = "http://159.223.114.19:2000/menu/:_id";
+  API_URL_POST = "http://159.223.114.19:2000/menu";
 
   private getAuthHeaders(): HttpHeaders {
     const token = this.loginService.getToken(); // Asegúrate de tener un método en LoginService que obtenga el token

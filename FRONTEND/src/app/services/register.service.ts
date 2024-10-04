@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
 
-  private URL_REGISTER = 'http://localhost:2000/registro';
+  private URL_REGISTER = 'http://159.223.114.19:2000/registro';
 
   constructor(private http: HttpClient) {}
 

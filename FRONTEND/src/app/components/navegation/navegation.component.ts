@@ -22,7 +22,7 @@ export class NavegationComponent implements OnInit, OnDestroy {
 
   isLoggedIn: boolean = false;
   userName: string = '';
-  imagenPerfil: string = 'http://localhost:2000/uploads/default-user.png';
+  imagenPerfil: string = 'http://159.223.114.19:2000/uploads/default-user.png';
 
   private authSubscription: Subscription | undefined;
   private cartSubscription: Subscription | undefined;
@@ -87,10 +87,10 @@ export class NavegationComponent implements OnInit, OnDestroy {
           this.userName = decodedToken.name || 'Usuario';
           if (decodedToken.imagenPerfil) {
             this.imagenPerfil=decodedToken.imagenPerfil;
-            // this.imagenPerfil = `http://localhost:2000/uploads/${decodedToken.imagenPerfil}`;
+            // this.imagenPerfil = `http://159.223.114.19:2000/uploads/${decodedToken.imagenPerfil}`;
 
           } else {
-            this.imagenPerfil = 'http://localhost:2000/uploads/default-user.png';
+            this.imagenPerfil = 'http://159.223.114.19:2000/uploads/default-user.png';
           }
         } catch (error) {
           
@@ -107,7 +107,7 @@ export class NavegationComponent implements OnInit, OnDestroy {
 
   resetUserInfo(): void {
     this.userName = '';
-    this.imagenPerfil = 'http://localhost:2000/uploads/default-user.png';
+    this.imagenPerfil = 'http://159.223.114.19:2000/uploads/default-user.png';
   }
 
   logout(): void {

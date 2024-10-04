@@ -12,13 +12,13 @@ export class RestaurantService{
     httpClient = inject(HttpClient);
     loginService = inject(LoginService);
 
-    API_URL_GET = "http://localhost:2000/restaurants";
-    API_URL_GET_ID = "http://localhost:2000/restaurants/:_id";
-    API_URL_GET_CATEGORY = "http://localhost:2000/restaurants/category/:categoria";
-    API_URL_GET_CITY = "http://localhost:2000/restaurants/city/:ciudad";
-    API_URL_POST = "http://localhost:2000/restaurants";
-    API_URL_PUT = "http://localhost:2000/restaurants/:_id";
-    API_URL_DELETE = "http://localhost:2000/restaurants/:_id";
+    API_URL_GET = "http://159.223.114.19:2000/restaurants";
+    API_URL_GET_ID = "http://159.223.114.19:2000/restaurants/:_id";
+    API_URL_GET_CATEGORY = "http://159.223.114.19:2000/restaurants/category/:categoria";
+    API_URL_GET_CITY = "http://159.223.114.19:2000/restaurants/city/:ciudad";
+    API_URL_POST = "http://159.223.114.19:2000/restaurants";
+    API_URL_PUT = "http://159.223.114.19:2000/restaurants/:_id";
+    API_URL_DELETE = "http://159.223.114.19:2000/restaurants/:_id";
 
     private getAuthHeaders(): HttpHeaders {
         const token = this.loginService.getToken(); // Asegúrate de tener un método en LoginService que obtenga el token

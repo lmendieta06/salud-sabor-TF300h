@@ -11,7 +11,7 @@ import { TokenPayload } from '../../interfaces/tokenPayload';
   providedIn: 'root'
 })
 export class ProfileService {
-  private apiUrl = 'http://localhost:2000/users/profile';
+  private apiUrl = 'http://159.223.114.19:2000/users/profile';
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +30,7 @@ export class ProfileService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.put<any>('http://localhost:2000/users/' + this.getUserIdFromToken(), formData, { headers });
+    return this.http.put<any>('http://159.223.114.19:2000/users/' + this.getUserIdFromToken(), formData, { headers });
   }
   
   // Método para obtener el ID del usuario del token (puedes ajustar esto según cómo manejes el token)

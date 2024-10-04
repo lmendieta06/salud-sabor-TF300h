@@ -10,7 +10,7 @@ export class DishService {
 
   loginService = inject(LoginService);
 
-  private API_URL_DISH = 'http://localhost:2000/dishes'; 
+  private API_URL_DISH = 'http://159.223.114.19:2000/dishes'; 
 
   private getAuthHeaders(): HttpHeaders {
     const token = this.loginService.getToken(); // Asegúrate de tener un método en LoginService que obtenga el token

@@ -11,7 +11,7 @@ export class AdminService {
   private httpClient = inject(HttpClient);
   private loginService = inject(LoginService); // Asegúrate de importar LoginService
 
-  private URL_ADMIN = "http://localhost:2000/admin"
+  private URL_ADMIN = "http://159.223.114.19:2000/admin"
 
   private getAuthHeaders(): HttpHeaders {
     const token = this.loginService.getToken(); // Asegúrate de tener un método en LoginService que obtenga el token
