@@ -40,7 +40,7 @@ export const routes: Routes = [
     ]},
     // {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
     {path:"profile", component:ProfileComponent, title: "Mi perfil"},
-    { path: 'menuRest/:restaurantId', component: MenuRestaurantComponent, title: "Menú"},
+    {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
     {path:"sobreNosotros", component:AboutUsComponent, title:"Sobre Nosotros"},
     {path:"**", component:NoEncontradoComponent, title:"Salud & Sabor - ERROR"}

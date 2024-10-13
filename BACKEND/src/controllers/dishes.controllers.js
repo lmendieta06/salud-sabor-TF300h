@@ -107,40 +107,41 @@ export const getDishByCategory = async(req, res) =>{
         })
     }
 }
-export const putDish = async(req, res) => {
-    try {
-        let idUpdate = req.params._id;
 
-        // Validación del ID
-        if (idUpdate.length !== 24) {
-            return res.status(400).json({
-                estado: 400,
-                mensaje: "No se ingresó un ID válido"
-            });
+export const putDish = async(req, res) =>{
+    try{
+        let idUpdate = req.params._id;
+        // Se debe poder recibir informacion
+        const dataForUpdate = req.body;
+
+        let dishUpdate = await dishesModel.findByIdAndUpdate(idUpdate, dataForUpdate);
+    
+        if(!dishUpdate){
+            return res.status(200).json({
+                estado : 200,
+                mensaje : "No se encontro el plato para actualizar"
+            })
         }
 
-        const dataForUpdate = req.body;
-        let dishUpdate = await dishesModel.findByIdAndUpdate(idUpdate, dataForUpdate, { new: true });
-
-        if (!dishUpdate) {
+        if(idUpdate.length !== 24){
             return res.status(404).json({
-                estado: 404,
-                mensaje: "No se encontró el plato para actualizar"
-            });
+                estado : 404,
+                mensaje : "No se ingreso el id necesario "
+            })
         }
 
         return res.status(200).json({
-            estado: 200,
-            mensaje: "Plato actualizado correctamente",
-            dato: dishUpdate
-        });
-
-    } catch (error) {
-        return res.status(500).json({
-            message: "Error del servidor: " + error.message
-        });
+            estado : 200,
+            mensaje : "Se actualizo correctamente el plato solicitado",
+            dato : dishUpdate._id
+        })
+        
+    }catch(error){
+        return res.status(404).json({
+            message: "No se pudo realizar la peticion " + error.message
+        })
     }
-};
+}
 
 export const deleteDish = async(req, res) =>{
     try{
@@ -169,15 +170,3 @@ export const deleteDish = async(req, res) =>{
         })
     }
 }
-export const getDishesByRestaurant = async (req, res) => {
-    const { restaurantId } = req.params;
-    try {
-        const dishes = await dishesModel.find({ restaurantId });
-        if (!dishes || dishes.length === 0) {
-            return res.status(404).json({ message: 'No se encontraron platos para este restaurante' });
-        }
-        res.status(200).json({ dishes });
-    } catch (error) {
-        res.status(500).json({ message: 'Error del servidor', error });
-    }
-};

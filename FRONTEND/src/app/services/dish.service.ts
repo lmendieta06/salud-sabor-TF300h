@@ -23,10 +23,7 @@ export class DishService {
   getDishes(): Observable<{ dishes: Dish[] }> {
     return this.httpclient.get<{ dishes: Dish[] }>(this.API_URL_DISH);
   }
-    // Obtener platos por restaurante
-    getDishesByRestaurant(restauranteId: string): Observable<Dish[]> {
-      return this.httpclient.get<Dish[]>(`${this.API_URL_DISH}/restaurant/${restauranteId}`);
-    }
+
   postDish(dish:{nombrePlato:string, categoriaMenu:string, descripcionPlato:string, imagenPlato:string, precioPlato:string}){
     return this.httpclient.post(`${this.API_URL_DISH}`, dish, { headers: this.getAuthHeaders() });
   }
