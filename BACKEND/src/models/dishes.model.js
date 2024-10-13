@@ -21,7 +21,8 @@ const dishesSchema = new Schema({
     precioPlato: {
         type: Number,
         required: true
-    }
+    },
+    restaurantId: { type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant', required: true }, // Relación con Restaurante
 });
 
 export const dishesModel = mongoose.model('Dish', dishesSchema);
