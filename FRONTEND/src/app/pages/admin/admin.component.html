@@ -6,7 +6,7 @@
         <i class="bi bi-door-open-fill"></i>
     </button>
 </header>
-<header class="navigationAdmin" *ngIf="viewMenu === true">
+<header class="navigationAdmin" *ngIf="viewMenu === true"     (mouseenter)="onMenuHover()" (mouseleave)="onMenuLeave()">
     <button (click)="changeMenu()" class="hamburgerButton">
         <i class="bi bi-list"></i>
     </button>
@@ -64,7 +64,7 @@
         </nav>
     </div>
 </header>
-<main>
+<main [class.menu-open]="viewMenu">
     <section *ngIf="isInRouter===false" class="welcomePage">
         <img src="./assets/admin/hiAdmin.png" alt="hiAdminPhoto" class="imgWelcome">
         <h1>BIENVENIDO ADMINISTRADOR</h1>

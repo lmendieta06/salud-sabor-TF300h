@@ -9,6 +9,7 @@
     padding: 20px;
     background-color: var(--colorContraste);
     z-index: 1;
+    transition: width 0.6s ease; /* Transición suave */
 }
 
 /* Header menu hamburguesa */
@@ -123,12 +124,17 @@ a{
 
 /* MAIN */
 main{
-    width: 95%;
+    width: calc(100% - 5%); /* Cambia este valor para que se ajuste a la barra de hamburguesa */
     height: 100%;
     position: fixed;
     right: 0;
     overflow-y: scroll;
     overflow-x: hidden;
+    transition: width 0.3s ease; /* Añadimos una transición suave al cambiar el tamaño */
+}
+
+main.menu-open {
+    width: calc(100% - 20%); /* Ajusta el ancho cuando el menú esté abierto */
 }
 
 /* SECTION */

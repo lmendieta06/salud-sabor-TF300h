@@ -19,6 +19,7 @@ export class AdminComponent {
   viewMenu : boolean = false;
   loginService = inject(LoginService);
   isInRouter : boolean = false;
+  isHovered: boolean = false; // Indica si el menú está siendo "hovered"
   changeMenu(){
     this.viewMenu = !this.viewMenu;
   }
@@ -29,5 +30,20 @@ export class AdminComponent {
 
   changeRoute(){
     this.isInRouter = true;
+  }
+
+  closeMenu() {
+    if (!this.isHovered) {
+      this.viewMenu = false; // Cierra el menú solo si no está siendo hovered
+    }
+  }
+  
+  onMenuHover() {
+    this.isHovered = true; // Cuando el mouse entra, se activa el hover
+  }
+
+  onMenuLeave() {
+    this.isHovered = false; // Cuando el mouse sale, se desactiva el hover
+    this.closeMenu(); // Cierra el menú al salir del hover
   }
 }
