@@ -30,7 +30,7 @@ export const routes: Routes = [
     {path:"recover-password", component:RecoverPasswordComponent, title: "Recuperar contraseña"},
     {path: 'cart', component: CartComponent }, 
     {path:"contactanos", component:ContactUsComponent, title:"Contactanos"},
-    {path:"administrador", component:AdminComponent, title:"Administrador", canActivate: [authGuard],children:[
+    {path:"administrador", component:AdminComponent, title:"Administrador",canActivate: [authGuard], children:[
         {path:"panel-restaurantes", component:PanelRestaurantesComponent, title:"Restaurantes",canActivate: [authGuard]},
         {path:"panel-restaurantes/formsAgregarRestaurante", component:AddRestaurantComponent, title:"Formulario - Crear Restaurante",canActivate: [authGuard]},
         {path:"panel-restaurantes/:restauranteId", component:MenuRestauranteComponent, title:"Panel Menú",canActivate: [authGuard]},
@@ -40,7 +40,7 @@ export const routes: Routes = [
     ]},
     // {path:"cliente", component:ClientComponent, title:"Salud & Sabor"},
     {path:"profile", component:ProfileComponent, title: "Mi perfil"},
-    {path:"menuRest", component:MenuRestaurantComponent, title: "Menú"},
+    { path: "menuRest/:restaurantId", component: MenuRestaurantComponent, title: "Menú"},
     {path:"singIn", component:SignInComponent, title:"Crear cuenta"},
     {path:"sobreNosotros", component:AboutUsComponent, title:"Sobre Nosotros"},
     {path:"**", component:NoEncontradoComponent, title:"Salud & Sabor - ERROR"}
