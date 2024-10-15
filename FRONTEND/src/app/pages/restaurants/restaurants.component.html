@@ -64,7 +64,7 @@
                 <h2>{{restaurante.nombre}}</h2>
                 <h3>{{restaurante.direccion}}</h3>
                 <p>{{restaurante.descripcion}}</p>
-                <a routerLink="/menuRest" class="enProceso">
+                <a [routerLink]="['/menuRest', restaurante._id]" class="enProceso">
                     <button >VER MENU</button>
                 </a>
             </div>
