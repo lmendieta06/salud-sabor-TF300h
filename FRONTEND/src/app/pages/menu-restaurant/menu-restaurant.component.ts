@@ -3,13 +3,12 @@ import { CartComponent } from '../../components/cart/cart.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { NavegationComponent } from '../../components/navegation/navegation.component';
 import { CartService } from '../../services/cart.service';
-import { DishService } from '../../services/dish.service';
 import { Dish } from '../../../interfaces/dish';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../../types/category.types';
 import { RouterLink, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import Swal from 'sweetalert2';
+import { RestaurantService } from '../../services/restaurant.service';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-menu-restaurant',
@@ -22,17 +21,18 @@ export class MenuRestaurantComponent implements OnInit {
   dishes: Dish[] = [];
   filteredDishes: { [key: string]: Dish[] } = {}; // Almacena los platos filtrados por categoría
   restaurantIds: string[] = ['66d37ddf78b7e97775715328', '66d5f6d14b8789545027001c', '66d5fc934b87895450270091'];
-
+  restaurantName:string = "";
   isDropdownVisible: boolean = false;
-  private hideTimeout: any;
+  menu: any = {};
   isCartVisible = false;
   itemsInCart: any[] = [];
+  restaurantRecibido: any = {};
 
   constructor(
     public cartService: CartService, 
-    private dishService: DishService,
     private route: ActivatedRoute,  // Para obtener el restaurantId desde la ruta
-    private http: HttpClient         // Para realizar la petición al backend
+    private restaurantService: RestaurantService,
+    private menuService : MenuService
   ) {}
 
   ngOnInit(): void {
@@ -40,8 +40,9 @@ export class MenuRestaurantComponent implements OnInit {
     const restaurantId = this.route.snapshot.paramMap.get('restaurantId');
     
     if (restaurantId) {
-      // Si existe el restaurantId, cargar los platos de ese restaurante
       this.loadDishesByRestaurant(restaurantId);
+    } else {
+      console.error("ID del restaurante no encontrado en los parámetros de la ruta");
     }
 
     this.cartService.itemsInCart$.subscribe(items => {
@@ -49,37 +50,34 @@ export class MenuRestaurantComponent implements OnInit {
     });
   }
 
-  
-
-  // Método para cargar todos los platos (si se necesita en otro caso)
-  loadDishes(): void {
-    this.dishService.getDishes().subscribe(
-      response => {
-        this.dishes = response.dishes;
-        this.filterDishesByCategory();
-      },
-      error => {
-        console.error('Error loading dishes', error);
-      }
-    );
-  }
   loadDishesByRestaurant(restaurantId: string): void {
-    this.http.get(`http://localhost:2000/dishes/restaurant/${restaurantId}`).subscribe(
-      (response: any) => {
-        console.log('Full response from backend:', response); // Verifica la estructura completa de la respuesta
-  
-        // Verifica si la respuesta tiene el formato esperado
-        if (response && response.dishes && Array.isArray(response.dishes)) {
-          this.dishes = response.dishes; // Si todo está bien, asigna los platos
-          this.filterDishesByCategory(); // Luego llama a la función para filtrar
-        } else {
-          console.error('No dishes found or invalid response format:', response);
-        }
-      },
-      error => {
-        console.error('Error loading dishes by restaurant', error);
+    this.restaurantService.getRestaurantById(restaurantId).subscribe((res: any) => {
+      if (res) {
+        this.restaurantRecibido = res;
+        this.restaurantName = res.nombre;
+        this.getMenuById(this.restaurantRecibido.menu);
+      } else {
+        console.error("Hubo un error al obtener el restaurante");
       }
-    );
+    });
+  }
+
+  getMenuById(id: string): void {
+    if (id) {
+        this.menuService.getMenuById(id).subscribe((req: any) => {
+          if (req) {
+            // console.log("Respuesta "+req);
+            this.menu = req.datos; 
+            this.dishes = this.menu.dishes;
+            this.filterDishesByCategory();
+            // console.log(this.menu.dishes);
+          } else {
+            console.error("Hubo un error al obtener el menú");
+          }
+        })
+    } else {
+      console.error("No se encontró el id del menú");
+    }
   }
 
   // Método para filtrar platos por categoría
