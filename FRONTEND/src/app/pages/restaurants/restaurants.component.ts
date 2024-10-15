@@ -48,14 +48,18 @@ export class RestaurantsComponent {
   getRestaurantByCity(){
     if(this.ciudad===""){
       this.ngOnInit();
+    }else{
+      const formattedCity = this.formatCityName(this.ciudad); // Formatear la ciudad ingresada
+
+      this.restaurantsService.getRestaurantByCity(formattedCity).subscribe((res: any) => {
+        if (res && res.restaurantes.length > 0) {
+          this.allRestaurants = res.restaurantes;
+        }
+      }, (error) => {
+        console.error("Hubo un error en la búsqueda de la ciudad:", error);
+      });
     }
-    this.restaurantsService.getRestaurantByCity(this.ciudad).subscribe((res:any)=>{
-      if(res){
-        this.allRestaurants = res.restaurantes;
-      }else{
-        console.error("Hubo un error");
-      }
-    })
+
   }
 
   getRestaurantByCategory(categoria:string){
@@ -70,6 +74,23 @@ export class RestaurantsComponent {
       }
     })
   }
+
+  // Asegurar correcta busqueda de ciudad.
+
+  removeAccents(text: string): string {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Elimina los diacríticos
+  }
+
+  formatCityName(city: string): string {
+    const cityWithoutAccents = this.removeAccents(city); // Eliminar tildes
+    return cityWithoutAccents
+      .trim() // Eliminar espacios al principio y al final
+      .toLowerCase() // Convertir todo a minúsculas
+      .split(' ') // Separar palabras
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalizar la primera letra de cada palabra
+      .join(' '); // Unirlas de nuevo
+  }
+  
 
   // Método de inicialización
   ngOnInit() {
