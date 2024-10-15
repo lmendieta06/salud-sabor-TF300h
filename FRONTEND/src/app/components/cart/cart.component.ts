@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked} from '@angular/core';
+import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ declare var bootstrap: any;
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, AfterViewChecked  {
+export class CartComponent implements OnInit, AfterViewInit  {
   
   itemsInCart: any[] = [];
   totalPrice: number = 0;
@@ -34,7 +34,7 @@ export class CartComponent implements OnInit, AfterViewChecked  {
       this.cartItemCount = this.cartService.getItemCount();
     });
   }
-  ngAfterViewChecked(): void {
+  ngAfterViewInit(): void {
     this.initializeCollapse();
   }
 
@@ -80,19 +80,19 @@ export class CartComponent implements OnInit, AfterViewChecked  {
       html: `
         <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
           <div style="margin: 10px;">
-            <img src="assets/logos/daviplata.png" alt="Daviplata" style="width: 100px; height: auto;">
+            <img src="assets/logos/daviplata.png" alt="Daviplata" style="width: 80px; height: auto;">
             <p>Daviplata</p>
           </div>
-          <div style="margin: 10px;">
-            <img src="assets/logos/nequi.png" alt="Nequi" style="width: 100px; height: auto;">
+          <div style="margin: 20px;">
+            <img src="assets/logos/nequi.png" alt="Nequi" style="width: 80px; height: auto;">
             <p>Nequi</p>
           </div>
-          <div style="margin: 10px;">
-            <img src="assets/logos/bancolombia.png" alt="Bancolombia" style="width: 100px; height: auto;">
+          <div style="margin: 20px;">
+            <img src="assets/logos/bancolombia.png" alt="Bancolombia" style="width: 80px; height: auto;">
             <p>Bancolombia</p>
           </div>
-          <div style="margin: 10px;">
-            <img src="assets/logos/otrosbancos.png" alt="Otros Bancos" style="width: 100px; height: auto;">
+          <div style="margin: 20px;">
+            <img src="assets/logos/otrosbancos.png" alt="Otros Bancos" style="width: 80px; height: auto;">
             <p>Otros Bancos</p>
           </div>
         </div>

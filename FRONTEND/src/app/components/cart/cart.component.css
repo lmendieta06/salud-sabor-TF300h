@@ -117,7 +117,14 @@ overflow: visible;
   justify-content: space-between;
   align-items: center;
 }
-
+.cart-item-image {
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+}
 
 
 .cart-items {
@@ -146,7 +153,8 @@ overflow: visible;
   align-items: center;
 }
 .cart-item-controls button {
-  margin: 0 5px;
+  margin: 5px;
+  padding: 0.5rem 1rem;
 }
 .cart-item-controls span {
   margin: 0 10px;
@@ -214,18 +222,22 @@ margin-top: 20px;
   font-weight: bold;
 }
 .btn-link {
-  color: var(--colorContraste); /* Cambia el color del texto */
-  text-decoration: none; /* Quita el subrayado */
-  font-size: 1rem; /* Ajusta el tamaño de fuente si es necesario */
-  font-weight: bold; /* Haz que el texto sea más grueso si lo prefieres */
-  padding: 0; /* Ajusta el padding si es necesario */
-  background: none; /* Quita cualquier fondo si es necesario */
-}
-.btn-link:hover {
-  color: var(--colorContraste2); /* Cambia el color al pasar el mouse */
-  text-decoration: underline; /* Agrega subrayado al pasar el mouse si lo prefieres */
+  color: var(--colorContraste);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0;
+
 }
 
+.btn-link:hover {
+  color: var(--colorContraste2);
+  text-decoration: underline;
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none; /* Elimina el borde azul */
+}
 .cart-item-controls button {
   background-color: rgba(0, 0, 0, 0.599); /* Color de fondo */
   color: white; /* Color del texto */
@@ -243,5 +255,43 @@ margin-top: 20px;
 color: black;
 border: solid black;
 }
-.accesibilidad{color: black;
-font-weight: 100;}
+/* .accesibilidad{color: black;
+font-weight: 100;} */
+/* Media Query para pantallas pequeñas */
+@media (max-width: 650px) {
+  .cart-container {
+    padding: 10px;
+  }
+
+  /* Ajustes específicos para pantallas más pequeñas */
+  .cart-item {
+    flex-direction: column; /* Cambia a columna para apilar los elementos */
+    text-align: center;
+  }
+
+  /* Ajuste de imagen en pantallas pequeñas */
+  .cart-item-image {
+    width: 100px; /* Ajusta el tamaño de la imagen */
+    height: 100px;
+  }
+
+  /* Ajuste de controles y detalles */
+  .cart-item-controls {
+    flex-direction: row; /* Apilar los botones en pantallas pequeñas */
+    margin-top: 10px;
+  }
+
+  /* Ajuste de los detalles del artículo */
+  .cart-item-details {
+    margin-top: 10px;
+  }
+
+  /* Ajuste de botones */
+  .btn-backOrPay {
+    flex-direction: column; /* Apilar botones "continuar" y "pagar" en pantallas pequeñas */
+  }
+
+  .btn-backOrPay button {
+    margin-bottom: 10px; /* Añadir espacio entre los botones */
+  }
+}

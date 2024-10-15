@@ -4,9 +4,9 @@
 @import url('https://fonts.cdnfonts.com/css/ruda');
 /* font-family: 'Ruda', sans-serif; */
 
-:root{
+:root {
     /* TIPOGRAFIAS */
-    --tipografiaTexto:'Montserrat', sans-serif;
+    --tipografiaTexto: 'Montserrat', sans-serif;
     --tipografiaTitulos: 'Ruda', sans-serif;
     /* PALETA DE COLORES */
     --colorFondo: white;
@@ -37,9 +37,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:  0 20px 0 0;
+    padding: 0 20px 0 0;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-overflow: visible;
+    overflow: visible;
 }
 
 .logo img {
@@ -68,7 +68,7 @@ overflow: visible;
 .userIcon {
     position: relative;
     background-color: var(--colorContraste);
-    width: 35px; 
+    width: 35px;
     height: 35px;
     border-radius: 50%;
     display: flex;
@@ -79,21 +79,29 @@ overflow: visible;
     text-align: center;
     cursor: pointer;
 }
+
 .bienvenida {
     padding: 10px;
-    background-color: #f0f8ff; /* Color de fondo suave */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    background-color: #f0f8ff;
+    /* Color de fondo suave */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* Sombra sutil */
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  
-  .bienvenida p {
-    font-size: 1.2em; /* Tamaño de fuente más grande */
-    color: #333; /* Color del texto */
-    margin: 0; /* Elimina el margen predeterminado */
-  }
+}
+
+.bienvenida p {
+    font-size: 1.2em;
+    /* Tamaño de fuente más grande */
+    color: #333;
+    /* Color del texto */
+    margin: 0;
+    /* Elimina el margen predeterminado */
+}
+
 .userIcon i {
     font-size: 1rem;
 }
@@ -107,29 +115,29 @@ overflow: visible;
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
-  }
-  
-  .userImage {
+}
+
+.userImage {
     width: 100%;
     height: auto;
-  }
-  
-  .userText {
+}
+
+.userText {
     margin-left: 10px;
     cursor: pointer;
-  }
+}
 
 /* Menú desplegable */
-.dropdown{
+.dropdown {
     margin-top: 4px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  
-  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dropdown-menu {
     position: absolute;
     top: 100%;
     right: 0;
@@ -146,43 +154,50 @@ overflow: visible;
     transform: translateY(-50px);
     transition: visibility 0.3s, opacity 0.8s ease, transform 0.5s ease;
 }
+
 .dropdown:hover .dropdown-menu {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  /* ANIMACION PARA QUE GIRE EL ICONO USER EN HOVER */
-  .dropdown:hover .userIcon i {
+}
+
+/* ANIMACION PARA QUE GIRE EL ICONO USER EN HOVER */
+.dropdown:hover .userIcon i {
     transform: rotate(360deg);
     transition: transform 0.6s ease-in-out;
-  }
-  .dropdown .userIcon i {
+}
+
+.dropdown .userIcon i {
     transform: rotate(-0deg);
     transition: transform 0.8s ease-in-out;
-  }
-  /* ANIMACIONES DEL DROP */
-  @keyframes dropdownIn {
+}
+
+/* ANIMACIONES DEL DROP */
+@keyframes dropdownIn {
     0% {
-      transform: translateY(-50px);
-      opacity: 0;
+        transform: translateY(-50px);
+        opacity: 0;
     }
+
     100% {
-      transform: translateY(0);
-      opacity: 1;
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
 @keyframes dropdownOut {
     0% {
-      transform: translateY(0);
-      opacity: 1;
+        transform: translateY(0);
+        opacity: 1;
     }
+
     100% {
-      transform: translateY(-50px);
-      opacity: 0;
+        transform: translateY(-50px);
+        opacity: 0;
     }
 }
+
 .dropdown:hover .dropdown-menu {
     visibility: visible;
     opacity: 1;
@@ -196,12 +211,13 @@ overflow: visible;
     transform: translateY(-20px);
     transition: visibility 0.3s 0.5s, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
+
 /* Estilo para los elementos del menú */
 .dropdown-menu .dropdown-item a {
     padding: 7px;
     text-decoration: none;
     color: #050505;
-    display: inline-block; 
+    display: inline-block;
 }
 
 .dropdown-item {
@@ -214,29 +230,37 @@ overflow: visible;
 
 /* Cambios en el hover */
 .dropdown-item:hover {
-    
-    background-color: #15ac5e77; /* Cambia el fondo del li al hacer hover */
+
+    background-color: #15ac5e77;
+    /* Cambia el fondo del li al hacer hover */
 }
 
-.dropdown-item a:hover  {
-    color: white; /* Cambia el color del enlace dentro del li al hacer hover */
+.dropdown-item a:hover {
+    color: white;
+    /* Cambia el color del enlace dentro del li al hacer hover */
     transform: scale(1.1);
 }
-.dropdown-item{
-    border-bottom: 1px solid #938c8c; }
+
+.dropdown-item {
+    border-bottom: 1px solid #938c8c;
+}
+
 .dropdown-item a i {
-    font-size: 20px; /* Tamaño de los iconos */
-    color: #ffffff; 
+    font-size: 20px;
+    /* Tamaño de los iconos */
+    color: #ffffff;
 }
 
 
-.dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
     display: block;
-    
+
 }
 
 .dropdown-item:last-child {
-    border-bottom: none; /* Sin línea para el último ítem */
+    border-bottom: none;
+    /* Sin línea para el último ítem */
 }
 
 .cart-icon {
@@ -247,12 +271,13 @@ overflow: visible;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .cart-icon i {
-    font-size: 1.7rem;/* Tamaño del ícono */
-    color:var(--colorContraste); 
+    font-size: 1.7rem;
+    /* Tamaño del ícono */
+    color: var(--colorContraste);
 }
 
 .cart-count {
@@ -268,23 +293,25 @@ overflow: visible;
     justify-content: center;
     align-items: center;
 }
+
 /* Navegador */
 /* Navegador */
 /* Navegador */
-.menuNav{
-    background-color:salmon;
+.menuNav {
+    background-color: salmon;
     width: 100%;
     height: 50px;
     position: fixed;
-    z-index:99;
+    z-index: 99;
     top: 100px;
-    left:0;
+    left: 0;
     padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Añadido para efecto de sombra */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Añadido para efecto de sombra */
 
 }
 
-.listaMenu{
+.listaMenu {
     width: 100%;
     height: 100%;
     display: flex;
@@ -296,15 +323,15 @@ overflow: visible;
     color: var(--colorFondo);
     text-decoration: none;
     text-shadow: #ffffff;
-   
+
     font-family: var(--tipografiaTitulos);
 }
 
 
 .listaMenu li {
     position: relative;
-  top: 0%;
- /* Espacio para el separador */
+    top: 0%;
+    /* Espacio para el separador */
 }
 
 .listaMenu li::after {
@@ -321,30 +348,35 @@ overflow: visible;
 
 .listaMenu li:hover::after {
     width: 100%;
-    background-color:#ffffffbd;
+    background-color: #ffffffbd;
 }
+
 .listaMenu a {
     color: var(--colorFondo);
     text-decoration: none;
     font-family: var(--tipografiaTitulos);
-    transition: color 1s, transform 0.3s; /* Suavizado para el hover */
+    transition: color 1s, transform 0.3s;
+    /* Suavizado para el hover */
 }
 
 .listaMenu a:hover {
-    color:white ;
-    transform: scale(1.1); /* Aumenta el tamaño del enlace en hover */
-    border-radius: 0.25rem; 
+    color: white;
+    transform: scale(1.1);
+    /* Aumenta el tamaño del enlace en hover */
+    border-radius: 0.25rem;
 }
 
 .listaMenu a:active {
-    transform: scale(0.8); /* Normaliza el tamaño cuando se hace clic */
+    transform: scale(0.8);
+    /* Normaliza el tamaño cuando se hace clic */
 }
 
 .nav-link {
-   
+
     font-family: var(--tipografiaTitulos);
-    padding: 0.5rem 1.9rem; /* Espaciado interno */
-   
+    padding: 0.5rem 1.9rem;
+    /* Espaciado interno */
+
 }
 
 /* RESPONSIVE */
@@ -354,125 +386,202 @@ overflow: visible;
 
 @media screen and (max-width: 1024px) {
     .menuNav {
-        padding: 0 10px; /* Ajustar padding */
+        padding: 0 10px;
+        /* Ajustar padding */
     }
-    .logo img {
-        width: 80px; /* Reducir tamaño en pantallas más pequeñas */
-    }
-    .barraLogo {
-        padding: 0 10px; /* Reducir padding */
-    }
-    .inicioSesionOpcion {
-        width: auto; /* Ajustar el ancho */
-    }
-   
 
-@media screen and (max-width:650px){
- .barraLogo{
-    width: 100%;
- }
     .logo img {
-        width: 60px; /* Reducir tamaño del logo */
-    }
-    .inicioSesionOpcion a {
-        font-size: 12px; /* Ajustar el tamaño de fuente */
-    }
-    .inicioSesionOpcion p {
-        display: flex;
-        flex-direction: column;
         width: 80px;
-        height: 20px;
-        display: flex;
-        font-size:10px ;
+        /* Reducir tamaño en pantallas más pequeñas */
     }
-    .userOptions {
-        gap: 5px; /* Reducir espacio entre elementos */
-    }
-    .userIcon {
-        width: 20px;
-        height: 20px;
-    }
-    .userText {
-        font-size: 12px; /* Ajustar el tamaño de fuente */
-    }
-    .cart-icon {
-        width: 40px; /* Reducir tamaño del ícono del carrito */
-    }
-    .cart-icon i {
-        font-size: 1.2rem; /* Ajustar tamaño del ícono */
-    }
-  
-    .userOptions {
-        gap: 5px; /* Reducir espacio entre elementos */
-    }
-    .userIcon {
-        width: 20px;
-        height: 20px;
-    }
-    .userText {
-        font-size: 12px; /* Ajustar el tamaño de fuente */
-    }
-    .cart-icon {
-        width: 40px; /* Reducir tamaño del ícono del carrito */
-    }
-    .cart-icon i {
-        font-size: 1.2rem; /* Ajustar tamaño del ícono */
-    }
-    .listaMenu {
-        width: 100%; /* Asegurarse de que el menú no se desborde */
-        padding: 0; 
-    }
-    .nav-link {
-        width: 100%;
-        font-size: 13px; /* Ajustar el tamaño de fuente */
-        padding: 0rem; /* Ajustar el padding */
-    
-    }
-    .dropdown{
-        width: 60px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-       
-    }
-    .cart-icon {
-        width: 45px;
-        height: 70px;
-         margin-left: -10px;
-    }
-    
-    .cart-icon i {
-        font-size: 1.3rem; /* Tamaño del ícono */
-        color:var(--colorContraste);
-    }
-    
-    .cart-count {
-        position: absolute;
-        top: -4px;
-        right: 4px;
-        background-color: red;
-        color: white;
-        border-radius: 50%;
-        padding: 1px 6px;
-        font-size: 0.60rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .menuNav{
-        background-color:salmon;
-        width: 100%;
-        height: 50px;
-        position: fixed;
-        z-index:99;
-        top: 100px;
-        left:0;
-        padding: 0 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Añadido para efecto de sombra */
-    display: flex;
-    justify-content: space-around;
-    }
- 
 
-    
-}}
+    .barraLogo {
+        padding: 0 10px;
+        /* Reducir padding */
+    }
+
+    .inicioSesionOpcion {
+        width: auto;
+        /* Ajustar el ancho */
+    }
+
+
+    @media screen and (max-width:650px) {
+        .barraLogo {
+            width: 100%;
+        }
+
+        .logo img {
+            width: 60px;
+            /* Reducir tamaño del logo */
+        }
+
+        .inicioSesionOpcion a {
+            font-size: 12px;
+            /* Ajustar el tamaño de fuente */
+        }
+
+        .inicioSesionOpcion p {
+            display: flex;
+            flex-direction: column;
+            width: 80px;
+            height: 20px;
+            display: flex;
+            font-size: 10px;
+        }
+
+        .userOptions {
+            gap: 5px;
+            /* Reducir espacio entre elementos */
+        }
+
+        .userIcon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .userText {
+            font-size: 12px;
+            /* Ajustar el tamaño de fuente */
+        }
+
+        .cart-icon {
+            width: 40px;
+            /* Reducir tamaño del ícono del carrito */
+        }
+
+        .cart-icon i {
+            font-size: 1.2rem;
+            /* Ajustar tamaño del ícono */
+        }
+
+        .userOptions {
+            gap: 5px;
+            /* Reducir espacio entre elementos */
+        }
+
+        .userIcon {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 6px;
+            margin-top: 10px;
+        }
+
+        .userText {
+           
+            font-size: 12px;
+            /* Ajustar el tamaño de fuente */
+        }
+
+        .cart-icon {
+            width: 40px;
+            /* Reducir tamaño del ícono del carrito */
+        }
+
+        .cart-icon i {
+            font-size: 1.2rem;
+            /* Ajustar tamaño del ícono */
+        }
+
+        .listaMenu {
+            width: 100%;
+            /* Asegurarse de que el menú no se desborde */
+            padding: 0;
+        }
+
+        .nav-link {
+            width: 100%;
+            font-size: 13px;
+            /* Ajustar el tamaño de fuente */
+            padding: 0rem;
+            /* Ajustar el padding */
+
+        }
+
+        .dropdown {
+            width: 60px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .cart-icon {
+            width: 45px;
+            height: 70px;
+            margin-left: -10px;
+        }
+
+        .cart-icon i {
+            font-size: 1.3rem;
+            /* Tamaño del ícono */
+            color: var(--colorContraste);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: 4px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 1px 6px;
+            font-size: 0.60rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menuNav {
+            background-color: salmon;
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            z-index: 99;
+            top: 100px;
+            left: 0;
+            padding: 0 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Añadido para efecto de sombra */
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .dropdown-item a {
+            font-size: 10px;
+        }
+
+        .dropdown {
+            width: 50px;
+            height: 30px;
+            margin-top: 14px;
+           
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .dropdown-menu {
+            position: absolute;
+            margin-top: 20px;
+         top:100%;
+            left: -100%;
+            width: 130px;
+            background-color: white;
+            border: 1px solid #111010;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            z-index: 101;
+            padding: 5px;
+            text-align: start;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: visibility 0.3s, opacity 0.8s ease, transform 0.5s ease;
+        }
+
+
+    }
+}

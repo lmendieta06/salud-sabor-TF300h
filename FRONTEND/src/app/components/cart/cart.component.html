@@ -24,13 +24,13 @@
       <div *ngFor="let item of itemsInCart" class="cart-item">
         <img [src]="item.imagenPlato" alt="{{item.nombrePlato}}" class="cart-item-image">
         <div class="cart-item-details">
-          <h4>{{item.nombrePlato}}</h4> <!-- Aquí debe mostrarse el nombre correcto del plato -->
-          <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#description' + item._id" aria-expanded="false" [attr.aria-controls]="'description' + item._id">
-            Mostrar descripción <span class="accesibilidad">(click para ver)</span>
-          </button>
-          <div [id]="'description' + item._id" class="collapse">
-            <p class="item-description">{{item.descripcionPlato}}</p>
-          </div><!-- Aquí debe mostrarse el nombre correcto del plato -->
+          <h4>{{item.nombrePlato}}</h4> 
+          <!-- Aquí debe mostrarse el nombre correcto del plato -->
+
+       
+
+
+          
           <p>{{item.precioPlato | currency}}</p> <!-- Precio correcto -->
          </div>
         <div class="cart-item-controls">

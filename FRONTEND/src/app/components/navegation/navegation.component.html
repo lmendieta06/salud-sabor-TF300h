@@ -23,7 +23,7 @@
         <div class="userImageContainer" *ngIf="isLoggedIn">
           <img [src]="imagenPerfil || 'assets/default-user.png'" alt="Imagen del usuario" class="userImage">
         </div>
-        <span class="userText">Mi cuenta <i class="bi bi-chevron-down"></i></span>
+        <span class="userText">Cuenta <i class="bi bi-chevron-down"></i></span>
         <ul class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
           <li class="dropdown-item" *ngIf="isLoggedIn"><a routerLink="/profile"><i class="bi bi-person"></i> Mi Perfil</a></li>
           <li class="dropdown-item"*ngIf="isLoggedIn"><a routerLink="/pedidos"><i class="bi bi-box"></i> Mis pedidos</a></li>
