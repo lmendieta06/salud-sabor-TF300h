@@ -205,6 +205,7 @@ main{
     width: 100%;
 }
 
+
 .correoTelefono article{
     width: 100%;
     display: flex;
@@ -248,9 +249,13 @@ main{
     }
 
     .canalesAtencion {
+        margin-top: 25px;
         width: 100%; /* Ajusta el ancho según sea necesario */
         height: 300px; /* Ajusta la altura al 100% del viewport */
         position: relative; /* Permite posicionar el contenido encima de la imagen */
         overflow-y: hidden; /* Asegura que no haya barras de desplazamiento */
+    }
+    .titleCanales{
+        font-size: 12px;
     }
 }

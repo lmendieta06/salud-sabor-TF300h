@@ -141,4 +141,8 @@ footer h2 {
     .copyRight {
         width: 100%;
     }
+    .imgFooter{
+        width: 180px;
+        height: 180px;
+    }
 }
